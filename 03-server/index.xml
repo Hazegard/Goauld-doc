@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Server features on Goauld</title><link>https://Hazegard.github.io/Goauld-doc/03-server/</link><description>Recent content in Server features on Goauld</description><generator>Hugo</generator><language>en</language><atom:link href="https://Hazegard.github.io/Goauld-doc/03-server/index.xml" rel="self" type="application/rss+xml"/><item><title>Listening services</title><link>https://Hazegard.github.io/Goauld-doc/03-server/01-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/01-services/</guid><description>&lt;p&gt;To allow agent to tunnel SSH connection over different transports, the server must expose the corresponding service, then decapsulate the traffic and forward it to the SSHD server.&lt;/p&gt;
+&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;For all listeners, the listen address flag has the following format:
+&lt;code&gt;[IP]:[PORT]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If no IP address is provided, the service will listen on all interfaces.
+However, the &lt;code&gt;:&lt;/code&gt; is still required before the port&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="ssh"&gt;SSH&lt;a class="td-heading-self-link" href="#ssh" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;No encapsulation, directly exposed.&lt;/p&gt;</description></item><item><title>Deployment</title><link>https://Hazegard.github.io/Goauld-doc/03-server/02-deployment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/02-deployment/</guid><description/></item><item><title>Access Control</title><link>https://Hazegard.github.io/Goauld-doc/03-server/03-access_control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/03-access_control/</guid><description>&lt;p&gt;Certain components should be accessible only by authorized users.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Admin endpoints&lt;/li&gt;
+&lt;li&gt;Management endpoints&lt;/li&gt;
+&lt;li&gt;SSH access from the client&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="ip-allowlisting"&gt;IP allowlisting&lt;a class="td-heading-self-link" href="#ip-allowlisting" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The server accepts a list of authorized IPs to restrict the access of&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;/admin/&lt;/code&gt; endpoints&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;/manage/&lt;/code&gt; endpoints&lt;/li&gt;
+&lt;li&gt;SSH access from the client (using password authentication)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="td-alert td-alert--md alert alert-warning" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Warning&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;IF the server runs in a docker environment, the deployment should ensure that the remote IP address is correctly forwarded to the server&lt;/p&gt;</description></item><item><title>Healthcheck</title><link>https://Hazegard.github.io/Goauld-doc/03-server/04-healthcheck/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/04-healthcheck/</guid><description>&lt;p&gt;To ensure tunnels are functioning correctly, some healthcheck scripts/tools are provided.&lt;/p&gt;
+&lt;div class="td-alert td-alert--md alert alert-warning" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Warning&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;The provided healthchecks only verify that the SSHD server is reachable through the tunnel by checking the SSHD banner.&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="ssh-over-tls"&gt;SSH over TLS&lt;a class="td-heading-self-link" href="#ssh-over-tls" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;00000000000000000000000000000000\n&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; timeout &lt;span class="m"&gt;1&lt;/span&gt; openssl s_client -quiet -connect &lt;span class="nv"&gt;$TLS_DOMAIN&lt;/span&gt;$:&lt;span class="nv"&gt;$TLS_PORT&lt;/span&gt;$ 2&amp;gt;/dev/null &lt;span class="p"&gt;|&lt;/span&gt; grep -q &lt;span class="s2"&gt;&amp;#34;SSH-2.0-&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ssh-over-websocket"&gt;SSH over WebSocket&lt;a class="td-heading-self-link" href="#ssh-over-websocket" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="building"&gt;Building&lt;a class="td-heading-self-link" href="#building" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go build -o ws-healthcheck ./healthcheck/websocket
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="running"&gt;Running&lt;a class="td-heading-self-link" href="#running" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; sleep 1&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; ws-healthcheck &lt;span class="s2"&gt;&amp;#34;wss://&lt;/span&gt;&lt;span class="nv"&gt;$WS_DOMAIN&lt;/span&gt;&lt;span class="s2"&gt;/wssh/00000000000000000000000000000000&amp;#34;&lt;/span&gt; 2&amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ssh-over-dns"&gt;SSH over DNS&lt;a class="td-heading-self-link" href="#ssh-over-dns" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="building-1"&gt;Building&lt;a class="td-heading-self-link" href="#building-1" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go build -o dns-healthcheck ./healthcheck/dns/dnstt-client
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="running-1"&gt;Running&lt;a class="td-heading-self-link" href="#running-1" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;00000000000000000000000000000000S&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; sleep 1&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; dns-healthcheck -udp &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$DNS_SERVER&lt;/span&gt;&lt;span class="s2"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;$DNS_SERVER_PORT&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$DNS_DOMAIN&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; 2&amp;gt;/dev/null &lt;span class="p"&gt;|&lt;/span&gt; grep -q &lt;span class="s2"&gt;&amp;#34;SSH-2.0-&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;The &amp;ldquo;S&amp;rdquo; is required at the end of the echo&lt;/p&gt;</description></item><item><title>Agent Drop</title><link>https://Hazegard.github.io/Goauld-doc/03-server/05-agent_downloading/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/05-agent_downloading/</guid><description>&lt;p&gt;In order to drop precompiled agents, a basicauth protected dirlisting is available through https://[SERVER]/binaries/.&lt;/p&gt;
+&lt;p&gt;To access this dirlisting, a custom password should be configured.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# HTTP Basic Auth credentials required to access the binaries endpoint.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;binaries-basic-auth&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;user:password&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>
