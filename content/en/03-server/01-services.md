@@ -1,0 +1,88 @@
+---
+title: Listening services
+description: Goauld listening services
+weight: 1
+---
+
+To allow agent to tunnel SSH connection over different transports, the server must expose the corresponding service, then decapsulate the traffic and forward it to the SSHD server.
+
+
+> [!NOTE]
+> For all listeners, the listen address flag has the following format:
+> `[IP]:[PORT]`
+>
+> If no IP address is provided, the service will listen on all interfaces.
+> However, the `:` is still required before the port
+
+## SSH
+
+No encapsulation, directly exposed.
+
+### Flags
+
+
+- `--ssh-listen-addr`: The address the SSHD server will listen to. Format: `[IP]:[PORT]`.
+
+
+## TLS
+
+
+> [!NOTE]
+> The TLS configuration both impacts the SSH over TLS tunnel, and the HTTPS web server.
+
+
+- `--https-listen-addr`: the address the TLS server will listen to. . Format: `[IP]:[PORT]`.
+- `--http-domain`: the domain on which the WebServer will respond.
+- `--tls-domain`: the domain on which the SSH over TLS listener will respond.
+
+- `--tls`/`--no-tls`: Enable/Disable the TLS listener. Note that it impacts both the HTTPS webserver and the SSH over TLS listener.
+
+### TLS keys
+
+The server allows two ways of providing the TLS certificate:
+- Either provide a custom certificate
+  - `--tls-key`: path to the TLS certificate key
+  - `--tls-cert`: path to the TLS certificate
+- Let the server handle the certificate:
+  - `--letsencrypt-mail`: the mail used by the ACME protocol
+
+> [!NOTE]
+> The same TLS certificate must be able to handle both domains.
+
+## Quic
+
+- `--quic-listen-addr`
+
+> [!NOTE]
+> If required to open traffic (firewalls), this listener always listens on UDP
+
+## Websocket
+
+No configuration available.
+
+The SSH over Websocket listener listens over the `ws://[HTTP_DOMAIN]/wssh/` and `wss://[HTTP_DOMAIN]/wssh/`
+
+## HTTP
+
+No configuration available.
+
+The SSH over Websocket listener listens over the `http://[HTTP_DOMAIN]/sshttp/` and `https://[HTTP_DOMAIN]/sshttp/`
+
+
+## DNS
+
+The DNS server acts as an authoritative server and responds to DNS queries that match the SSH-over-DNS format.
+
+- `--dns-listen-addr`: The address the DNS server will listen to. It is recommended to use the port 53 to be reachable from recursive DNS servers
+- `--dns-domain`: The DNS domain on which the DNS server will respond. In order to maximize the throughput, it is recommended to use the shortest domain possible.
+
+
+| Transport | Flag                  | Description                 | Example         |
+| --------- | --------------------- | --------------------------- | --------------- |
+| SSH       | `--ssh-listen-addr`   | Address for SSH listener    | `[IP]:[PORT]`   |
+| TLS       | `--https-listen-addr` | TLS server listen address   | `[IP]:[PORT]`   |
+| TLS       | `--tls` / `--no-tls`  | Enable/disable TLS listener | `--tls`         |
+| TLS       | `--http-domain`       | HTTPS web server domain     | `example.com`   |
+| QUIC      | `--quic-listen-addr`  | QUIC listener address (UDP) | `[IP]:[PORT]`   |
+| DNS       | `--dns-listen-addr`   | DNS server listen address   | `[IP]:53`       |
+| DNS       | `--dns-domain`        | Domain for SSH-over-DNS     | `s.example.com` |
