@@ -35,7 +35,7 @@ This tool aims to solve these two use cases.
 It is composed of three components:
 - The server, exposing an SSH server both directly and through multiple tunneling transports
 - The agent, which embeds an SSH server, SOCKS and HTTP proxies 
-- The client, which allows access to agents and interaction with them
+- The client (**tealc**), which allows access to agents and interaction with them
 
 
 ## Use cases

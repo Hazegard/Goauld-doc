@@ -98,8 +98,26 @@ dig +short +unknownformat -t TXT '%s' @127.0.0.1 | head -n1 | cut -d ' ' -f3- | 
 {{% /tab %}}
 {{< /tabpane >}}
 
+## Browser proxy
 
-### Egress proxies
+The agent can use a web browser to tunnel all the traffic.
+
+1. The agent exposes a simple Web pages with a custom javascript. The JavaScript open 4 websockets connections
+   1. Two connecting to the server (Control & data)
+   2. Two connecting to the agent (Control & data)
+      - The agent exposed custom endpoint to allow the browser to initiate the connection the the agent
+2. The Web pages pipes the websockets connections
+
+<video width=90% controls autoplay>
+    <source src="browser-proxy.webm" type="video/webm">
+    Your browser does not support the video tag.
+</video>
+
+### Flags:
+
+- `--browser-proxy-port`: the port used to expose the custom web pages and the websockets endpoints use by the browser to connect to the agent.
+
+## Egress proxies
 
 If required, the agent will try to reach the server using the proxy configuration identified on the system (see [https://github.com/aus/proxyplease?tab=readme-ov-file#proxy-selection](https://github.com/aus/proxyplease?tab=readme-ov-file#proxy-selection)).
 
