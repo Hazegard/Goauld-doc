@@ -560,4 +560,9 @@ But it is still documented in case on manual connection to the agents through th
 &lt;video width=90% controls autoplay&gt;
  &lt;source src="embed-server.webm" type="video/webm"&gt;
  Your browser does not support the video tag.
-&lt;/video&gt;</description></item><item><title/><link>https://Hazegard.github.io/Goauld-doc/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/search/</guid><description/></item></channel></rss>
+&lt;/video&gt;</description></item><item><title>Agent binding</title><link>https://Hazegard.github.io/Goauld-doc/04-client/16-agent_binding/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/16-agent_binding/</guid><description>&lt;p&gt;When the agent is in bind mode, it exposes a port on which the client connects to. (see &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/01-tunnels/#agent-binding"&gt;agent/tunnels&lt;/a&gt;)&lt;/p&gt;
+&lt;h2 id="flags"&gt;Flags&lt;a class="td-heading-self-link" href="#flags" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--kill&lt;/code&gt;whether to kill the agent on disconnection&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[AGENT_ADDR]&lt;/code&gt;: the agent to bind to, format: &lt;code&gt;[IP]:[PORT]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title/><link>https://Hazegard.github.io/Goauld-doc/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/search/</guid><description/></item></channel></rss>
