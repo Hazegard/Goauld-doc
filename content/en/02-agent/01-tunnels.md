@@ -150,3 +150,12 @@ The proxy will be selected by the following priority:
 1. `--proxy [PROXY_URL]` (or any other means allowing configuration of the `proxy` flag, see  [general/compilation]({{< ref "01-general/02-compilation" >}}))
 2. Environment Variable: `HTTPS_PROXY`, `HTTP_PROXY`, `FTP_PROXY`, or `ALL_PROXY`. `NO_PROXY` is respected.
 3. Network Settings: `scutil`
+
+## Agent binding
+
+The agent can expose a port on which the client connects to. (see [client/agent-binding]({{< ref "04-client/16-agent_binding" >}}))
+
+### Flags
+
+- `-rssh-order=bind`
+- `--bind-port`
