@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Server features on Goauld</title><link>https://Hazegard.github.io/Goauld-doc/03-server/</link><description>Recent content in Server features on Goauld</description><generator>Hugo</generator><language>en</language><atom:link href="https://Hazegard.github.io/Goauld-doc/03-server/index.xml" rel="self" type="application/rss+xml"/><item><title>Listening services</title><link>https://Hazegard.github.io/Goauld-doc/03-server/01-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/01-services/</guid><description>&lt;p&gt;To allow agent to tunnel SSH connection over different transports, the server must expose the corresponding service, then decapsulate the traffic and forward it to the SSHD server.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Server features on Goauld</title><link>https://Hazegard.github.io/Goauld-doc/03-server/</link><description>Recent content in Server features on Goauld</description><generator>Hugo</generator><language>en</language><atom:link href="https://Hazegard.github.io/Goauld-doc/03-server/index.xml" rel="self" type="application/rss+xml"/><item><title>Listening services</title><link>https://Hazegard.github.io/Goauld-doc/03-server/01-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/01-services/</guid><description>&lt;p&gt;To allow agents to tunnel SSH connection over different transports, the server must expose the corresponding service, then decapsulate the traffic and forward it to the SSHD server.&lt;/p&gt;
 &lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
  &lt;p&gt;For all listeners, the listen address flag has the following format:
@@ -10,8 +10,8 @@ However, the &lt;code&gt;:&lt;/code&gt; is still required before the port&lt;/p&
 &lt;h2 id="ssh"&gt;SSH&lt;a class="td-heading-self-link" href="#ssh" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;No encapsulation, directly exposed.&lt;/p&gt;</description></item><item><title>Deployment</title><link>https://Hazegard.github.io/Goauld-doc/03-server/02-deployment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/02-deployment/</guid><description>&lt;div class="td-alert td-alert--md alert alert-warning" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Warning&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;Currently, Goauld is not designed to run behind a reverse proxy.
-Particularly, the whitelisting feature will not work behind a reverse proxy.&lt;/p&gt;
+ &lt;p&gt;Goauld is currently not designed to run behind a reverse proxy.
+In particular, the whitelisting feature will not work behind a reverse proxy.&lt;/p&gt;
  &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 id="docker-compose-example"&gt;Docker compose example&lt;a class="td-heading-self-link" href="#docker-compose-example" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
@@ -77,7 +77,7 @@ Particularly, the whitelisting feature will not work behind a reverse proxy.&lt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Path to the TLS certificate file.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;tls-cert&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Email used when generating Let&amp;#39;s Encrypt certificates.&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Email used when generating Let&amp;#39;s Encrypt certificates.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;letsencrypt-mail&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;mail@example.com&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Enable QUIC protocol support.&lt;/span&gt;&lt;span class="w"&gt;
@@ -111,7 +111,7 @@ Particularly, the whitelisting feature will not work behind a reverse proxy.&lt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Filesystem path where agent binaries are stored.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;binaries-path-location&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;./binaries&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="dns-configuration"&gt;DNS configuration&lt;a class="td-heading-self-link" href="#dns-configuration" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;3 DNS records are required:&lt;/p&gt;</description></item><item><title>Access Control</title><link>https://Hazegard.github.io/Goauld-doc/03-server/03-access_control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/03-access_control/</guid><description>&lt;p&gt;Certain components should be accessible only by authorized users.&lt;/p&gt;
+&lt;p&gt;Three DNS records are required:&lt;/p&gt;</description></item><item><title>Access Control</title><link>https://Hazegard.github.io/Goauld-doc/03-server/03-access_control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/03-access_control/</guid><description>&lt;p&gt;Certain components should be accessible only by authorized users.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Admin endpoints&lt;/li&gt;
 &lt;li&gt;Management endpoints&lt;/li&gt;
@@ -150,8 +150,8 @@ Particularly, the whitelisting feature will not work behind a reverse proxy.&lt;
 &lt;p&gt;To access this dirlisting, a custom password should be configured.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# HTTP Basic Auth credentials required to access the binaries endpoint.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;binaries-basic-auth&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;user:password&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Database</title><link>https://Hazegard.github.io/Goauld-doc/03-server/06-database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/06-database/</guid><description>&lt;p&gt;THe servers uses an SQLite database to store informations regarding previously connected agents.&lt;/p&gt;
-&lt;p&gt;GIven that agent perform a full connection flow at each start, the data stored in the database isn&amp;rsquo;t required.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Database</title><link>https://Hazegard.github.io/Goauld-doc/03-server/06-database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/03-server/06-database/</guid><description>&lt;p&gt;The server uses an SQLite database to store information regarding previously connected agents.&lt;/p&gt;
+&lt;p&gt;Given that agents perform a full connection flow at each start, the data stored in the database isn&amp;rsquo;t required.&lt;/p&gt;
 &lt;h2 id="flag"&gt;Flag:&lt;a class="td-heading-self-link" href="#flag" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;--no-db&lt;/code&gt; Disable the database on disk.&lt;/li&gt;

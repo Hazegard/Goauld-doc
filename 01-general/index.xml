@@ -1,22 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>General information on Goauld</title><link>https://Hazegard.github.io/Goauld-doc/01-general/</link><description>Recent content in General information on Goauld</description><generator>Hugo</generator><language>en</language><atom:link href="https://Hazegard.github.io/Goauld-doc/01-general/index.xml" rel="self" type="application/rss+xml"/><item><title>Install</title><link>https://Hazegard.github.io/Goauld-doc/01-general/01-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/01-general/01-install/</guid><description>&lt;p&gt;Prebuilt client and server are available at &lt;a href="https://github.com/Hazegard/Goauld/releases"&gt;https://github.com/Hazegard/Goauld/releases&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>General information on Goauld</title><link>https://Hazegard.github.io/Goauld-doc/01-general/</link><description>Recent content in General information on Goauld</description><generator>Hugo</generator><language>en</language><atom:link href="https://Hazegard.github.io/Goauld-doc/01-general/index.xml" rel="self" type="application/rss+xml"/><item><title>Quick start</title><link>https://Hazegard.github.io/Goauld-doc/01-general/01-quick_start/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/01-general/01-quick_start/</guid><description>&lt;p&gt;This setup involves three components running on separate machines:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Server&lt;/strong&gt;: publicly reachable machine&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Client (tealc)&lt;/strong&gt;: operator machine&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agent&lt;/strong&gt;: target machine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Prebuilt client and server binaries are available at &lt;a href="https://github.com/Hazegard/Goauld/releases"&gt;https://github.com/Hazegard/Goauld/releases&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/01-general/02-compilation/"&gt;general/compilation&lt;/a&gt; to compile the components.&lt;/p&gt;
-&lt;h2 id="generate-age-key"&gt;Generate age key&lt;a class="td-heading-self-link" href="#generate-age-key" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Install &lt;a href="https://github.com/filosottile/age"&gt;age&lt;/a&gt;, then&lt;/p&gt;
+&lt;h2 id="generate-secrets"&gt;Generate secrets&lt;a class="td-heading-self-link" href="#generate-secrets" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Install &lt;a href="https://github.com/filosottile/age"&gt;age&lt;/a&gt;, then run:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ age-keygen
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# created: 2026-03-27T21:44:18+01:00&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# public key: age1krjxdnhmf2kqm8rdhyf6sr5nfvlwdcslux3fxt8amcrncwn3ss9sydlvd0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;AGE-SECRET-KEY-1NJ4DRPNKNGEVFK50JHUD6RKZ3NJ3Q9S5KYMTARTLXU0P0KQU8AAQNE4C2F
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The private key (&lt;code&gt;AGE-SECRET-KEY-*&lt;/code&gt;) will be used in the server, and the public key in the agents.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The private key (&lt;code&gt;AGE-SECRET-KEY-*&lt;/code&gt;) is used by the server, and the public key is embedded in agents.&lt;/p&gt;
 &lt;h2 id="generate-access-token-and-admin-token"&gt;Generate access token (and admin token)&lt;a class="td-heading-self-link" href="#generate-access-token-and-admin-token" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;openssl rand -base64 &lt;span class="m"&gt;42&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;These tokens will be used in both server and clients.&lt;/p&gt;
-&lt;h2 id="server"&gt;Server&lt;a class="td-heading-self-link" href="#server" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/03-server/02-deployment/"&gt;server/deployment&lt;/a&gt; to install and deploy the server.&lt;/p&gt;</description></item><item><title>Compilation</title><link>https://Hazegard.github.io/Goauld-doc/01-general/02-compilation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/01-general/02-compilation/</guid><description>&lt;p&gt;Components can be compiled directly, but some require specific Go build tags:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At this point, you should have:&lt;/p&gt;</description></item><item><title>Compilation</title><link>https://Hazegard.github.io/Goauld-doc/01-general/02-compilation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/01-general/02-compilation/</guid><description>&lt;p&gt;Some components require specific Go build tags:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;client&lt;/code&gt;: &lt;code&gt;-tags client&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;mini_agent&lt;/code&gt;: &lt;code&gt;-tags mini&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The project can also be built using goreleaser.&lt;/p&gt;
+&lt;p&gt;The project can also be built using GoReleaser.&lt;/p&gt;
 &lt;h2 id="optional-build-dependencies"&gt;Optional build dependencies&lt;a class="td-heading-self-link" href="#optional-build-dependencies" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;garble&lt;/code&gt; for binary obfuscation (&lt;a href="https://github.com/burrowers/garble"&gt;https://github.com/burrowers/garble&lt;/a&gt;)&lt;/li&gt;
@@ -32,18 +36,18 @@
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc compile --id agent --goarch amd64 --goos windows
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;Compiling with the cli is recommended as it allows to feed the agent with compile time variable (see [How to feed variables])&lt;/p&gt;</description></item><item><title>Variables</title><link>https://Hazegard.github.io/Goauld-doc/01-general/03-variables/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/01-general/03-variables/</guid><description>&lt;h2 id="passing-variables-to-components-agent-client--server"&gt;Passing variables to components (agent, client &amp;amp; server)&lt;a class="td-heading-self-link" href="#passing-variables-to-components-agent-client--server" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+ &lt;p&gt;Compiling with the CLI is recommended as it allows passing compile-time variables to the agent (see [How to feed variables])&lt;/p&gt;</description></item><item><title>Variables</title><link>https://Hazegard.github.io/Goauld-doc/01-general/03-variables/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/01-general/03-variables/</guid><description>&lt;h2 id="passing-variables-to-components-agent-client--server"&gt;Passing variables to components (agent, client &amp;amp; server)&lt;a class="td-heading-self-link" href="#passing-variables-to-components-agent-client--server" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Components can retrieve configuration parameters from several sources.
-The following order defines the precedence (from highest to lowest priority):&lt;/p&gt;
+The following order defines the precedence (from highest to lowest):&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Command-line argument (&lt;code&gt;--var=1&lt;/code&gt;)&lt;/li&gt;
 &lt;li&gt;Configuration file passed through command line (&lt;code&gt;--config&lt;/code&gt;)&lt;/li&gt;
 &lt;li&gt;Environment variable (e.g. &lt;code&gt;VAR=1&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;Default configuration file (see &lt;a href="https://Hazegard.github.io/Goauld-doc/01-general/04-configuration_file/"&gt;general/configuration file&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Compile time defined value (&lt;code&gt;-ldflags&lt;/code&gt;, or compiling with &lt;code&gt;tealc compile --env&lt;/code&gt;: &lt;a href="https://Hazegard.github.io/Goauld-doc/01-general/02-compilation/#compile-using-the-client"&gt;general/compilation&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Default configuration file (see &lt;a href="https://Hazegard.github.io/Goauld-doc/01-general/04-configuration_file/"&gt;general/configuration file&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Compile-time defined value (&lt;code&gt;-ldflags&lt;/code&gt;, or compiling with &lt;code&gt;tealc compile --env&lt;/code&gt;: &lt;a href="https://Hazegard.github.io/Goauld-doc/01-general/02-compilation/#compile-using-the-client"&gt;general/compilation&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;Hardcoded default value&lt;/li&gt;
-&lt;/ol&gt;</description></item><item><title>Configuration file</title><link>https://Hazegard.github.io/Goauld-doc/01-general/04-configuration_file/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/01-general/04-configuration_file/</guid><description>&lt;p&gt;The server, agent, and client have the same behavior regarding loading config file.&lt;/p&gt;
-&lt;p&gt;Each component looks for a config file in the &lt;code&gt;$HOME/.config&lt;/code&gt; directory, then in the current directory.&lt;/p&gt;
+&lt;/ol&gt;</description></item><item><title>Configuration file</title><link>https://Hazegard.github.io/Goauld-doc/01-general/04-configuration_file/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/01-general/04-configuration_file/</guid><description>&lt;p&gt;The server, agent, and client share the same behavior when loading configuration files.&lt;/p&gt;
+&lt;p&gt;Each component looks for a configuration file in the &lt;code&gt;$HOME/.config&lt;/code&gt; directory, then in the current directory.&lt;/p&gt;
 &lt;p&gt;The configuration filenames for each component are:&lt;/p&gt;
 &lt;table&gt;
  &lt;thead&gt;
