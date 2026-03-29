@@ -21,7 +21,7 @@ Exposed by default on the port `3128`.
 See [agent/proxies#socks-proxy]({{< ref "02-agent/02-proxies" >}}#http-proxy) for details about the HTTP proxy.
 
 
-## Proxy HTTP with NTLM/Kerberos applicative authentication
+## Proxy HTTP with NTLM/Kerberos application-level authentication
 
 Exposed by default on the port `3129`.
 

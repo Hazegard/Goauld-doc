@@ -5,7 +5,7 @@ weight: 3
 ---
 
 
-If an agent `A` cannot reach the Goauld server, but can reach another Goauld agent `B` that can reach the server, then agent `B` can be configured as a relay.
+If an agent `A` cannot reach the Goauld server, but can reach anothe agent `B` that can reach the server, then agent `B` can be configured to run as a relay.
 
 
 ## Configure an agent as a relay

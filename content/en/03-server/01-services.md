@@ -4,7 +4,7 @@ description: Goauld listening services
 weight: 1
 ---
 
-To allow agent to tunnel SSH connection over different transports, the server must expose the corresponding service, then decapsulate the traffic and forward it to the SSHD server.
+To allow agents to tunnel SSH connection over different transports, the server must expose the corresponding service, then decapsulate the traffic and forward it to the SSHD server.
 
 
 > [!NOTE]

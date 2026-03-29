@@ -4,7 +4,7 @@ description:
 weight: 6
 ---
 
-To ensure that no agent runs indefinitely, a killswitch has been implemented. After a specified amount of days, the agent automatically shuts down.
+To ensure that no agent runs indefinitely, a killswitch has been implemented. After a specified number of days, the agent automatically shuts down.
 
 ## Flag
 

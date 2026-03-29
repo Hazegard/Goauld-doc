@@ -4,7 +4,7 @@ description:
 weight: 2
 ---
 
-The client provides a Text-based User Interface (TUI) to monitor and manage connected agents.
+The client provides a text-based user interface (TUI) to monitor and manage connected agents.
 
 ![test](TUI.png)
 
@@ -30,4 +30,4 @@ tealc (kill|reset|delete) [AGENT_NAME]
 
 ### Extended TUI
 
-Some information is hidden by default, press `+` to toggle the details.
+Some information is hidden by default. Press `+` to toggle the details.

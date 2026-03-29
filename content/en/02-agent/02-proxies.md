@@ -4,7 +4,7 @@ description:  Goauld agent proxies
 weight: 2
 ---
 
-The agent exposes three proxies that allow interaction with the host network:
+The agent exposes three proxies that allow interaction with the host’s network:
 - An HTTP proxy 
 - An HTTP proxy that performs NTLM/Kerberos application-level authentication
 - A SOCKS proxy
@@ -42,7 +42,7 @@ The upstream proxy will be selected by the following priority:
 
 ### Flags
 
-By default, the HTTP proxy will use the proxy configuration used by the agent to reach the Goauld server (see  [agent/tunnels#egress-proxies]({{< ref "02-agent/01-tunnels" >}}#egress-proxies)), but this behaviour can be overridden using:
+By default, the HTTP proxy will use the proxy configuration used by the agent to reach the Goauld server (see  [agent/tunnels#egress-proxies]({{< ref "02-agent/01-tunnels" >}}#egress-proxies)), but this behavior can be overridden using:
 
 - `--custom-http-proxy`: override the system proxy
 - `--http-proxy-username`: Username to authenticate on the proxy
@@ -51,7 +51,7 @@ By default, the HTTP proxy will use the proxy configuration used by the agent to
 - `--http`/`--no-http`: Enable/Disable the HTTP proxy 
 
 > [!NOTE]
-> This proxy is automatically enabled if the HTTP proxy with NTLM/Kerberos authentication is enabled, or if ths SOCKS proxy is configured to use the HTTP proxy (or transitively, the MITM HTTP proxy)
+> This proxy is automatically enabled if the HTTP proxy with NTLM/Kerberos authentication is enabled, or if the SOCKS proxy is configured to use the HTTP proxy (or transitively, the MITM HTTP proxy)
 
 ## HTTP proxy with NTLM/Kerberos authentication
 

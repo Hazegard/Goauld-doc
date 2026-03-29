@@ -20,7 +20,7 @@ The TUN interface is a WireGuard VPN that allows TCP, UDP, and ICMP (ping only) 
 tealc wireguard generate
 ```
 
-The content looks like: :
+The content looks like:
 ```yaml
 wg-public-key: yIBaM2WHj9gDcxRxIFtvKrxj6jrosjYsaP34i7BkJ2A=
 wg-private-key: dPu5bpPpZLDi4t40iHDz+KCkIh0za32Jz+uxNdVth0Q=

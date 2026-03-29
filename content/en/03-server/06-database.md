@@ -4,9 +4,9 @@ description:
 weight: 6
 ---
 
-THe servers uses an SQLite database to store informations regarding previously connected agents.
+The server uses an SQLite database to store information regarding previously connected agents.
 
-GIven that agent perform a full connection flow at each start, the data stored in the database isn't required.
+Given that agents perform a full connection flow at each start, the data stored in the database isn't required.
 
 ## Flag:
 

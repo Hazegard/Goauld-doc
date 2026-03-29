@@ -6,32 +6,32 @@ type: "docs"
 weight: 20
 
 cascade:
-- _target:
+- target:
     path: "/blog/**"
   type: "blog"
   # set to false to include a blog section in the section nav along with docs
   toc_root: true
-- _target:
+- target:
     path: "/**"
     kind: "page"
   type: "docs"
-- _target:
+- target:
     path: "/**"
     kind: "section"
   type: "docs"
-- _target:
+- target:
     path: "/**"
     kind: "section"
   type: "home"
 ---
 
-> Goauld is a post-exploitation and remote access tool designed for restricted environments.
+> Goauld is a post-exploitation and remote access tool designed for use in restricted environments.
 
-During penetration tests, operators are sometimes forced to work from a client-provided laptop behind VPNs, authenticated egress proxies, or restrictive network controls. In other cases, gaining remote code execution on a system still requires establishing a stable and fully interactive access channel.
+During penetration tests, operators may be required to work from a client-provided laptop behind VPNs, authenticated egress proxies, or restrictive network controls. In other cases, gaining remote code execution on a system still requires establishing a stable and fully interactive access channel.
 
 Goauld solves these problems by providing a tunneling and access framework that allows operators to interact with remote agents through multiple transport protocols while maintaining a secure SSH-based architecture.
 
-This tool aims to solve these two use cases.
+This tool addresses these use cases.
 It is composed of three components:
 - The server, exposing an SSH server both directly and through multiple tunneling transports
 - The agent, which embeds an SSH server, SOCKS and HTTP proxies 

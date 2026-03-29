@@ -5,9 +5,9 @@ weight: 8
 ---
 
 
-During assessments, it may be necessary to keep an agent running for several days (it can be hard to execute it). 
+During assessments, it may be necessary to keep an agent running for several days (it can be difficult to execute). 
 
-To reduce the agent's network footprint, a mechanism allows it to pause all network activity at a specified hour and automatically resume at another specified hour.
+To reduce the agent's network footprint, a mechanism allows it to pause all network activity at a specified time and automatically resume later at a specified hour.
 
 If the agent starts outside the working period, it will wait until the next start hour.
 

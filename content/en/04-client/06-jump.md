@@ -14,7 +14,7 @@ tealc jump --print [AGENT_NAME] [REMOTE_SERVER] (-i ./id_ed25519)
 ```
 
 > [!NOTE]
-> Although this command is a simple :
+> Although this command is simply :
 > ```bash
 > ssh -oProxyCommand="tealc ssh [AGENT_NAME] -W %h:%p [REMOTE_SERVER]" (-i ./id_ed25519)
 > ```

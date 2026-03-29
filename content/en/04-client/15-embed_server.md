@@ -4,7 +4,7 @@ description:
 weight: 15
 ---
 
-THe client can enter in  server mode allowing to reproduce the `nc -lvp` command.
+The client can enter in  server mode allowing to reproduce the `nc -lvp` command.
 
 ```bash
 tealc embed-server

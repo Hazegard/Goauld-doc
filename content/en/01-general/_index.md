@@ -11,7 +11,7 @@ The compilation can be done directly, but it requires some tags:
 
 The compilation can also be achieved using goreleaser
 
-## Optionnally required dependencies
+## Optionally required dependencies
 
 - `garble` for obfuscation ([https://github.com/burrowers/garble](https://github.com/burrowers/garble))
 - `upx` for compression [https://github.com/upx/upx](https://github.com/upx/upx)
@@ -22,19 +22,19 @@ The compilation can also be achieved using goreleaser
 
 - Direct compilation
 ```bash
-go run -o tealc ./agent
+go build -o tealc ./agent
 ```
 - Using the script wrapper
 ```bash
 go run ./scripts/build/  --id agent --goos windows --goarch amd64 --no-seed --gen-age-key=false --gen-access-token=false
 ```
 
-- Using the cli
+- Using the CLI
 ```bash
 tealc compile --id agent --goarch amd64 --goos windows
 ```
 
-Note: Compiling with the cli is recommended as it allows to feed the agent with compile time variable (see [Hot to feed variables])
+Note: Compiling with the CLI is recommended as it allows passing compile-time variables to the agent (see [How to feed variables])
 
 ## Server
 ```bash

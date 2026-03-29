@@ -5,8 +5,8 @@ weight: 2
 ---
 
 > [!WARNING]
-> Currently, Goauld is not designed to run behind a reverse proxy.
-> Particularly, the whitelisting feature will not work behind a reverse proxy.
+> Goauld is currently not designed to run behind a reverse proxy.
+> In particular, the whitelisting feature will not work behind a reverse proxy.
 
 ## Docker compose example
 
@@ -77,7 +77,7 @@ tls-key: ""
 # Path to the TLS certificate file.
 tls-cert: ""
 
-# Email used when generating Let's Encrypt certificates.'
+# Email used when generating Let's Encrypt certificates.
 letsencrypt-mail: mail@example.com
 
 # Enable QUIC protocol support.
@@ -114,11 +114,12 @@ binaries-path-location: ./binaries
 
 ## DNS configuration
 
-3 DNS records are required:
+Three DNS records are required:
 
 - example.com is your domain
 - t.example.com is the subdomain handling the tunnel over DNS (should be as short as possible)
 - tns.example.com is the NS subdomain
+
 ```txt
 NS record: t => tns.example.com
 A  record: t => "$IP"

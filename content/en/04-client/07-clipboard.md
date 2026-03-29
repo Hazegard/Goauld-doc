@@ -5,7 +5,7 @@ weight: 7
 ---
 
 
-Access to the agent clipboard has bee implemented to quickly share small text between the client and the agent.
+Access to the agent clipboard has been implemented to quickly share small text between the client and the agent.
 
 ## Retrieve the agent clipboard
 The content will be printed to STDOUT

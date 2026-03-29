@@ -9,7 +9,7 @@ The agent exposes a virtual WireGuard interface, allowing TCP, UDP, and ICMP (pi
 
 The virtual WireGuard interface uses the gVisor network stack ([https://github.com/google/gvisor/tree/go](https://github.com/google/gvisor/tree/go)).
 
-The implementation is:
+The implementation works as follows:
 1. The agent exposes a WireGuard server port on the host.
 2. The agent forwards the WireGuard port to the server using UDP-over-TCP encapsulation to traverse the existing agent tunnel.
 3. The client forwards the WireGuard port exposed on the server to the local machine.
@@ -17,7 +17,7 @@ The implementation is:
 5. The WireGuard client on the operator machine connects to the agent's virtual WireGuard interface.
 
 > [!NOTE]
-> This implementation performs TCP-over-TCP encapsulation, which reduces performance.
+> This implementation uses TCP-over-TCP encapsulation, which reduces performance.
 > However, this architecture was chosen because the server does not expose a WireGuard server common to all connected agents, which could result in unauthorized access between agents.
 
 

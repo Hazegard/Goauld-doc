@@ -8,5 +8,5 @@ When the agent is in bind mode, it exposes a port on which the client connects t
 
 ## Flags
 
-- `--kill`whether to kill the agent on disconnection
+- `--kill` whether to kill the agent on disconnection
 - `[AGENT_ADDR]`: the agent to bind to, format: `[IP]:[PORT]`

@@ -4,11 +4,11 @@ description: Goauld agent tunneling
 weight: 1
 ---
 
-The Goauld agent supports multiple transport mechanisms to establish communication with the server.
+The Goauld agent supports multiple transport mechanisms to communicate with the server.
 If a transport fails, the agent automatically falls back to the next available method.
 
 
-The agent will try to connect to the server using several transports:
+The agent attempts to connect to the server using several transports:
 1. Direct SSH connection
 2. SSH over QUIC
 3. SSH over TLS
@@ -16,9 +16,9 @@ The agent will try to connect to the server using several transports:
 5. SSH over HTTP
 6. SSH over DNS
 
-For each transport protocol, the agent will try to establish a connection to the server, with a 60 seconds timeout (configurable using `--ssh-timeout` flag). If the connection is established, the agent finalizes the connection.
+For each transport protocol, the agent tries establish a connection to the server, with a 60 seconds timeout (configurable using `--ssh-timeout` flag). If the connection is established, the agent finalizes the connection.
 
-Otherwise, the agent will try to connect using the next transport protocol (configurable using `--rssh-order`, e.g. `--rssh-order=ssh,tls,ws,http,dns`).
+Otherwise, the agent connects using the next transport protocol (configurable using `--rssh-order`, e.g. `--rssh-order=ssh,tls,ws,http,dns`).
 
 If no connection has been established after a full loop, the agent will try again.
 
@@ -49,7 +49,7 @@ The SSH server is configured using the `--ssh-server` flag.
 
 The SSH connection is encapsulated over a Websocket connection.
 
-This makes it easier to bypass restrictive proxies, while still maintaining an acceptable speed.
+This makes it easier to bypass restrictive proxies while maintaining acceptable performance.
 
 ### Flags
 - `--server`: the websocket endpoint is `[server]/wssh/`
@@ -59,7 +59,7 @@ This makes it easier to bypass restrictive proxies, while still maintaining an a
 The SSH connection is encapsulated over HTTP requests/responses.
 
 > [!WARNING]
-> This transport is considerably slower than the previous, but allows traffic to pass through proxies that block WebSockets for instance.
+> This transport is considerably slower than the previous ones, but allows traffic to pass through proxies that block WebSockets for instance.
 
 ### Flags
 

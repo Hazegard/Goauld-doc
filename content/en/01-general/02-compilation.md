@@ -5,11 +5,11 @@ weight: 2
 ---
 
 
-Components can be compiled directly, but some require specific Go build tags:
+Some components require specific Go build tags:
 - `client`: `-tags client`
 - `mini_agent`: `-tags mini`
 
-The project can also be built using goreleaser.
+The project can also be built using GoReleaser.
 
 ## Optional build dependencies
 
@@ -35,7 +35,7 @@ tealc compile --id agent --goarch amd64 --goos windows
 ```
 
 > [!NOTE]
-> Compiling with the cli is recommended as it allows to feed the agent with compile time variable (see [How to feed variables])
+> Compiling with the CLI is recommended as it allows passing compile-time variables to the agent (see [How to feed variables])
 
 ## Server
 ### Direct compilation

@@ -52,7 +52,7 @@ tls-key: ./local_config/cert/local.key
 # Path to the TLS certificate file.
 tls-cert: ./local_config/cert/local.pem
 
-# Email used when générating Let's Encrypt certificates.'
+# Email used when generating Let's Encrypt certificates.
 letsencrypt-mail: mail@example.com
 
 # Enable QUIC protocol support.
