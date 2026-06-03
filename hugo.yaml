@@ -56,7 +56,7 @@ imaging:
 # Language configuration
 languages:
   en:
-    languageName: English
+    label: English
     title: Goauld
     params:
       description: Goauld documentation
