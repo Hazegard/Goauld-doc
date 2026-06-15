@@ -61,6 +61,8 @@ ssh-listen-addr: :22222
 # Access token required for the /manage/ API endpoint.
 access-token:
 - XXXXXXXXXX
+
+tls: false
 ```
 
 Start the server:

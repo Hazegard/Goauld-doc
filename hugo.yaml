@@ -234,7 +234,7 @@ module:
   # workspace: docsy.work
   hugoVersion:
     extended: true
-    min: 0.155.0
+    min: 0.163.0
   imports:
     - path: github.com/google/docsy
       disable: false
