@@ -8,8 +8,7 @@ The client allows logging of SSH sessions to keep a record of commands executed 
 
 Log files are saved in the current directory with the following format: `[AGENT_NAME]-[CURRENT_DATE]`.
 
-
-[TODO]: exemple du log
+Example: `user@hostname1-2026-08-09.log`
 
 ## Flag
 

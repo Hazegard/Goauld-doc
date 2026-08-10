@@ -6,7 +6,7 @@ weight: 2
 
 The client provides a text-based user interface (TUI) to monitor and manage connected agents.
 
-![test](TUI.png)
+![Goauld TUI](TUI.png)
 
 ## TUI keybinds
 

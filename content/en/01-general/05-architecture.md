@@ -1,6 +1,7 @@
 ---
 title: Architecture
+description: Goauld architecture overview
 weight: 5
 ---
 
-[![Goauld.svg](Goauld.png)]({{< ref "01-general/05-architecture" >}}/Goauld.png)
+![Goauld architecture](Goauld.png)

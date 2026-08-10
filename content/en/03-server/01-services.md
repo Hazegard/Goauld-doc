@@ -31,7 +31,7 @@ No encapsulation, directly exposed.
 > The TLS configuration both impacts the SSH over TLS tunnel, and the HTTPS web server.
 
 
-- `--https-listen-addr`: the address the TLS server will listen to. . Format: `[IP]:[PORT]`.
+- `--https-listen-addr`: the address the TLS server will listen to. Format: `[IP]:[PORT]`.
 - `--http-domain`: the domain on which the WebServer will respond.
 - `--tls-domain`: the domain on which the SSH over TLS listener will respond.
 
@@ -52,6 +52,7 @@ The server allows two ways of providing the TLS certificate:
 ## Quic
 
 - `--quic-listen-addr`
+- `--quic`/`--no-quic`: Enable/Disable the QUIC listener
 
 > [!NOTE]
 > If required to open traffic (firewalls), this listener always listens on UDP
@@ -75,14 +76,19 @@ The DNS server acts as an authoritative server and responds to DNS queries that 
 
 - `--dns-listen-addr`: The address the DNS server will listen to. It is recommended to use the port 53 to be reachable from recursive DNS servers
 - `--dns-domain`: The DNS domain on which the DNS server will respond. In order to maximize the throughput, it is recommended to use the shortest domain possible.
+- `--dns-domain-alt`: A secondary DNS domain for SSH-over-DNS (DNS-ALT).
+- `--dns`/`--no-dns`: Enable/Disable the DNS listener.
 
 
-| Transport | Flag                  | Description                 | Example         |
-| --------- | --------------------- | --------------------------- | --------------- |
-| SSH       | `--ssh-listen-addr`   | Address for SSH listener    | `[IP]:[PORT]`   |
-| TLS       | `--https-listen-addr` | TLS server listen address   | `[IP]:[PORT]`   |
-| TLS       | `--tls` / `--no-tls`  | Enable/disable TLS listener | `--tls`         |
-| TLS       | `--http-domain`       | HTTPS web server domain     | `example.com`   |
-| QUIC      | `--quic-listen-addr`  | QUIC listener address (UDP) | `[IP]:[PORT]`   |
-| DNS       | `--dns-listen-addr`   | DNS server listen address   | `[IP]:53`       |
-| DNS       | `--dns-domain`        | Domain for SSH-over-DNS     | `s.example.com` |
+| Transport | Flag                     | Description                    | Example         |
+| --------- | ------------------------ | ------------------------------- | --------------- |
+| SSH       | `--ssh-listen-addr`      | Address for SSH listener        | `[IP]:[PORT]`   |
+| TLS       | `--https-listen-addr`    | TLS server listen address       | `[IP]:[PORT]`   |
+| TLS       | `--tls` / `--no-tls`     | Enable/disable TLS listener     | `--tls`         |
+| TLS       | `--http-domain`          | HTTPS web server domain         | `example.com`   |
+| QUIC      | `--quic-listen-addr`     | QUIC listener address (UDP)     | `[IP]:[PORT]`   |
+| QUIC      | `--quic` / `--no-quic`   | Enable/disable QUIC listener    | `--quic`        |
+| DNS       | `--dns-listen-addr`      | DNS server listen address       | `[IP]:53`       |
+| DNS       | `--dns-domain`           | Domain for SSH-over-DNS         | `s.example.com` |
+| DNS       | `--dns-domain-alt`       | Secondary domain for SSH-over-DNS | `t.example.com` |
+| DNS       | `--dns` / `--no-dns`     | Enable/disable DNS listener     | `--dns`         |

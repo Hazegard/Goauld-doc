@@ -36,4 +36,10 @@ tealc wireguard start
 > It requires `wg-tools` on linux and `wireguard` on windows.
 
 
-## Flag
+## Flags
+
+- `--range`: comma-separated IP ranges to route through the WireGuard VPN.
+- `--auto-range`: automatically set the ranges from the agent.
+- `--loopback`: use the loopback interface with the `240.0.0.0/8` address range.
+- `--[no-]exec`: execute the WireGuard commands directly with elevated privileges (enabled by default).
+- `--port`: local port to bind the WireGuard proxy.

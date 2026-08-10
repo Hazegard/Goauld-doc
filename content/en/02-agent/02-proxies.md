@@ -44,7 +44,7 @@ The upstream proxy will be selected by the following priority:
 
 By default, the HTTP proxy will use the proxy configuration used by the agent to reach the Goauld server (see  [agent/tunnels#egress-proxies]({{< ref "02-agent/01-tunnels" >}}#egress-proxies)), but this behavior can be overridden using:
 
-- `--custom-http-proxy`: override the system proxy
+- `--http-custom-proxy`: override the system proxy
 - `--http-proxy-username`: Username to authenticate on the proxy
 - `--http-proxy-password`: Password to authenticate on the proxy
 - `--http-proxy-domain`: Domain to authenticate on the proxy
@@ -71,7 +71,7 @@ This proxy uses the previously described HTTP proxy as its upstream proxy, in or
 
 ### Flags
 
-- `--mitm`/`--no-mitm`: Enable/Disable the MITM HTTP proxy 
+- `--mitm-http`/`--no-mitm-http`: Enable/Disable the MITM HTTP proxy 
 
 > [!NOTE]
 > This proxy is automatically enabled if the SOCKS proxy is configured to use the MITM HTTP proxy

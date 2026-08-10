@@ -17,7 +17,7 @@ The implementation works as follows:
 5. The WireGuard client on the operator machine connects to the agent's virtual WireGuard interface.
 
 > [!NOTE]
-> This implementation uses TCP-over-TCP encapsulation, which reduces performance.
+> This implementation uses UDP-over-TCP encapsulation, which reduces performance.
 > However, this architecture was chosen because the server does not expose a WireGuard server common to all connected agents, which could result in unauthorized access between agents.
 
 
@@ -33,4 +33,4 @@ The virtual WireGuard interface is not enabled by default.
 - `--wg`: Enable the WireGuard interface
 
 
-See  [client/WireGuard]({{< ref "04-client/11-WireGuard" >}})
+See  [client/WireGuard]({{< ref "04-client/11-wireguard" >}})

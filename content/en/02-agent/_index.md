@@ -1,5 +1,5 @@
 ---
 title: Agent features
 description:
-weight: 3
+weight: 2
 ---

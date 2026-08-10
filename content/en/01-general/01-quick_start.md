@@ -1,5 +1,6 @@
 ---
 title: Quick start
+description: Goauld quick start guide
 weight: 1
 ---
 
@@ -62,13 +63,14 @@ ssh-listen-addr: :22222
 access-token:
 - XXXXXXXXXX
 
+# Disable TLS: we only listen over plain HTTP as minimal example
 tls: false
 ```
 
 Start the server:
 
 ```bash
-./goauld_server --config config.yaml
+./goauld_server --config-file config.yaml
 ```
 
 See [server/deployment]({{< ref "03-server/02-deployment" >}}) to install and deploy the server with all options (TLS, DNS server, etc...).
@@ -97,13 +99,33 @@ age-public-key: age1krjxdnhmf2kqm8rdhyf6sr5nfvlwdcslux3fxt8amcrncwn3ss9sydlvd0
 
 ### Generate an agent
 
+1. Generate the configuration file:
 ```bash
-$ tealc compile -O windows -A amd64 --id agent
+tealc compile --drop-env > ./env.txt
 ```
 
-The compiled agent will be located in the folder `output/agent/goauld_windows-amd64.exe`
+2. Update the configuration file accordingly to your setup
 
-The agent will use the age public key defined in the tealc configuration.
+Minimal file with only HTTP (and SSHD) enabled:
+```yaml
+# Public age key corresponding to the server's private key
+AGENT__AGEPUBKEY=age1e4txlmjtmc4sx5f8s7fhpka64d4d05rj3qn3jy4tgrta4p22euvq00ac5p
+# HTTP domain
+HTTP_DOMAIN=www.example.com
+# SSHD port exposed by the server
+SSHD_PORT=22222
+# HTTP Port
+HTTP_PORT=80
+```
+
+3. Compile the agent using the generated configuration file:
+```bash
+tealc compile --env ./env.txt --id agent --goarch amd64 --goos windows
+```
+
+The compiled agent will be located in the folder `output/agent/` (e.g.: `output/agent/goauld_windows-amd64.exe`)
+
+See [client/compilation]({{< ref "04-client/12-compilation" >}}) for more compilation options.
 
 ### Execute the agent:
 

@@ -22,7 +22,7 @@ The project can also be built using GoReleaser.
 
 ### Direct compilation
 ```bash
-go build -o tealc ./agent
+go build -o goauld ./agent
 ```
 ### Using the wrapper script
 ```bash
@@ -35,7 +35,7 @@ tealc compile --id agent --goarch amd64 --goos windows
 ```
 
 > [!NOTE]
-> Compiling with the CLI is recommended as it allows passing compile-time variables to the agent (see [How to feed variables])
+> Compiling with the CLI is recommended as it allows passing compile-time variables to the agent (see [general/variables]({{< ref "01-general/03-variables" >}}))
 
 ## Server
 ### Direct compilation
@@ -60,5 +60,5 @@ go run ./scripts/build/ --gen-age-key=false --gen-access-token=false --id client
 ### Compile using the client (recommended)
 
 ```bash
-tealc compile --id [[client|server|agent|mini_agent|agent-dll]]
+tealc compile --id [client|server|agent|agent-mini|agent.dll]
 ```

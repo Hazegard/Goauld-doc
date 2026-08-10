@@ -8,7 +8,7 @@ The Goauld agent supports multiple transport mechanisms to communicate with the 
 If a transport fails, the agent automatically falls back to the next available method.
 
 
-The agent attempts to connect to the server using several transports:
+The agent can attempt to connect to the server using several transports:
 1. Direct SSH connection
 2. SSH over QUIC
 3. SSH over TLS
@@ -16,11 +16,16 @@ The agent attempts to connect to the server using several transports:
 5. SSH over HTTP
 6. SSH over DNS
 
-For each transport protocol, the agent tries establish a connection to the server, with a 60 seconds timeout (configurable using `--ssh-timeout` flag). If the connection is established, the agent finalizes the connection.
+By default, the agent only tries SSH, TLS, WebSocket, HTTP and DNS, in that order. SSH over QUIC is supported but is not part of the default order; add `quic` to `--rssh-order` to enable it.
 
-Otherwise, the agent connects using the next transport protocol (configurable using `--rssh-order`, e.g. `--rssh-order=ssh,tls,ws,http,dns`).
+For each transport protocol, the agent tries to establish a connection to the server, with a 60-second timeout (configurable using the `--ssh-timeout` flag). If the connection is established, the agent finalizes the connection.
+
+Otherwise, the agent connects using the next transport protocol (configurable using `--rssh-order`, e.g. `--rssh-order=ssh,tls,ws,http,dns`, which is also the default order).
 
 If no connection has been established after a full loop, the agent will try again.
+
+> [!NOTE]
+> `--rssh-order` also accepts a few additional values not covered by the six transports above: `browser` (see [Browser proxy](#browser-proxy)),  `bind`  (see [Agent binding](#agent-binding)) and `relay` (see [agent/relay]({{< ref "02-agent/03-relay" >}})).
 
 
 ## Direct SSH connection
@@ -40,8 +45,9 @@ The SSH connection is encapsulated over a TLS connection.
 
 
 ### Flags
-- `--tls-server`: (`[IP/Hostname]:[PORT]`)
-The SSH server is configured using the `--ssh-server` flag.
+- `--tls-server`: (`[IP/Hostname]:[PORT]`) address of the TLS listener on the server.
+
+The target SSH service itself is still the one configured via the `--ssh-server` flag; `--tls-server` only configures the TLS transport used to reach it.
 
 
 
@@ -102,13 +108,13 @@ dig +short +unknownformat -t TXT '%s' @127.0.0.1 | head -n1 | cut -d ' ' -f3- | 
 
 The agent can use a web browser to tunnel all the traffic.
 
-1. The agent exposes a simple Web pages with a custom javascript. The JavaScript open 4 websockets connections
+1. The agent exposes a simple web page with custom JavaScript. The JavaScript opens 4 websocket connections
    1. Two connecting to the server (Control & data)
    2. Two connecting to the agent (Control & data)
-      - The agent exposed custom endpoint to allow the browser to initiate the connection the the agent
-2. The Web pages pipes the websockets connections
+      - The agent exposes a custom endpoint to allow the browser to initiate the connection to the agent
+2. The web page pipes the websocket connections
 
-<video width=90% controls autoplay>
+<video width="90%" controls autoplay muted>
     <source src="browser-proxy.webm" type="video/webm">
     Your browser does not support the video tag.
 </video>
@@ -125,7 +131,7 @@ If required, the agent will try to reach the server using the proxy configuratio
 
 - `--proxy`: use a custom proxy instead of the system proxy
 - `--proxy-username`: Username to authenticate on the proxy
-- `--proxy-password`: Username to authenticate on the proxy
+- `--proxy-password`: Password to authenticate on the proxy
 - `--proxy-domain`: Domain to authenticate on the proxy
 - `--no-proxy`: Ignore the system proxy
 
@@ -157,5 +163,8 @@ The agent can expose a port on which the client connects to. (see [client/agent-
 
 ### Flags
 
-- `-rssh-order=bind`
+- `--rssh-order=bind`
 - `--bind-port`
+
+> [!NOTE]
+> `--bind-port` is an alias of `--browser-proxy-port` (see [Browser proxy](#browser-proxy) above): both flags configure the same underlying port.

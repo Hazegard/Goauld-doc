@@ -171,3 +171,17 @@ $ tealc admin dump
     agentId: 1ec1bd83de498e7da8852efe6d8c16c5
   cdn: {}
 ```
+
+## Update the server log level
+
+```bash
+tealc admin log-level
+```
+
+## Dump the full server state
+
+```bash
+tealc admin state
+```
+
+Displays the full server state, including connected agents and the current configuration.

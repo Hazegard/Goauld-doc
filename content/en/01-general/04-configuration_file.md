@@ -1,5 +1,6 @@
 ---
 title: Configuration file
+description: Goauld configuration file lookup
 weight: 4
 ---
 
