@@ -1,6 +1,6 @@
 ---
 title: Killswitch
-description:
+description: Goauld agent killswitch
 weight: 6
 ---
 
@@ -8,7 +8,7 @@ To ensure that no agent runs indefinitely, a killswitch has been implemented. Af
 
 ## Flag
 
-- `--kill-switch`: Set the number of days before exiting
+- `--kill-switch`: Set the number of days before exiting (default: `7`; `0` disables the killswitch entirely)
 
 > [!NOTE]
 > The timer counts from the agent's execution time.

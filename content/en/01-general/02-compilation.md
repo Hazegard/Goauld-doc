@@ -7,7 +7,7 @@ weight: 2
 
 Some components require specific Go build tags:
 - `client`: `-tags client`
-- `mini_agent`: `-tags mini`
+- `agent-mini`: `-tags mini`
 
 The project can also be built using GoReleaser.
 

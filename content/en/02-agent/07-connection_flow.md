@@ -1,6 +1,6 @@
 ---
 title: Connection flow
-description:
+description: Goauld agent connection flow
 weight: 7
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Client features (tealc)
+title: Client features
 description:
 weight: 4
 ---

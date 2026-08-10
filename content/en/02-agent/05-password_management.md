@@ -1,5 +1,5 @@
 ---
-title: Password Management
+title: Password management
 description: Agent password composition and management
 weight: 5
 ---
@@ -23,3 +23,7 @@ If no password has been set at compile-time, a random password will be generated
 
 If a password is explicitly provided, it takes precedence over the compile-time and run-time generated passwords and will be used instead.  
 (See [general/variables]({{< ref "01-general/03-variables" >}}) for configuration options.)
+
+## Disabling the password
+
+- `--disable-password`: disables the local password entirely, overriding the compile-time, run-time, and configuration-based values described above.

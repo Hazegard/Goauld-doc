@@ -7,7 +7,7 @@ weight: 13
 ## Dump the current configuration
 
 ```bash
-$ tealc admin config
+tealc admin config
 ```
 
 ```yaml
@@ -104,7 +104,7 @@ config-file: ./local_config/server.yaml
 ## Dump the connected agent information
 
 ```bash
-$ tealc admin dump
+tealc admin dump
 ```
 
 ```yaml
@@ -175,8 +175,10 @@ $ tealc admin dump
 ## Update the server log level
 
 ```bash
-tealc admin log-level
+tealc admin log-level debug
 ```
+
+The level is a required argument (e.g. `debug`, `info`, `warn`, `error`).
 
 ## Dump the full server state
 
@@ -185,3 +187,7 @@ tealc admin state
 ```
 
 Displays the full server state, including connected agents and the current configuration.
+
+## JSON output
+
+`dump`, `config` and `state` all support `--json` to print JSON instead of colorized YAML.

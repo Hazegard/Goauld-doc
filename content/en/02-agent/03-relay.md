@@ -16,7 +16,7 @@ If an agent `A` cannot reach the Goauld server, but can reach another agent `B` 
 > [!NOTE]
 > The agent listens on all interfaces using a randomly assigned port. This port is logged in the agent logs:
 >```log
->INF agent/agent.go:468 > Relay listening on port Port=57129
+>INF agent/agent.go:522 > Relay listening on port Port=57129
 >```
 >Or in the TUI (Press `+` to view details about the agent)
 

@@ -51,7 +51,7 @@ tealc ssh [AGENT_NAME] -L "127.0.0.1:8080:127.0.0.1:8080"
 ```
 
 > [!NOTE]
-> By default, the `tealc ssh` command automatically mounts the proxies (SOCKS, HTTP & MITM HTTP), if they are exposed by the agent (see.  [client/proxies]({{< ref "04-client/04-proxies" >}}))
+> By default, the `tealc ssh` command automatically mounts the proxies (SOCKS, HTTP, MITM HTTP & WireGuard), if they are exposed by the agent (see [client/proxies]({{< ref "04-client/04-proxies" >}}))
 
 
 

@@ -5,6 +5,7 @@ weight: 11
 ---
 
 See [agent/wireguard]({{< ref "02-agent/04-wireguard" >}})
+
 A TUN interface is available to the client.
 
 The TUN interface is a WireGuard VPN that allows TCP, UDP, and ICMP (ping only) traffic from the agent without relying on a SOCKS proxy.
@@ -33,7 +34,7 @@ tealc wireguard start
 ```
 
 > [!NOTE]
-> It requires `wg-tools` on linux and `wireguard` on windows.
+> It requires `wg-quick` on linux and `wireguard` on windows.
 
 
 ## Flags
@@ -41,5 +42,5 @@ tealc wireguard start
 - `--range`: comma-separated IP ranges to route through the WireGuard VPN.
 - `--auto-range`: automatically set the ranges from the agent.
 - `--loopback`: use the loopback interface with the `240.0.0.0/8` address range.
-- `--[no-]exec`: execute the WireGuard commands directly with elevated privileges (enabled by default).
+- `--exec`: execute the WireGuard commands directly with elevated privileges (enabled by default).
 - `--port`: local port to bind the WireGuard proxy.

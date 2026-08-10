@@ -57,7 +57,7 @@ http-domain:
 http-listen-addr: :80
 
 # Address and port to bind for SSH connections (port 0 = random).
-ssh-listen-addr: :22222
+ssh-listen-addr: :2222
 
 # Access token required for the /manage/ API endpoint.
 access-token:
@@ -89,7 +89,7 @@ access-token: XXXXXXXXXX
 server: http://www.example.com
 
 # SSH Server to connect to.
-ssh-server: example.com:22222
+ssh-server: example.com:2222
 
 # To generate agents
 age-public-key: age1krjxdnhmf2kqm8rdhyf6sr5nfvlwdcslux3fxt8amcrncwn3ss9sydlvd0
@@ -113,7 +113,7 @@ AGENT__AGEPUBKEY=age1e4txlmjtmc4sx5f8s7fhpka64d4d05rj3qn3jy4tgrta4p22euvq00ac5p
 # HTTP domain
 HTTP_DOMAIN=www.example.com
 # SSHD port exposed by the server
-SSHD_PORT=22222
+SSHD_PORT=2222
 # HTTP Port
 HTTP_PORT=80
 ```

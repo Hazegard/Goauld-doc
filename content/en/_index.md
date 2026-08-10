@@ -44,7 +44,7 @@ It is composed of three components:
 - Bypassing authenticated proxies
 - Pivoting through compromised hosts
 
-![TUI.png](04-client/02-tui/TUI.png)
+![Goauld TUI showing connected agents](04-client/02-tui/TUI.png)
 
 ## Features
 

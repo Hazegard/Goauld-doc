@@ -35,13 +35,16 @@ tealc scp [AGENT_NAME]:/PATH/TO/TARGET/FILE /PATH/TO/SOURCE/FILE
 
 ## RSYNC
 
+> [!NOTE]
+> The `-r -v -P` flags are included by default and prepended to any flags you pass; the example below only needs to add flags beyond those (e.g. `-a`).
+
 ```bash
-tealc rsync -arvP [AGENT_NAME]:C:/Path1 [AGENT_NAME]:C:/Windows/PATH2  .
+tealc rsync -a [AGENT_NAME]:C:/Path1 [AGENT_NAME]:C:/Windows/PATH2  .
 ```
 
 > [!WARNING]
 > On Windows agents, you can only copy from or to one drive per command.
-> you can copy multiple directories from the same drive, but cannot copy from C: and D: in the same command.
+> You can copy multiple directories from the same drive, but cannot copy from C: and D: in the same command.
 
 ## RCLONE
 
@@ -50,3 +53,15 @@ tealc rsync -arvP [AGENT_NAME]:C:/Path1 [AGENT_NAME]:C:/Windows/PATH2  .
 ```bash
 tealc rclone [AGENT_NAME]:/remote/path /local/path
 ```
+
+## Common flags
+
+`scp`, `rsync` and `rclone` all support:
+
+- `--log`: record the session to a log file
+- `--[no-]print`: print the generated command instead of running it
+
+`scp` additionally supports:
+
+- `-o`/`--ssh-opts`: extra options passed to the underlying SSH command
+- `-F`/`--ssh-config-file`: path to an SSH configuration file to use

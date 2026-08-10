@@ -10,14 +10,17 @@ The client provides a text-based user interface (TUI) to monitor and manage conn
 
 ## TUI keybinds
 
-|     Key     | Action                                          |
-|:-----------:| ----------------------------------------------- |
+|        Key        | Action                                          |
+|:------------------:| ----------------------------------------------- |
 | `[ctrl+r]`  | Reset the agent                                 |
 | `[ctrl+k]`  | Stop the agent                                  |
 | `[ctrl+d]`  | Stop the agent and attempt to delete the binary |
 |  `[Enter]`  | Start an SSH session                            |
 | `[ctrl+e]`  | Launch VSCode                                   |
 |    `[+]`    | Toggle agent details                            |
+|    `[r]`    | Refresh the agent list                          |
+| `[↑]`/`[↓]`/`[←]`/`[→]` | Navigate the agent list             |
+| `[q]`/`[ctrl+c]` | Quit the TUI                               |
 
 
 

@@ -15,9 +15,8 @@ To ensure tunnels are functioning correctly, some healthcheck scripts/tools are 
 ## SSH over TLS
 
 ```bash
-echo "00000000000000000000000000000000\n" | timeout 1 openssl  s_client -quiet -connect $TLS_DOMAIN$:$TLS_PORT$ 2>/dev/null | grep -q "SSH-2.0-"
+echo -ne "00000000000000000000000000000000" | timeout 1 openssl s_client -quiet -connect "$TLS_DOMAIN:$TLS_PORT" 2>/dev/null | grep -q "SSH-2.0-"
 ```
-
 
 ## SSH over WebSocket
 
@@ -30,9 +29,8 @@ go build -o ws-healthcheck ./healthcheck/websocket
 ### Running
 
 ```bash
-{ echo "" ; sleep 1; } | ws-healthcheck  "wss://$WS_DOMAIN/wssh/00000000000000000000000000000000" 2>/dev/null
+{ echo "" ; sleep 1; } | ws-healthcheck  "wss://$HTTP_DOMAIN/wssh/00000000000000000000000000000000" 2>/dev/null
 ```
-
 
 ## SSH over DNS
 
@@ -49,3 +47,9 @@ go build -o dns-healthcheck ./healthcheck/dns/dnstt-client
 
 > [!NOTE]
 > The "S" is required at the end of the echo
+
+## Plain SSH
+
+```bash
+nc localhost 2222 | grep -q "SSH-2.0-"
+```

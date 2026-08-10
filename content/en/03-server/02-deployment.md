@@ -25,13 +25,16 @@ services:
       - "X.X.X.X:53:53/udp"
       - "X.X.X.X:80:80"
       - "X.X.X.X:443:443"
-      - "X.X.X.X:22222:22222"
+      - "X.X.X.X:2222:2222"
     volumes:
       - ./certmagic:/root/.local/share/certmagic
       - ./Goauld.db:/app/Goauld.db
       - ./server_config.yaml:/app/server_config.yaml
       - ./binaries:/app/binaries
 ```
+
+> [!WARNING]
+> This example maps host port `22222`, which only works if `ssh-listen-addr` is explicitly set to `:22222` in the configuration file. The compiled-in default (and the sample configuration file shipped with the project) use `:2222` instead. Make sure the port mapping above and your `ssh-listen-addr` value actually agree, in either direction.
 
 ## configuration file example
 
@@ -87,15 +90,20 @@ quic: true
 dns: true
 
 # Disable database usage.
+# Note: despite the field name/comment, this is the *enabled* (on-disk) state.
+# See server/database for the actual flag that disables on-disk persistence.
 db: false
 
 # Path or filename of the database to use.
 db-file-name: Goauld.db
 
 # List of IP addresses allowed to access the /manage/ endpoint.
+# Note: only exact IP addresses are matched; CIDR ranges (e.g. "0.0.0.0/32") are
+# accepted by the parser but are NOT expanded/enforced as ranges at request time
+# (see server/access_control#ip-allowlisting).
 allowed-ips:
 - 127.0.0.1
-- 0.0.0.0/32
+- 192.168.1.1
 
 # Access token required for the /manage/ API endpoint.
 access-token:

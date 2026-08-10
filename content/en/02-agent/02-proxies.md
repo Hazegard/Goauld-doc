@@ -17,32 +17,9 @@ The agent exposes three proxies that allow interaction with the host’s network
 
 For each incoming request, the HTTP proxy determines whether an upstream proxy should be used and which one.
 
-
-The upstream proxy will be selected by the following priority:
-
-#### Windows
-
-1. `--proxy [PROXY_URL]` (or any other means allowing configuration of the `proxy` flag, see  [general/compilation]({{< ref "01-general/02-compilation" >}}))
-2. Environment Variable: `HTTPS_PROXY`, `HTTP_PROXY`, `FTP_PROXY`, or `ALL_PROXY`. `NO_PROXY` is respected.
-3. Internet Options: Automatically detect settings (`WPAD`)
-4. Internet Options: Use automatic configuration script (`PAC`)
-5. Internet Options: Manual proxy server
-6. WINHTTP: (`netsh winhttp`)
-
-#### Linux
-
-1. `--proxy [PROXY_URL]` (or any other means allowing configuration of the `proxy` flag, see  [general/compilation]({{< ref "01-general/02-compilation" >}}))
-2.  Environment Variable: `HTTPS_PROXY`, `HTTP_PROXY`, `FTP_PROXY`, or `ALL_PROXY`. `NO_PROXY` is respected.
-
-#### macOS
-
-1. `--proxy [PROXY_URL]` (or any other means allowing configuration of the `proxy` flag, see  [general/compilation]({{< ref "01-general/02-compilation" >}}))
-2. Environment Variable: `HTTPS_PROXY`, `HTTP_PROXY`, `FTP_PROXY`, or `ALL_PROXY`. `NO_PROXY` is respected.
-3. Network Settings: `scutil`
+By default, the HTTP proxy uses the same egress-proxy selection priority as the agent itself (see [agent/tunnels#egress-proxies]({{< ref "02-agent/01-tunnels" >}}#egress-proxies)), but this behavior can be overridden using:
 
 ### Flags
-
-By default, the HTTP proxy will use the proxy configuration used by the agent to reach the Goauld server (see  [agent/tunnels#egress-proxies]({{< ref "02-agent/01-tunnels" >}}#egress-proxies)), but this behavior can be overridden using:
 
 - `--http-custom-proxy`: override the system proxy
 - `--http-proxy-username`: Username to authenticate on the proxy

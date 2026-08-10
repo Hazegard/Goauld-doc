@@ -10,13 +10,13 @@ If a transport fails, the agent automatically falls back to the next available m
 
 The agent can attempt to connect to the server using several transports:
 1. Direct SSH connection
-2. SSH over QUIC
-3. SSH over TLS
-4. SSH over WebSocket
-5. SSH over HTTP
-6. SSH over DNS
+2. SSH over TLS
+3. SSH over WebSocket
+4. SSH over HTTP
+5. SSH over DNS
+6. SSH over QUIC (opt-in, not part of the default order — add `quic` to `--rssh-order` to enable it)
 
-By default, the agent only tries SSH, TLS, WebSocket, HTTP and DNS, in that order. SSH over QUIC is supported but is not part of the default order; add `quic` to `--rssh-order` to enable it.
+By default, the agent only tries SSH, TLS, WebSocket, HTTP and DNS, in that order.
 
 For each transport protocol, the agent tries to establish a connection to the server, with a 60-second timeout (configurable using the `--ssh-timeout` flag). If the connection is established, the agent finalizes the connection.
 
@@ -51,14 +51,14 @@ The target SSH service itself is still the one configured via the `--ssh-server`
 
 
 
-## SSH over Websocket
+## SSH over WebSocket
 
-The SSH connection is encapsulated over a Websocket connection.
+The SSH connection is encapsulated over a WebSocket connection.
 
 This makes it easier to bypass restrictive proxies while maintaining acceptable performance.
 
 ### Flags
-- `--server`: the websocket endpoint is `[server]/wssh/`
+- `--server`: the WebSocket endpoint is `[server]/wssh/`
 
 ## SSH over HTTP
 
@@ -104,15 +104,27 @@ dig +short +unknownformat -t TXT '%s' @127.0.0.1 | head -n1 | cut -d ' ' -f3- | 
 {{% /tab %}}
 {{< /tabpane >}}
 
+## SSH over QUIC
+
+The SSH connection is encapsulated over QUIC. This transport is opt-in and not part of the default `--rssh-order` (see the note above); add `quic` to `--rssh-order` to enable it.
+
+### Flags
+
+- `--quic-domain`: the QUIC domain used to tunnel traffic.
+
+## SSH over CDN
+
+The SSH connection can be tunneled through a CDN using domain fronting, reaching the server via the `[server]/sshttp2/[ID]` endpoint. Add `cdn` to `--rssh-order` to enable it.
+
 ## Browser proxy
 
 The agent can use a web browser to tunnel all the traffic.
 
-1. The agent exposes a simple web page with custom JavaScript. The JavaScript opens 4 websocket connections
+1. The agent exposes a simple web page with custom JavaScript. The JavaScript opens 4 WebSocket connections
    1. Two connecting to the server (Control & data)
    2. Two connecting to the agent (Control & data)
       - The agent exposes a custom endpoint to allow the browser to initiate the connection to the agent
-2. The web page pipes the websocket connections
+2. The web page pipes the WebSocket connections
 
 <video width="90%" controls autoplay muted>
     <source src="browser-proxy.webm" type="video/webm">
@@ -121,7 +133,7 @@ The agent can use a web browser to tunnel all the traffic.
 
 ### Flags:
 
-- `--browser-proxy-port`: the port used to expose the custom web pages and the websockets endpoints use by the browser to connect to the agent.
+- `--browser-proxy-port`: the port used to expose the custom web pages and the WebSocket endpoints use by the browser to connect to the agent.
 
 ## Egress proxies
 

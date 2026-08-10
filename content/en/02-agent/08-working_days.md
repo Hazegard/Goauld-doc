@@ -11,6 +11,8 @@ To reduce the agent's network footprint, a mechanism allows it to pause all netw
 
 If the agent starts outside the working period, it will wait until the next start hour.
 
+Saturdays and Sundays are always treated as non-working days, regardless of the configured start/end hours, and there is currently no flag to change which days count as working days. If the agent would otherwise start during the configured hours on a Saturday or Sunday, it is deferred all the way to the next Monday — not just "later today" or "tomorrow".
+
 
 ## Flags
 

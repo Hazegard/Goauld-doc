@@ -14,9 +14,15 @@ tealc jump --print [AGENT_NAME] [REMOTE_SERVER] (-i ./id_ed25519)
 ```
 
 > [!NOTE]
-> Although this command is simply :
+> This command is simply:
 > ```bash
 > ssh -oProxyCommand="tealc ssh [AGENT_NAME] -W %h:%p [REMOTE_SERVER]" (-i ./id_ed25519)
 > ```
 
-Although it simply wraps the underlying SSH ProxyCommand, it provides convenience for repeated jump connections.
+It wraps the underlying SSH ProxyCommand, providing convenience for repeated jump connections.
+
+### Flags
+
+- `--scp`: route the jump connection through `scp` instead of `ssh`
+- `--log`: record the session to a log file
+- `--[no-]print`: print the generated command instead of running it
