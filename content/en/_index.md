@@ -27,9 +27,14 @@ cascade:
 
 > Goauld is a post-exploitation and remote access tool designed for use in restricted environments.
 
-During penetration tests, operators may be required to work from a client-provided laptop behind VPNs, authenticated egress proxies, or restrictive network controls. In other cases, gaining remote code execution on a system still requires establishing a stable and fully interactive access channel.
+During penetration tests, operators often face restrictive network environments:
+- Working from a client-provided laptop behind VPNs
+- Traversing authenticated egress proxies
+- Operating under restrictive network controls
 
-Goauld solves these problems by providing a tunneling and access framework that allows operators to interact with remote agents through multiple transport protocols while maintaining a secure SSH-based architecture.
+Additionally, gaining remote code execution on a system requires establishing a stable and fully interactive access channel.
+
+Goauld provides a tunneling and access framework for remote agent interaction. It supports multiple transport protocols while maintaining a secure SSH-based architecture.
 
 It is composed of three components:
 - The server, exposing an SSH server both directly and through multiple tunneling transports
@@ -49,21 +54,21 @@ It is composed of three components:
 ## Features
 
 The main agent features are:
-- Cross-platform (Windows, Linux and MacOS)
-- SSH encapsulation over
-    * Direct SSH
-    * TLS
-    * QUIC
-    * Websocket
-    * HTTP
-    * DNS
+- Cross-platform (Windows, Linux and macOS)
+- SSH encapsulation over multiple transports:
+  - Direct SSH
+  - TLS
+  - QUIC
+  - WebSocket
+  - HTTP
+  - DNS
 - Support for egress proxies, with automatic NTLM/Kerberos authentication when required by the proxy itself
 - Automatic NTLM/Kerberos application-level authentication when the targeted application requires it
-- Exposes SOCKS and HTTP proxy (that can also go through HTTP proxies)
+- Exposes SOCKS and HTTP proxies, which can themselves route through an upstream HTTP proxy
 - Full-blown interactive shell
 - Copy files via integrated SCP, Rsync or Rclone
 - Tun interface using an integrated virtual WireGuard embedded in the agent
-- Socket listening or binding on the agent
+- Agent binding: the agent can open a local port for the client to connect to
 - Agent relaying
 
 ## Demo

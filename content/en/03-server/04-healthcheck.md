@@ -28,8 +28,10 @@ go build -o ws-healthcheck ./healthcheck/websocket
 
 ### Running
 
+Establish connection, wait for response, and check for SSH banner:
+
 ```bash
-{ echo "" ; sleep 1; } | ws-healthcheck  "wss://$HTTP_DOMAIN/wssh/00000000000000000000000000000000" 2>/dev/null
+{ echo "" ; sleep 1; } | ws-healthcheck "wss://$HTTP_DOMAIN/wssh/00000000000000000000000000000000" 2>/dev/null | grep -q "SSH-2.0-"
 ```
 
 ## SSH over DNS
@@ -46,7 +48,7 @@ go build -o dns-healthcheck ./healthcheck/dns/dnstt-client
 ```
 
 > [!NOTE]
-> The "S" is required at the end of the echo
+> The "S" is a tag byte indicating the payload is SSH traffic.
 
 ## Plain SSH
 

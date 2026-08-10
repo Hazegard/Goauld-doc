@@ -4,12 +4,11 @@ description: Goauld agent killswitch
 weight: 6
 ---
 
-To ensure that no agent runs indefinitely, a killswitch has been implemented. After a specified number of days, the agent automatically shuts down.
+The agent automatically shuts down after a specified number of days to prevent indefinite operation.
 
 ## Flag
 
 - `--kill-switch`: Set the number of days before exiting (default: `7`; `0` disables the killswitch entirely)
 
 > [!NOTE]
-> The timer counts from the agent's execution time.
-> Consequently, if an external system (scheduled task, cron job, etc.) restarts the agent, the killswitch timer resets.
+> The timer counts from the agent's execution time. If restarted by external systems (scheduled tasks, cron jobs), the timer resets.

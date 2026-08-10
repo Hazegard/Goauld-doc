@@ -1,17 +1,17 @@
 ---
 title: Embed server
-description:
+description: Goauld client embedded server mode
 weight: 15
 ---
 
-The client can enter server mode, allowing it to reproduce the `nc -lvp` command.
+The client can enter server mode, allowing it to emulate a listening server (similar to `nc -lvp`).
 
 ```bash
 tealc embed-server
 ```
 
 > [!NOTE]
-> The deployed agent must embed or be passed an appropriate Age public key
+> The deployed agent must have an appropriate age public key (embedded at compile-time or provided at runtime).
 
 
 > [!NOTE]
@@ -19,7 +19,11 @@ tealc embed-server
 
 ## Flags
 
-- `--age-privkey`: age private key to use for the embedded server (overrides the compiled-in one).
+- `--age-privkey`: age private key for the embedded server. `tealc` requires this key to be provided via one of these methods:
+  - `--age-privkey` flag
+  - Configuration file entry
+  - Environment variable
+  - Compile-time embedding via `CLIENT__AGE_PRIVKEY` (see [client/compilation]({{< ref "04-client/12-compilation" >}}))
 - `--http-listen-addr`, `--https-listen-addr`, `--ssh-listen-addr`, `--dns-listen-addr`, `--quic-listen-addr`: override the listen addresses for the embedded server's respective services, matching their [server/services]({{< ref "03-server/01-services" >}}) counterparts.
 
 ## Demo

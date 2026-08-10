@@ -1,6 +1,6 @@
 ---
 title: Compilation
-description:
+description: Goauld component compilation
 weight: 2
 ---
 
@@ -8,6 +8,15 @@ weight: 2
 Some components require specific Go build tags:
 - `client`: `-tags client`
 - `agent-mini`: `-tags mini`
+- `agent-dll`: `-tags dll`
+
+> [!NOTE]
+> `client` is required, not stylistic: it's the only build variant that embeds the full source tree used by `tealc compile` to build agents/servers on demand. Without it, `tealc compile` builds successfully but fails at runtime because there is no embedded source to compile from.
+
+> [!NOTE]
+> `agent-mini` is a small stager that fetches and executes the full agent at runtime.
+>
+> On connection, it downloads the full agent binary from the server over the encrypted control channel (in chunks), then runs it locally. This provides a second delivery path separate from the `/binaries/` download directory (see [server/agent downloading]({{< ref "03-server/05-agent_downloading" >}})).
 
 The project can also be built using GoReleaser.
 
@@ -20,22 +29,35 @@ The project can also be built using GoReleaser.
 
 ## Agent
 
+There are three ways to compile the agent. **Use the client CLI for most situations** as it handles compile-time configuration automatically.
+
+### Using the client CLI (Recommended)
+```bash
+tealc compile --id agent --goarch amd64 --goos windows
+```
+Use this method to customize agent behavior with compile-time variables (see [general/variables]({{< ref "01-general/03-variables" >}})).
+
 ### Direct compilation
 ```bash
 go build -o goauld ./agent
 ```
+Use this for simple builds without customization.
+
 ### Using the wrapper script
 ```bash
-go run ./scripts/build/  --id agent --goos windows --goarch amd64 --no-seed --gen-age-key=false --gen-access-token=false
+go run ./scripts/build/ --id agent --goos windows --goarch amd64 --no-seed --gen-age-key=false --gen-access-token=false
 ```
+Use this for fine-grained control over build parameters.
 
-### Using the client CLI
+### Building as a Windows DLL
+
+A DLL (Dynamic Link Library) can be loaded by other processes, useful for evasion scenarios. Build with the `dll` tag to create a loadable library instead of a standalone executable. This requires CGO and the `c-shared` build mode.
+
 ```bash
-tealc compile --id agent --goarch amd64 --goos windows
+go build -tags dll -buildmode=c-shared -o goauld.dll ./agent
 ```
 
-> [!NOTE]
-> Compiling with the CLI is recommended as it allows passing compile-time variables to the agent (see [general/variables]({{< ref "01-general/03-variables" >}}))
+Using the client CLI, this corresponds to the `agent.dll` id (see [Compile using the client](#compile-using-the-client-recommended) below).
 
 ## Server
 ### Direct compilation

@@ -1,10 +1,10 @@
 ---
-title: Audit Mode
-description:
+title: Audit mode
+description: Goauld client audit mode
 weight: 9
 ---
 
-## Audit Mode
+## Audit mode
 
 This option enables redaction of sensitive information displayed on the TUI, providing privacy during demonstrations or shared sessions.
 

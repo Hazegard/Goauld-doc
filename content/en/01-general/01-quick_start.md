@@ -25,7 +25,7 @@ $ age-keygen
 AGE-SECRET-KEY-1NJ4DRPNKNGEVFK50JHUD6RKZ3NJ3Q9S5KYMTARTLXU0P0KQU8AAQNE4C2F
 ```
 
-The private key (`AGE-SECRET-KEY-*`) is used by the server, and the public key is embedded in agents.
+The server uses the private key (prefixed with `AGE-SECRET-KEY-`). Agents use the public key (prefixed with `age1`).
 
 
 ## Generate access token (and admin token)
@@ -34,19 +34,24 @@ The private key (`AGE-SECRET-KEY-*`) is used by the server, and the public key i
 openssl rand -base64 42
 ```
 
+Run this command again (or reuse the same method) to generate a separate admin token, used to protect the `/admin/` API endpoint.
+
 At this point, you should have:
 
-- Age private key → used by server
-- Age public key → used by client/agent
+- age private key → used by server
+- age public key → used by client/agent
 - Access token → shared between server and client
+- Admin token → shared between server and client
 
+> [!NOTE]
+> The server, agent, and client all support `--generate-config`, which writes out a configuration file from the currently-resolved settings (CLI flags, environment variables, etc.). This can be used instead of hand-writing the YAML files shown below.
 
 ## Server
 
 A minimal configuration file that exposes only HTTP and SSH services is:
 
 ```yaml
-#Age private key used by the server.
+# The server's age private key.
 age-privkey: "AGE-SECRET-KEY-1NJ4DRPNKNGEVFK50JHUD6RKZ3NJ3Q9S5KYMTARTLXU0P0KQU8AAQNE4C2F"
 
 # Domains used to serve HTTP and WebSocket traffic.
@@ -63,8 +68,15 @@ ssh-listen-addr: :2222
 access-token:
 - XXXXXXXXXX
 
-# Disable TLS: we only listen over plain HTTP as minimal example
+# Admin token required for the /admin/ API endpoint.
+admin-token:
+- XXXXXXXXXX
+
+# Disable TLS (minimal example, do not use in production)
 tls: false
+
+# Disable the DNS listener (not used in this minimal example)
+dns: false
 ```
 
 Start the server:
@@ -104,12 +116,12 @@ age-public-key: age1krjxdnhmf2kqm8rdhyf6sr5nfvlwdcslux3fxt8amcrncwn3ss9sydlvd0
 tealc compile --drop-env > ./env.txt
 ```
 
-2. Update the configuration file accordingly to your setup
+2. Update the configuration file according to your setup
 
 Minimal file with only HTTP (and SSHD) enabled:
-```yaml
+```bash
 # Public age key corresponding to the server's private key
-AGENT__AGEPUBKEY=age1e4txlmjtmc4sx5f8s7fhpka64d4d05rj3qn3jy4tgrta4p22euvq00ac5p
+AGENT__AGE_PUBKEY=age1e4txlmjtmc4sx5f8s7fhpka64d4d05rj3qn3jy4tgrta4p22euvq00ac5p
 # HTTP domain
 HTTP_DOMAIN=www.example.com
 # SSHD port exposed by the server
@@ -127,7 +139,7 @@ The compiled agent will be located in the folder `output/agent/` (e.g.: `output/
 
 See [client/compilation]({{< ref "04-client/12-compilation" >}}) for more compilation options.
 
-### Execute the agent:
+### Execute the agent
 
 ```powershell
 .\goauld_windows-amd64.exe
@@ -137,22 +149,25 @@ If execution is successful:
 - The agent appears in `tealc tui`
 - You can connect using `tealc ssh`
 
-You can also reconfigure on the fly the agent via cli, environment variables or configuration file (see [general/variables]({{< ref "01-general/03-variables" >}})).
+> [!NOTE]
+> `--background`/`-B` runs the agent as a detached background process instead of in the foreground.
+
+You can also reconfigure the agent on the fly via cli, environment variables or configuration file (see [general/variables]({{< ref "01-general/03-variables" >}})).
 
 
 
 ## Connect to an agent
 
-1. Via the TUI
+- Via the TUI
 ```bash
 tealc tui
 ```
 
 Then select the agent you want to connect to.
 
-2. Direct
+- Direct
 ```bash
 tealc ssh [AGENT_NAME]
 ```
 
-Where AGENT_NAME is by default `[USERNAME]@[HOSTNAME]`
+Where AGENT_NAME is by default `[USERNAME]@[HOSTNAME]`, unless overridden with `--name` at run-time, or with `AGENT__NAME=...` in the env file passed to `tealc compile --env` at compile-time.

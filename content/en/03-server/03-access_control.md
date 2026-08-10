@@ -1,35 +1,35 @@
 ---
-title: Access Control
+title: Access control
 description: Goauld server access control
 weight: 3
 ---
 
-Certain components should be accessible only by authorized users.
-- Admin endpoints
-- Management endpoints
-- SSH access from the client
+Certain components should be accessible only by authorized users: the admin endpoints, the management endpoints, SSH access from the client, and SSH local port forwarding. Two independent mechanisms restrict this access, IP allowlisting and access tokens, described below.
 
 ## IP allowlisting
 
-The server accepts a list of authorized IPs to restrict the access of
+The server accepts a list of authorized IPs to restrict access to:
 - The `/admin/` endpoints
 - The `/manage/` endpoints
 - SSH access from the client (using password authentication)
+- SSH local port forwarding
 
 > [!WARNING]
-> If the server runs in a docker environment, the deployment should ensure that the remote IP address is correctly forwarded to the server
+> If the server runs in a Docker environment, the deployment should ensure that the remote IP address is correctly forwarded to the server
 
 ### Flags
 
-- `--allowed-ips=192.168.1.1,192.168.2.1`
+- `--allowed-ips=192.168.1.1,192.168.2.0/24`
 
-> [!NOTE]
-> Only exact IP addresses are matched; CIDR ranges (e.g. `192.168.2.0/24`) are accepted by the flag's validation but are not expanded/enforced as ranges — an entry like that will never actually match a real client IP. List every address individually.
+Both individual IP addresses and CIDR ranges are matched. To allow all IPv4 addresses, set `--allowed-ips=0.0.0.0/0`; to also allow all IPv6 addresses, add `::/0`: `--allowed-ips=0.0.0.0/0,::/0`.
 
 > [!WARNING]
-> If `--allowed-ips` is not set, allowlisting is fail-open: any IP is allowed. Set it explicitly to actually restrict access.
+> Allowlisting is fail-closed: if not configured, all requests are rejected. This applies to all access paths: `/admin/`, `/manage/`, SSH password authentication, and SSH local port forwarding.
 
 ## Access token
+
+> [!WARNING]
+> Access tokens are fail-closed like IP allowlisting: leaving `--access-token` or `--admin-token` unset does not disable authentication, it rejects every request to the corresponding endpoints instead.
 
 ### User access token
 
@@ -44,7 +44,7 @@ The user access token restricts:
 
 
 > [!NOTE]
-> Multiple access tokens can be provided to segment user access.
+> Multiple access tokens can be provided, each independently issuable and revocable. All tokens grant identical access; there is no per-token scoping or segmentation of what a given token can do.
 
 
 ### Admin access token
@@ -55,15 +55,46 @@ The admin access token restricts:
 
 #### Flags
 
-- `--admin-token`
+- `--admin-token=token1,token2`
 
 ## Admin token embedding
 
-Some `/manage/` endpoints (e.g. killing an agent via `POST /manage/agent/{id}/kill`) accept the admin token embedded in the same `Authorization` header used for the access token, separated by `:`:
+Access tokens cannot contain `:` (colon), which is reserved as a separator. This restriction only applies to access tokens; admin tokens may contain colons, since the full value after the first colon is always used as the admin token.
 
-```
+To include both access and admin tokens in a single Authorization header, format them as `access-token:admin-token`. The `POST /manage/agent/{id}/kill` endpoint supports this format:
+
+```http
 Authorization: <access-token>:<admin-token>
 ```
 
-Only the part before the first `:` is checked against the configured access tokens; the part after `:` is checked against the admin token to authorize the privileged action. Access tokens themselves may not contain `:`, since that character is reserved for this embedding scheme.
+## API reference
+
+### `/manage/` endpoints
+
+Protected by the user access token (see [Access token](#access-token)).
+
+| Method | Route                          | Purpose                                             |
+| ------ | ------------------------------- | ---------------------------------------------------- |
+| POST   | `/manage/agent/{id}/kill`       | Kill an agent (accepts the embedded admin token, see above) |
+| GET    | `/manage/agent/{id}`            | Get information about an agent by ID                |
+| DELETE | `/manage/agent/{id}`            | Delete an agent and close its remaining connections |
+| GET    | `/manage/agent/by_name/{name}`  | Get information about an agent by name              |
+| GET    | `/manage/agent/`                | List all agents                                     |
+| POST   | `/manage/clearport/`            | Clear remaining connections for a port or an agent  |
+| GET    | `/manage/version/`              | Get the server version                              |
+| POST   | `/manage/agent/{id}/setClipboard` | Set the agent's clipboard content (deprecated, but still reachable) |
+| POST   | `/manage/agent/{id}/getClipboard` | Read the agent's clipboard content (deprecated, but still reachable) |
+| POST   | `/manage/agent/{id}/addWGPeer`  | Add a WireGuard peer to the agent (deprecated, but still reachable) |
+
+### `/admin/` endpoints
+
+Protected by the admin token (see [Admin access token](#admin-access-token)).
+
+| Method | Route                | Purpose                                             |
+| ------ | --------------------- | ---------------------------------------------------- |
+| GET    | `/admin/config/`      | Get the running configuration (sanitized)           |
+| GET    | `/admin/dump/`        | Dump information for all agents                     |
+| GET    | `/admin/state/`       | Get the full server state (config and agents)       |
+| GET    | `/admin/dump/{id}`    | Dump information for a single agent                 |
+| POST   | `/admin/loglevel/{level}` | Change the server's log level                    |
 

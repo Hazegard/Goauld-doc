@@ -4,52 +4,20 @@ description: Goauld general information
 weight: 1
 ---
 
+Goauld is a post-exploitation and remote access tool built for engagements where regular remote-access tooling struggles: restricted corporate networks, authenticated egress proxies, and environments where only a narrow set of protocols is allowed to leave the network.
 
-The compilation can be done directly, but it requires some tags:
-- `client`: `-tags client`
-- `mini_agent`: `-tags mini`
+It is composed of three components:
 
-The compilation can also be achieved using goreleaser
+- **Server**: the publicly reachable component. It exposes an SSH server both directly and through a range of tunneling transports (TLS, WebSocket, HTTP, DNS, and QUIC), and brokers access between operators and agents.
+- **Agent**: deployed on the target machine. It embeds an SSH server along with SOCKS and HTTP proxies, and establishes an outbound connection back to the server. No inbound access to the target is required.
+- **Client (tealc)**: the operator's tool. It connects to the server to interact with agents: opening SSH sessions, forwarding proxies, transferring files, and compiling new agents.
 
-## Optionally required dependencies
+All traffic between an agent and the server is encapsulated inside a single outbound SSH tunnel, whichever transport carries it, keeping the underlying access model consistent regardless of network restrictions.
 
-- `garble` for obfuscation ([https://github.com/burrowers/garble](https://github.com/burrowers/garble))
-- `upx` for compression [https://github.com/upx/upx](https://github.com/upx/upx)
-- `goreleaser` for [https://github.com/goreleaser/goreleaser](https://github.com/goreleaser/goreleaser)
+This section covers the fundamentals shared across all three components:
 
-
-## Agent
-
-- Direct compilation
-```bash
-go build -o tealc ./agent
-```
-- Using the script wrapper
-```bash
-go run ./scripts/build/  --id agent --goos windows --goarch amd64 --no-seed --gen-age-key=false --gen-access-token=false
-```
-
-- Using the CLI
-```bash
-tealc compile --id agent --goarch amd64 --goos windows
-```
-
-Note: Compiling with the CLI is recommended as it allows passing compile-time variables to the agent (see [How to feed variables])
-
-## Server
-```bash
-go run -o goauld_server ./server
-```
-- Using the script wrapper
-```bash
-go run ./scripts/build/ --gen-age-key=false --gen-access-token=false --id server --goos linux --goarch amd64 -vvv
-```
-
-## Client
-```bash
-go run -tags client -o tealc ./client
-```
-- Using the script wrapper
-```bash
-go run ./scripts/build/ --gen-age-key=false --gen-access-token=false --id client --goos linux --goarch amd64 -vvv
-```
+- [Quick start]({{< ref "01-general/01-quick_start" >}}): get a server, agent, and client running end to end.
+- [Compilation]({{< ref "01-general/02-compilation" >}}): build each component from source.
+- [Variables]({{< ref "01-general/03-variables" >}}): how configuration values are sourced and prioritized.
+- [Configuration file]({{< ref "01-general/04-configuration_file" >}}): where each component looks for its config file.
+- [Architecture]({{< ref "01-general/05-architecture" >}}): a diagram of how the pieces fit together.

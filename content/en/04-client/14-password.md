@@ -1,19 +1,23 @@
 ---
 title: Password
-description:
+description: Goauld client agent password retrieval
 weight: 14
 ---
 
 > [!NOTE]
-> This command is mostly an internal one.
-> But it is still documented in case on manual connection to the agents through the server
+> This command is mostly internal. It is documented in case you need to manually connect to an agent via SSH without using `tealc`.
 
 ```bash
 tealc pass --agent [AGENT_NAME] --type [otp|agent] [ARGS]
 ```
 
-- `--agent`: the agent to retrieve the password for.
-- `--type`: `otp` retrieves the one-time proxy password used to set up the `ProxyCommand` step of a connection; `agent` retrieves the agent's own private password (the "Part 2" password described in [agent/password_management]({{< ref "02-agent/05-password_management" >}})).
+## Flags
 
-This is the command invoked internally as `SSH_ASKPASS` by `tealc ssh` and `tealc jump` (see the example SSH command in [client/ssh]({{< ref "04-client/03-ssh" >}})) — it is not typically run directly.
+- `--agent`: the agent to retrieve the password for.
+- `--type`: password type to retrieve:
+  - `otp`: one-time proxy password for `ProxyCommand` setup
+  - `agent`: the agent's static password (described in [agent/password management]({{< ref "02-agent/05-password_management" >}}))
+  - Omitted: prints both, labeled `OTP:` and `Agent:`
+
+This is the command invoked internally as `SSH_ASKPASS` by `tealc ssh` and `tealc jump` (see the example SSH command in [client/ssh]({{< ref "04-client/03-ssh" >}})). It is not typically run directly.
 

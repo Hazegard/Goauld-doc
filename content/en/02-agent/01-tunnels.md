@@ -4,28 +4,34 @@ description: Goauld agent tunneling
 weight: 1
 ---
 
-The Goauld agent supports multiple transport mechanisms to communicate with the server.
-If a transport fails, the agent automatically falls back to the next available method.
+The Goauld agent supports multiple transport mechanisms to communicate with the server. If a transport fails, the agent automatically falls back to the next available method.
 
+## Supported transports
 
-The agent can attempt to connect to the server using several transports:
+The agent can connect using these transports (in default order):
 1. Direct SSH connection
 2. SSH over TLS
 3. SSH over WebSocket
 4. SSH over HTTP
 5. SSH over DNS
-6. SSH over QUIC (opt-in, not part of the default order — add `quic` to `--rssh-order` to enable it)
+6. SSH over QUIC (optional, requires `--rssh-order` configuration)
 
-By default, the agent only tries SSH, TLS, WebSocket, HTTP and DNS, in that order.
+## Default behavior
 
-For each transport protocol, the agent tries to establish a connection to the server, with a 60-second timeout (configurable using the `--ssh-timeout` flag). If the connection is established, the agent finalizes the connection.
+For each transport, the agent attempts connection with a 60-second timeout (configurable with `--ssh-timeout`). After exhausting all transports, the agent retries indefinitely by default. Each retry cycle starts from the beginning.
 
-Otherwise, the agent connects using the next transport protocol (configurable using `--rssh-order`, e.g. `--rssh-order=ssh,tls,ws,http,dns`, which is also the default order).
+## Configuration
 
-If no connection has been established after a full loop, the agent will try again.
+Transport order and retry behavior can be customized:
+- `--rssh-order`: Customize transport order (example: `--rssh-order=ssh,tls,ws,http,dns`)
+- `--max-retries`: Limit retry attempts (example: `--max-retries 5` stops after 5 failed cycles; default is unlimited)
 
 > [!NOTE]
-> `--rssh-order` also accepts a few additional values not covered by the six transports above: `browser` (see [Browser proxy](#browser-proxy)),  `bind`  (see [Agent binding](#agent-binding)) and `relay` (see [agent/relay]({{< ref "02-agent/03-relay" >}})).
+> `--rssh-order` also accepts these special values:
+> - `browser`: Use a browser-based tunnel (see [Browser proxy](#browser-proxy))
+> - `bind`: Bind to a local socket (see [Agent binding](#agent-binding))
+> 
+> Relay agent routing is configured separately via `--relay-addr`, not through `--rssh-order` (see [agent/relay]({{< ref "02-agent/03-relay" >}})).
 
 
 ## Direct SSH connection
@@ -34,6 +40,7 @@ If no connection has been established after a full loop, the agent will try agai
 ### Flags
 
 - `--ssh-server`: (`[IP/Hostname]:[PORT]`)
+- `--rssh-port`: the remote port the SSH tunnel binds to on the server side (default: `0`, meaning a random port is chosen).
 
 
 ## SSH over TLS
@@ -41,7 +48,7 @@ If no connection has been established after a full loop, the agent will try agai
 The SSH connection is encapsulated over a TLS connection.
 
 > [!NOTE]
-> We do not rely on the TLS encryption mechanism here. Instead, we use TLS so that some proxies might allow TLS traffic while blocking SSH
+> TLS is used for proxy compatibility, not encryption: some proxies may allow TLS while blocking SSH.
 
 
 ### Flags
@@ -83,13 +90,14 @@ This transport encapsulates SSH traffic inside DNS queries and responses, allowi
 
 ### Flags
 
-- `--dns-server`: the servers used as recursive DNS resolvers to reach the DNS server. If the goauld server is directly reachable, it is possible to add it.
-  - The special value `system` allows to automatically add the detected system DNS servers to the list.
+- `--dns-server`: DNS resolvers used to reach the Goauld DNS server. Optionally includes the Goauld server itself if directly reachable.
+  - The special value `system` automatically adds detected system DNS servers to the list.
 - `--dns-domain`: the domain on which DNS queries are performed
-> [!NOTE]
-> A short domain name allows to add more data in the queries, which could result in improving the speed
 
-- `--custom-dns-command`: in some context, the DNS queries are not feasible directly, but system commands such as `Resolve-DnsName` are still allowed to perform DNS queries. When this flag is used, the provided command is executed for each DNS query. The command is responsible for performing the DNS query, and parsing the DNS response and returning the response as raw bytes.
+> [!NOTE]
+> Shorter domain names allow more payload data per query, improving throughput.
+
+- `--custom-dns-command`: in some cases, the DNS queries are not feasible directly, but system commands such as `Resolve-DnsName` are still allowed to perform DNS queries. When this flag is used, the provided command is executed for each DNS query. The command is responsible for performing the DNS query, and parsing the DNS response and returning the response as raw bytes.
 
 {{< tabpane text=true >}}
 {{% tab header="PowerShell" %}}
@@ -112,10 +120,6 @@ The SSH connection is encapsulated over QUIC. This transport is opt-in and not p
 
 - `--quic-domain`: the QUIC domain used to tunnel traffic.
 
-## SSH over CDN
-
-The SSH connection can be tunneled through a CDN using domain fronting, reaching the server via the `[server]/sshttp2/[ID]` endpoint. Add `cdn` to `--rssh-order` to enable it.
-
 ## Browser proxy
 
 The agent can use a web browser to tunnel all the traffic.
@@ -131,9 +135,9 @@ The agent can use a web browser to tunnel all the traffic.
     Your browser does not support the video tag.
 </video>
 
-### Flags:
+### Flags
 
-- `--browser-proxy-port`: the port used to expose the custom web pages and the WebSocket endpoints use by the browser to connect to the agent.
+- `--browser-proxy-port`: the port used to expose the custom web pages and the WebSocket endpoints used by the browser to connect to the agent.
 
 ## Egress proxies
 
@@ -171,7 +175,8 @@ The proxy will be selected by the following priority:
 
 ## Agent binding
 
-The agent can expose a port on which the client connects to. (see [client/agent-binding]({{< ref "04-client/16-agent_binding" >}}))
+
+The client connects directly to the port exposed by the agent (see [client/agent binding]({{< ref "04-client/16-agent_binding" >}})).
 
 ### Flags
 

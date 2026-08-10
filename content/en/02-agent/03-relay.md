@@ -5,31 +5,38 @@ weight: 3
 ---
 
 
-If an agent `A` cannot reach the Goauld server, but can reach another agent `B` that can reach the server, then agent `B` can be configured to run as a relay.
+Agent B can relay connections from Agent A when: Agent A cannot reach the server directly, but can reach Agent B, and Agent B can reach the server.
 
 
 ## Configure an agent as a relay
 
 - `--relay`: Enable relay mode on the agent
-
+- `--relay-port`: Port to listen on (default: `0` = random port)
 
 > [!NOTE]
-> The agent listens on all interfaces using a randomly assigned port. This port is logged in the agent logs:
->```log
->INF agent/agent.go:522 > Relay listening on port Port=57129
->```
->Or in the TUI (Press `+` to view details about the agent)
+> By default, the relay listens on all interfaces using a randomly assigned port.
+
+To discover the assigned port, check the agent logs:
+```log
+INF agent/agent.go:522 > Relay listening on port Port=57129
+```
+
+Or view it in the TUI by pressing `+` to expand agent details.
+
+To use a fixed port instead of a random one, set `--relay-port` to a specific value.
 
 
 
 ## Set an agent as upstream relay
 
-- `--relay-addr=[IP_AGENT]:[PORT]`: Set the upstream relay agent that this agent should connect to.
+- `--relay-addr=[IP_AGENT]:[PORT]`: Upstream relay agent address and port
 
-This automatically configures the agent to use SSH over WebSocket, as the relay communication is performed exclusively over WebSocket.
+> [!NOTE]
+> Setting this automatically configures the agent to use SSH over WebSocket, as relay communication requires WebSocket transport.
 
 ## How the relay works
 
 The relay exposes a local HTTP web server that handles two types of connections:
-- `Socket.IO connections`: The relay re-emits all requests and responses. This is required to perform a protocol break, allowing it to handle all Socket.IO transport types, including WebSocket, HTTP polling, and WebSockets tunneled over DNS.
+
+- `Socket.IO connections`: The relay acts as a protocol bridge by accepting and re-emitting Socket.IO traffic. This allows it to handle multiple transport types (WebSocket, HTTP polling, DNS-tunneled WebSocket).
 - `SSH connections`: The relay handles SSH over WebSocket connections locally. These connections are decapsulated and forwarded to the Goauld server using the tunnel of the upstream relay agent.

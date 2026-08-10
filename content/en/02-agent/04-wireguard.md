@@ -9,28 +9,25 @@ The agent exposes a virtual WireGuard interface, allowing TCP, UDP, and ICMP (pi
 
 The virtual WireGuard interface uses the gVisor network stack ([https://github.com/google/gvisor/tree/go](https://github.com/google/gvisor/tree/go)).
 
-The implementation works as follows:
-1. The agent exposes a WireGuard server port on the host.
-2. The agent forwards the WireGuard port to the server using UDP-over-TCP encapsulation to traverse the existing agent tunnel.
-3. The client forwards the WireGuard port exposed on the server to the local machine.
-4. The client decapsulates the UDP-over-TCP traffic to expose the WireGuard port.
-5. The WireGuard client on the operator machine connects to the agent's virtual WireGuard interface.
+Each agent gets its own private WireGuard endpoint, tunneled through the existing agent connection: enable it with `--wg`, then connect a WireGuard client to the port exposed on the client side (see [client/wireguard]({{< ref "04-client/11-wireguard" >}})).
 
 > [!NOTE]
-> This implementation uses UDP-over-TCP encapsulation, which reduces performance.
-> However, this architecture was chosen because the server does not expose a WireGuard server common to all connected agents, which could result in unauthorized access between agents.
+> The tunnel uses UDP-over-TCP encapsulation, which reduces performance compared to native WireGuard but enables operation over custom transports.
 
 
 > [!WARNING]
-> The agent runs without privileges. Consequently it cannot forward raw packets (such as ICMP packets, or Nmap SYN scans).
-> 
-> `nmap` must be run using `--unprivileged` or `-PE`.
+> The agent runs without privileges and cannot forward raw packets (required for ICMP ping or Nmap SYN scans).
+>
+> When using nmap, choose one of these alternatives:
+> - `nmap --unprivileged`: Disables raw packet features, uses TCP connect scans instead
+> - `nmap -PE`: Uses ICMP echo ping instead of SYN probes for host discovery
 
 ## Flags
 
 The virtual WireGuard interface is not enabled by default.
 
 - `--wg`: Enable the WireGuard interface
+- `--wg-port`: the remote port the WireGuard interface binds to on the server side (default: `0`, meaning a random port is chosen).
 
 
-See  [client/WireGuard]({{< ref "04-client/11-wireguard" >}})
+See  [client/wireguard]({{< ref "04-client/11-wireguard" >}})

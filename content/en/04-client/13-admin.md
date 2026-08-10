@@ -1,8 +1,11 @@
 ---
 title: Admin features
-description: 
+description: Goauld client admin features
 weight: 13
 ---
+
+> [!NOTE]
+> `tealc admin` is for internal/administrative use only, rarely needed in normal operation.
 
 ## Dump the current configuration
 
@@ -11,7 +14,7 @@ tealc admin config
 ```
 
 ```yaml
-#Age private key used by the server.
+# Age private key used by the server.
 age-privkey: "[REDACTED]"
 
 # Domains used to serve HTTP and WebSocket traffic.
@@ -24,9 +27,6 @@ tls-domain:
 
 # Domain used to serve DNS-based traffic (SSH over DNS).
 dns-domain: t.example.com
-
-# Domain used to serve DNS-based traffic (SSH over DNS-ALT).
-dns-domain-alt: s.example.com
 
 # Address and port to bind for HTTP connections (port 0 = random).
 http-listen-addr: 0.0.0.0:80
@@ -55,19 +55,19 @@ tls-cert: ./local_config/cert/local.pem
 # Email used when generating Let's Encrypt certificates.
 letsencrypt-mail: mail@example.com
 
-# Enable QUIC protocol support.
+# Enable QUIC protocol support. Requires tls to also be enabled.
 quic: true
 
 # Enable DNS server for SSH-over-DNS connections.
 dns: true
 
 # Disable database usage.
-db: false
+no-db: false
 
 # Path or filename of the database to use.
 db-file-name: Goauld.db
 
-# List of IP addresses allowed to access the /manage/ endpoint.
+# List of IP addresses allowed to access the /admin/ and /manage/ endpoints, SSH password authentication, and SSH local port forwarding.
 allowed-ips: []
 
 # Access token required for the /manage/ API endpoint.
@@ -169,7 +169,6 @@ tealc admin dump
     - 127.0.0.1:56752
   dns:
     agentId: 1ec1bd83de498e7da8852efe6d8c16c5
-  cdn: {}
 ```
 
 ## Update the server log level

@@ -1,23 +1,23 @@
 ---
 title: Exposed proxies
-description:  Goauld agent proxies
+description: Goauld agent proxies
 weight: 2
 ---
 
-The agent exposes three proxies that allow interaction with the host’s network:
-- An HTTP proxy 
+The agent exposes three proxies that allow interaction with the host's network:
+- An HTTP proxy
 - An HTTP proxy that performs NTLM/Kerberos application-level authentication
 - A SOCKS proxy
 
 > [!NOTE]
-> Given that performing NTLM/Kerberos application-level authentication requires to intercept the traffic (MITM) to inject appropriate headers, this feature has been implemented in a dedicated proxy.
+> NTLM/Kerberos authentication requires intercepting traffic (MITM) to inject authentication headers. This is implemented in a dedicated proxy for isolation.
 
 
 ## HTTP proxy
 
 For each incoming request, the HTTP proxy determines whether an upstream proxy should be used and which one.
 
-By default, the HTTP proxy uses the same egress-proxy selection priority as the agent itself (see [agent/tunnels#egress-proxies]({{< ref "02-agent/01-tunnels" >}}#egress-proxies)), but this behavior can be overridden using:
+By default, it uses the same proxy selection priority as the agent (see [agent/tunnels#egress-proxies]({{< ref "02-agent/01-tunnels" >}}#egress-proxies)). This behavior can be customized using:
 
 ### Flags
 
@@ -25,21 +25,21 @@ By default, the HTTP proxy uses the same egress-proxy selection priority as the 
 - `--http-proxy-username`: Username to authenticate on the proxy
 - `--http-proxy-password`: Password to authenticate on the proxy
 - `--http-proxy-domain`: Domain to authenticate on the proxy
-- `--http`/`--no-http`: Enable/Disable the HTTP proxy 
+- `--http`/`--no-http`: Enable/Disable the HTTP proxy
+- `--http-port`: the remote port the HTTP proxy binds to on the server side (default: `0`, meaning a random port is chosen).
 
 > [!NOTE]
-> This proxy is automatically enabled if the HTTP proxy with NTLM/Kerberos authentication is enabled, or if the SOCKS proxy is configured to use the HTTP proxy (or transitively, the MITM HTTP proxy)
+> This proxy is automatically enabled in these cases:
+> - MITM HTTP proxy is enabled
+> - SOCKS proxy is configured to use the HTTP proxy
 
 ## HTTP proxy with NTLM/Kerberos authentication
 
 Some applications require NTLM/Kerberos authentication.
 
-Given that the goal of the tool is to expose network access to the client as if the request were performed from the host, this proxy aims to transparently respond to NTLM/Kerberos authentication requests.
+This proxy transparently handles NTLM/Kerberos authentication requests, exposing network access to the client as if requests originated from the host.
 
-> [!NOTE]
-> Because NTLM/Kerberos application authentication requires intercepting traffic (MITM) in order to inject the appropriate headers, this feature is implemented in a dedicated proxy.
-
-This proxy uses the previously described HTTP proxy as its upstream proxy, in order to handle the system proxy and the proxy authentication if required.
+It uses the previously described HTTP proxy as its upstream proxy to handle system proxy and proxy authentication requirements.
 
 > [!WARNING]
 > This proxy is only available on Windows.
@@ -48,10 +48,11 @@ This proxy uses the previously described HTTP proxy as its upstream proxy, in or
 
 ### Flags
 
-- `--mitm-http`/`--no-mitm-http`: Enable/Disable the MITM HTTP proxy 
+- `--mitm-http`/`--no-mitm-http`: Enable/Disable the MITM HTTP proxy
+- `--mitm-http-port`: the remote port the MITM HTTP proxy binds to on the server side (default: `0`, meaning a random port is chosen).
 
 > [!NOTE]
-> This proxy is automatically enabled if the SOCKS proxy is configured to use the MITM HTTP proxy
+> This proxy is automatically enabled when SOCKS proxy is configured to use MITM mode.
 
 ## SOCKS proxy
 
@@ -71,3 +72,14 @@ The SOCKS proxy can be configured to use different HTTP upstream proxies:
 - `--socks-proxy-password`: Password for the SOCKS upstream proxy
 - `--socks-proxy-domain`: Domain for the SOCKS upstream proxy
 - `--socks`/`--no-socks`: Enable/Disable the SOCKS proxy
+- `--socks-port`: the remote port the SOCKS proxy binds to on the server side (default: `0`, meaning a random port is chosen).
+
+## Remote port forwarding
+
+Independent of the three proxies above, the agent can forward specific ports on its host to the server, one at a time.
+
+### Flags
+
+- `-R`/`--rpf`: `REMOTE_PORT[:LOCAL_IP]:LOCAL_PORT`: forwards `LOCAL_IP:LOCAL_PORT` (on the agent's host) to `REMOTE_PORT` on the server. `LOCAL_IP` defaults to `127.0.0.1` if omitted. Use `0` for `REMOTE_PORT` to let the server choose a random port. Can be repeated (or comma-separated) to forward multiple ports.
+
+Example: `--rpf 8080::3000` forwards `127.0.0.1:3000` on the agent to port `8080` on the server.
