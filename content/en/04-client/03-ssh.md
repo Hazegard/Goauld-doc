@@ -126,7 +126,7 @@ tealc ssh [AGENT_NAME] -L "127.0.0.1:8080:127.0.0.1:8080"
 > `tealc ssh -V`/`--version` is a special case: it prints the version of the system's `ssh` client instead of `tealc`'s own version.
 
 > [!NOTE]
-> If the agent password is wrong, the client automatically re-prompts for it and retries, up to 4 attempts in total, before giving up. This applies to `tealc ssh`, `scp`, `rsync`, `rclone`, `jump`, and `bind` (which reuses the same SSH connection path).
+> If the agent password is wrong, the client automatically re-prompts for it and retries, up to 4 attempts in total, before giving up. This applies to `tealc ssh`, `scp`, `rsync`, `rclone`, `jump`, and `bind` (which reuses the same SSH connection path), as well as `tealc clip get`/`set`, `kill`, and `reset`.
 
 > [!NOTE]
 > `--save` writes the prompted password to the client's configuration file in cleartext, under a top-level `agent-password:` map keyed by agent name:
