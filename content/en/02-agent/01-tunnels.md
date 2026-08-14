@@ -23,7 +23,7 @@ For each transport, the agent attempts connection with a 60-second timeout (conf
 ## Configuration
 
 Transport order and retry behavior can be customized:
-- `--rssh-order`: Customize transport order (example: `--rssh-order=ssh,tls,ws,http,dns`)
+- `--rssh-order`: Customize the order in which the agent tries transports. The agent attempts each transport sequentially until one succeeds. Example: `--rssh-order=ssh,tls,ws,http,dns` tries SSH first, then TLS, then WebSocket, and so on.
 - `--max-retries`: Limit retry attempts (example: `--max-retries 5` stops after 5 failed cycles; default is unlimited)
 
 > [!NOTE]

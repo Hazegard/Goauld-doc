@@ -29,7 +29,7 @@ access-token: XXXXX
 
 ## Agent authentication
 
-All interaction with the agents (including SSH, SCP/Rsync, Kill/Reset/Delete commands, Clipboard operations, etc.) requires the agent's static password, set via the `-P`/`--password` flag. See [agent/password management]({{< ref "02-agent/05-password_management" >}}) for details.
+All interaction with the agents (including SSH, SCP/Rsync, Kill/Reset/Delete commands, Clipboard operations, etc.) requires the agent's static password if the agent has one configured, set via the `-P`/`--password` flag. See [agent/password management]({{< ref "02-agent/05-password_management" >}}) for details.
 
 ## Admin authentication
 

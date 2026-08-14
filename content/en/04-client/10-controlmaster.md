@@ -30,6 +30,9 @@ This improves connection speed and avoids repeating the authentication process f
 > For `tealc ssh`, this includes its default behavior, since `--ssh` is enabled by default for that command. It does not apply when explicitly running `tealc ssh AGENT --no-ssh` (pure port-forwarding without an interactive shell).
 
 > [!NOTE]
+> `tealc vscode` has no `-M` flag of its own - VS Code's Remote-SSH extension makes many separate connections behind the scenes (initial connect, server install, port forwards), each via the symlinked `ssh`/`scp` binaries `tealc vscode` sets up, and each one only knows about `-M` if `control-master: true` is set as a persisted default in your configuration file. There's no way to opt in per-invocation the way `tealc ssh AGENT -M` works for other commands.
+
+> [!NOTE]
 > `tealc delete` is unaffected by `-M`, since it uses a separate HTTP-based API path instead.
 
 ### Establishing the master

@@ -93,12 +93,10 @@ The DNS server acts as an authoritative server and responds to DNS queries that 
 
 ## Internal control channel
 
-The HTTP server exposes an internal `/live/{agentId}/` Socket.IO control channel. Every connected agent uses this channel, regardless of its tunneling transport method.
-
-The control channel shares the same `--http-listen-addr` and `--https-listen-addr` listeners as the HTTP and WebSocket transports. It is used internally by the server for agent management (kill commands, connection-state tracking) and is not intended for direct operator access.
+The server uses the HTTP listener for agent management traffic (kill commands, connection-state tracking). This internal channel depends on `--http-listen-addr` being reachable.
 
 > [!WARNING]
-> There is no separate flag to keep this channel running independently of the HTTP/HTTPS listeners. Since every connected agent depends on it regardless of tunneling transport, an `--http-listen-addr` that isn't reachable (combined with `--no-tls`) prevents all agents from registering or being managed.
+> If `--http-listen-addr` is not reachable (combined with `--no-tls`), agents cannot register or be managed, regardless of their tunneling transport.
 
 ## Flag summary
 
@@ -108,6 +106,7 @@ The control channel shares the same `--http-listen-addr` and `--https-listen-add
 | TLS       | `--https-listen-addr`    | TLS server listen address       | `[IP]:[PORT]`   |
 | TLS       | `--tls` / `--no-tls`     | Enable/disable TLS listener     | `--tls`         |
 | TLS       | `--http-domain`          | HTTPS web server domain         | `example.com`   |
+| TLS       | `--tls-domain`           | SSH over TLS domain             | `s.example.com` |
 | HTTP / Websocket | `--http-listen-addr` | HTTP server listen address (serves both transports) | `[IP]:[PORT]` |
 | QUIC      | `--quic-listen-addr`     | QUIC listener address (UDP)     | `[IP]:[PORT]`   |
 | QUIC      | `--quic` / `--no-quic`   | Enable/disable QUIC listener (requires `--tls`) | `--quic` |

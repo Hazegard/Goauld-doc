@@ -121,6 +121,9 @@ Sending the server process a `SIGHUP` signal reloads TLS-related configuration w
 kill -HUP [SERVER_PID]
 ```
 
+> [!NOTE]
+> SIGHUP reload only applies when TLS is enabled (`--tls`). If the server runs with `--no-tls`, SIGHUP has no effect.
+
 **With a custom certificate** (`--tls-cert`/`--tls-key`): The certificate and key files are reloaded from disk.
 
 **With Let's Encrypt** (default): The `--http-domain` and `--tls-domain` configuration is re-read, updating the set of domains the certificate covers.
