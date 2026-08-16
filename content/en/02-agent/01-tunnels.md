@@ -18,11 +18,11 @@ The agent can connect using these transports (in default order):
 
 ## Default behavior
 
-For each transport, the agent attempts connection with a 60-second timeout (configurable with `--ssh-timeout`). After exhausting all transports, the agent retries indefinitely by default during the kill-switch duration (7 days by default), after which the agent kills itself. Each retry cycle starts from the beginning.
+For each transport, the agent attempts connection with a 60-second timeout (configurable with `--timeout`). After exhausting all transports, the agent retries indefinitely by default during the kill-switch duration (7 days by default), after which the agent kills itself. Each retry cycle starts from the beginning.
 
 ### Connection timeouts
 
-`--ssh-timeout` (default: `60` seconds) is the single timeout governing every connection the agent makes to the server. It bounds:
+`--timeout` (default: `60` seconds) is the single timeout governing every connection the agent makes to the server. It bounds:
 
 - each SSH tunnel attempt, per transport;
 - the control socket connection attempt, per transport;
