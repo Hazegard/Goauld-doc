@@ -15,6 +15,11 @@ The agent also sends periodic keepalive pings on both the data (SSH) socket and 
 
 Configure the keepalive interval with `--keepalive` (default: `20` seconds). Set to `0` to disable keepalive pings entirely.
 
+The server replies to each control-socket keepalive ping with a pong. If no pong arrives within `--timeout` (default: `60` seconds), the agent treats the control connection as dead and restarts, even though the socket itself is still open. This covers the case of a server that is reachable but no longer responding: a hung process, or a connection kept half-open by a stale NAT or firewall entry, which produces no connection error and would otherwise go undetected.
+
+> [!NOTE]
+> `--keepalive` sets how often pings are sent; `--ssh-timeout` sets how long the agent waits for a reply before restarting (see [agent/tunnels]({{< ref "02-agent/01-tunnels" >}})). On slow transports such as DNS, raise `--ssh-timeout` so normal round-trip latency is not mistaken for a dead connection.
+
 
 ## Control socket
 

@@ -27,12 +27,24 @@ To use a fixed port instead of a random one, set `--relay-port` to a specific va
 
 
 
-## Set an agent as upstream relay
+## Route an agent through a relay
 
-- `--relay-addr=[IP_AGENT]:[PORT]`: Upstream relay agent address and port
+An agent is routed through a relay with two flags:
+
+- `--rssh-order=relay`: Route this agent's traffic through a relay agent
+- `--server=[IP_AGENT]:[PORT]`: Address and port of the relay agent
+
+The relay's address goes in `--server`: the same flag that points at the control HTTP server in a direct deployment. When `--rssh-order=relay` is set, the agent dials that address as a relay instead of as the Goauld server.
+
+```bash
+goauld --rssh-order=relay --server=10.0.0.5:57129
+```
 
 > [!NOTE]
-> Setting this automatically configures the agent to use SSH over WebSocket, as relay communication requires WebSocket transport.
+> Relay communication requires WebSocket transport, so `--rssh-order=relay` configures both the control socket and the SSH tunnel to use WebSocket automatically. Pass `relay` on its own rather than combining it with other transports in the same `--rssh-order` list.
+
+> [!WARNING]
+> Earlier versions used a dedicated `--relay-addr` flag for this. It has been removed, use `--rssh-order=relay` together with `--server` as shown above.
 
 ## How the relay works
 

@@ -20,6 +20,33 @@ The agent can connect using these transports (in default order):
 
 For each transport, the agent attempts connection with a 60-second timeout (configurable with `--ssh-timeout`). After exhausting all transports, the agent retries indefinitely by default during the kill-switch duration (7 days by default), after which the agent kills itself. Each retry cycle starts from the beginning.
 
+### Connection timeouts
+
+`--ssh-timeout` (default: `60` seconds) is the single timeout governing every connection the agent makes to the server. It bounds:
+
+- each SSH tunnel attempt, per transport;
+- the control socket connection attempt, per transport;
+- the configuration exchange that follows registration;
+- the keepalive liveness check: if the server does not answer a keepalive ping within this period, the control connection is considered dead and the agent restarts (see [agent/connection flow]({{< ref "02-agent/07-connection_flow" >}})).
+
+Without these bounds the agent could stay blocked indefinitely against a server that accepts a connection but never replies. Reaching any of them makes the agent give up and restart, so it retries from the beginning of the transport order rather than hanging.
+
+> [!WARNING]
+> Slow transports need a higher value. Over DNS in particular, a single round trip is many queries and responses, and the default 60 seconds can be too short, both for the configuration exchange and for keepalive replies. Raise `--timeout` when using DNS, otherwise a healthy but slow agent may restart repeatedly.
+
+> [!NOTE]
+> `--timeout 0` means unlimited and disables all of the bounds above, including the liveness checks. The agent will then wait forever on an unresponsive server instead of restarting.
+
+> [!WARNING]
+> **Breaking change:** this flag was previously named `--ssh-timeout`, since it only bounded SSH tunnel attempts. `--ssh-timeout` still works on the command line as an alias, but **the configuration file key has changed from `ssh-timeout` to `timeout`**. A configuration file still using `ssh-timeout` is ignored silently and the agent falls back to the 60-second default, which matters most on DNS, where a tuned value is usually required. Rename the key when upgrading:
+>
+> ```yaml
+> # before
+> ssh-timeout: 120
+> # after
+> timeout: 120
+> ```
+
 ## Configuration
 
 Transport order and retry behavior can be customized:
@@ -30,8 +57,7 @@ Transport order and retry behavior can be customized:
 > `--rssh-order` also accepts these special values:
 > - `browser`: Use a browser-based tunnel (see [Browser proxy](#browser-proxy))
 > - `bind`: Bind to a local socket (see [Agent binding](#agent-binding))
-> 
-> Relay agent routing is configured separately via `--relay-addr`, not through `--rssh-order` (see [agent/relay]({{< ref "02-agent/03-relay" >}})).
+> - `relay`: Route traffic through a relay agent, whose address is given by `--server` (see [agent/relay]({{< ref "02-agent/03-relay" >}}))
 
 
 ## Direct SSH connection
