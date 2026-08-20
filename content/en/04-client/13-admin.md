@@ -15,7 +15,7 @@ tealc admin config
 
 ```yaml
 # Age private key used by the server.
-age-privkey: "[REDACTED]"
+age-private-key: "[REDACTED]"
 
 # Domains used to serve HTTP and WebSocket traffic.
 http-domain:
@@ -35,7 +35,7 @@ http-listen-addr: 0.0.0.0:80
 https-listen-addr: 0.0.0.0:443
 
 # Address and port to bind for SSH connections (port 0 = random).
-ssh-listen-addr: 0.0.0.0:2222
+sshd-listen-addr: 0.0.0.0:2222
 
 # Address and port to bind for DNS connections (port 0 = random).
 dns-listen-addr: 0.0.0.0:53
@@ -53,7 +53,7 @@ tls-key: ./local_config/cert/local.key
 tls-cert: ./local_config/cert/local.pem
 
 # Email used when generating Let's Encrypt certificates.
-letsencrypt-mail: mail@example.com
+letsencrypt-email: mail@example.com
 
 # Enable QUIC protocol support. Requires tls to also be enabled.
 quic: true
@@ -82,7 +82,7 @@ admin-token:
 binaries-basic-auth: "[REDACTED]"
 
 # Filesystem path where agent binaries are stored.
-binaries-path-location: ./binaries
+binaries-path: ./binaries
 
 # Increase log verbosity. Repeat for more detail.
 verbose: 3

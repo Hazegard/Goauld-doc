@@ -25,7 +25,7 @@ TEALC_AGENT=user@hostname1 \
 TEALC_VERBOSE=0 \
 TEALC_QUIET=false \
 TEALC_CONFIG_FILE= \
-TEALC_PROMPT_STATIC_PASSWORD=true \
+TEALC_PROMPT=true \
 
 # Main SSH invocation with security options and proxy forwarding
 ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null \
@@ -45,7 +45,7 @@ TEALC_AGENT=user@hostname1 \
 TEALC_VERBOSE=0 \
 TEALC_QUIET=false \
 TEALC_CONFIG_FILE= \
-TEALC_PROMPT_STATIC_PASSWORD=true \
+TEALC_PROMPT=true \
 ssh -oClearAllForwardings=no -oStrictHostKeyChecking=no \
 -oUserKnownHostsFile=/dev/null -oPubkeyAuthentication=no \
 -oPreferredAuthentications=password -oLogLevel=ERROR \
@@ -99,7 +99,7 @@ tealc ssh [AGENT_NAME] -L "127.0.0.1:8080:127.0.0.1:8080"
   -c, --config-file=""                       Path to configuration file ($TEALC_CONFIG_FILE).
   -P, --password=""                          Agent static password ($TEALC_PASSWORD).
   -Q, --prompt                               Prompt for the agent's static password ($TEALC_PROMPT).
-      --[no-]save                            Save the prompted password in the configuration file ($TEALC_SAVE).
+      --[no-]save-password                   Save the prompted password in the configuration file ($TEALC_SAVE_PASSWORD).
   -M, --control-master                       Enable SSH control master to reuse the SSH connection ($TEALC_CONTROL_MASTER).
 
       --[no-]socks                           Forward the agent's SOCKS proxy to the local host ($TEALC_SOCKS).
@@ -114,6 +114,7 @@ tealc ssh [AGENT_NAME] -L "127.0.0.1:8080:127.0.0.1:8080"
       --[no-]print                           Print the generated SSH command instead of executing it ($TEALC_PRINT).
       --proxy                                Use direct STDIN/STDOUT mode for ProxyCommand compatibility ($TEALC_PROXY).
       --log                                  Record the SSH session to a log file ($TEALC_LOG).
+  -o, --ssh-opts=SSH-OPTS,...                Additional SSH options (equivalent to '-o')
   -F, --ssh-config-file=STRING               Path to an SSH configuration file to use ($TEALC_SSH_CONFIG_FILE).
 ```
 
@@ -129,7 +130,7 @@ tealc ssh [AGENT_NAME] -L "127.0.0.1:8080:127.0.0.1:8080"
 > If the agent password is wrong, the client automatically re-prompts for it and retries, up to 4 attempts in total, before giving up. This applies to `tealc ssh`, `scp`, `rsync`, `rclone`, `jump`, and `bind` (which reuses the same SSH connection path), as well as `tealc clip get`/`set`, `kill`, and `reset`.
 
 > [!NOTE]
-> `--save` writes the prompted password to the client's configuration file in cleartext, under a top-level `agent-password:` map keyed by agent name:
+> `--save-password` writes the prompted password to the client's configuration file in cleartext, under a top-level `agent-password:` map keyed by agent name:
 > ```yaml
 > agent-password:
 >   user@hostname1: [password]

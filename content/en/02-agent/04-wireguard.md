@@ -9,7 +9,7 @@ The agent exposes a virtual WireGuard interface, allowing TCP, UDP, and ICMP (pi
 
 The virtual WireGuard interface uses the gVisor network stack ([https://github.com/google/gvisor/tree/go](https://github.com/google/gvisor/tree/go)).
 
-Each agent gets its own private WireGuard endpoint, tunneled through the existing agent connection: enable it with `--wg`, then connect a WireGuard client to the port exposed on the client side (see [client/wireguard]({{< ref "04-client/11-wireguard" >}})).
+Each agent gets its own private WireGuard endpoint, tunneled through the existing agent connection: enable it with `--wg-enabled`, then connect a WireGuard client to the port exposed on the client side (see [client/wireguard]({{< ref "04-client/11-wireguard" >}})).
 
 > [!NOTE]
 > The tunnel uses UDP-over-TCP encapsulation, which reduces performance compared to native WireGuard but enables operation over custom transports.
@@ -26,7 +26,7 @@ Each agent gets its own private WireGuard endpoint, tunneled through the existin
 
 The virtual WireGuard interface is not enabled by default.
 
-- `--wg`: Enable the WireGuard interface
+- `--wg-enabled`: Enable the WireGuard interface
 - `--wg-port`: the remote port the WireGuard interface binds to on the server side (default: `0`, meaning a random port is chosen).
 
 

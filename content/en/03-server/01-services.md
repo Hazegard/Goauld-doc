@@ -21,7 +21,7 @@ No encapsulation, directly exposed.
 ### Flags
 
 
-- `--ssh-listen-addr`: The address the SSHD server will listen to. Format: `[IP]:[PORT]`.
+- `--sshd-listen-addr`: The address the SSHD server will listen to. Format: `[IP]:[PORT]`.
 
 
 ## TLS
@@ -45,7 +45,7 @@ The server allows two ways of providing the TLS certificate:
   - `--tls-key`: path to the TLS certificate key
   - `--tls-cert`: path to the TLS certificate
 - Let the server handle the certificate:
-  - `--letsencrypt-mail`: the mail used by the ACME protocol
+  - `--letsencrypt-email`: the mail used by the ACME protocol
 
 > [!NOTE]
 > With a custom certificate, the same certificate must be able to handle both domains. This doesn't apply to the default Let's Encrypt setup, which issues a separate certificate per domain on demand.
@@ -102,7 +102,7 @@ The server uses the HTTP listener for agent management traffic (kill commands, c
 
 | Transport | Flag                     | Description                    | Example         |
 | --------- | ------------------------ | ------------------------------- | --------------- |
-| SSH       | `--ssh-listen-addr`      | Address for SSH listener        | `[IP]:[PORT]`   |
+| SSH       | `--sshd-listen-addr`     | Address for SSH listener        | `[IP]:[PORT]`   |
 | TLS       | `--https-listen-addr`    | TLS server listen address       | `[IP]:[PORT]`   |
 | TLS       | `--tls` / `--no-tls`     | Enable/disable TLS listener     | `--tls`         |
 | TLS       | `--http-domain`          | HTTPS web server domain         | `example.com`   |

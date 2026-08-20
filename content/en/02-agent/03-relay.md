@@ -10,8 +10,8 @@ Agent B can relay connections from Agent A when: Agent A cannot reach the server
 
 ## Configure an agent as a relay
 
-- `--relay`: Enable relay mode on the agent
-- `--relay-port`: Port to listen on (default: `0` = random port)
+- `--relay-enabled`: Enable relay mode on the agent
+- `--relay-port`: Local port the relaying agent listens on for other agents (default: `0` = random port)
 
 > [!NOTE]
 > By default, the relay listens on all interfaces using a randomly assigned port.

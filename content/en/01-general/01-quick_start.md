@@ -52,7 +52,7 @@ A minimal configuration file that exposes only HTTP and SSH services is:
 
 ```yaml
 # The server's age private key.
-age-privkey: "AGE-SECRET-KEY-1NJ4DRPNKNGEVFK50JHUD6RKZ3NJ3Q9S5KYMTARTLXU0P0KQU8AAQNE4C2F"
+age-private-key: "AGE-SECRET-KEY-1NJ4DRPNKNGEVFK50JHUD6RKZ3NJ3Q9S5KYMTARTLXU0P0KQU8AAQNE4C2F"
 
 # Domains used to serve HTTP and WebSocket traffic.
 http-domain:
@@ -62,7 +62,7 @@ http-domain:
 http-listen-addr: :80
 
 # Address and port to bind for SSH connections (port 0 = random).
-ssh-listen-addr: :2222
+sshd-listen-addr: :2222
 
 # Access token required for the /manage/ API endpoint.
 access-token:
@@ -103,9 +103,14 @@ server: http://www.example.com
 # SSH Server to connect to.
 ssh-server: example.com:2222
 
-# To generate agents
+# Agent age public key. Only consumed by `tealc compile` when generating agents.
 age-public-key: age1krjxdnhmf2kqm8rdhyf6sr5nfvlwdcslux3fxt8amcrncwn3ss9sydlvd0
 ```
+
+> [!NOTE]
+> `age-public-key` is used only by `tealc compile`. Instead of `tealc.yaml`, you can pass
+> it per build with `-K`/`--age-public-key` (or `TEALC_AGE_PUBLIC_KEY`), or bake it into a
+> build file as `AGENT__AGE_PUBLIC_KEY` (which is what the next section does).
 
 ## Agent
 
@@ -121,7 +126,7 @@ tealc compile --drop-env > ./env.txt
 Minimal file with only HTTP (and SSHD) enabled:
 ```bash
 # Public age key corresponding to the server's private key
-AGENT__AGE_PUBKEY=age1e4txlmjtmc4sx5f8s7fhpka64d4d05rj3qn3jy4tgrta4p22euvq00ac5p
+AGENT__AGE_PUBLIC_KEY=age1krjxdnhmf2kqm8rdhyf6sr5nfvlwdcslux3fxt8amcrncwn3ss9sydlvd0
 # HTTP domain
 HTTP_DOMAIN=www.example.com
 # SSHD port exposed by the server

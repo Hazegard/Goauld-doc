@@ -50,8 +50,10 @@ tealc wireguard start [AGENT_NAME]
 
 ## Flags
 
-- `--range`: comma-separated IP ranges to route through the WireGuard VPN.
-- `--auto-range`: automatically set the ranges from the agent.
+- `--ranges`: comma-separated IP ranges to route through the WireGuard VPN.
+- `--auto-ranges`: automatically set the ranges from the agent.
+
+> The former `--range` and `--auto-range` spellings still work as aliases.
 - `--loopback`: use the loopback interface with the `240.0.0.0/8` address range.
 - `--exec` / `--no-exec`: Execute WireGuard commands directly (default: execute). Use `--no-exec` to print commands instead of running them.
 - `--port`: local port to bind the WireGuard proxy.

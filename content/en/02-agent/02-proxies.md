@@ -25,7 +25,7 @@ By default, it uses the same proxy selection priority as the agent (see [agent/t
 - `--http-proxy-username`: Username to authenticate on the proxy
 - `--http-proxy-password`: Password to authenticate on the proxy
 - `--http-proxy-domain`: Domain to authenticate on the proxy
-- `--http`/`--no-http`: Enable/Disable the HTTP proxy
+- `--http-proxy-enabled`/`--no-http-proxy-enabled`: Enable/Disable the HTTP proxy
 - `--http-port`: the remote port the HTTP proxy binds to on the server side (default: `0`, meaning a random port is chosen).
 
 > [!NOTE]
@@ -48,8 +48,11 @@ It uses the previously described HTTP proxy as its upstream proxy to handle syst
 
 ### Flags
 
-- `--mitm-http`/`--no-mitm-http`: Enable/Disable the MITM HTTP proxy
+- `--mitm-http-proxy-enabled`/`--no-mitm-http-proxy-enabled`: Enable/Disable the MITM HTTP proxy
 - `--mitm-http-port`: the remote port the MITM HTTP proxy binds to on the server side (default: `0`, meaning a random port is chosen).
+- `--mitm-http-proxy-username`: Username for the MITM HTTP upstream proxy
+- `--mitm-http-proxy-password`: Password for the MITM HTTP upstream proxy
+- `--mitm-http-proxy-domain`: Domain for the MITM HTTP upstream proxy
 
 > [!NOTE]
 > This proxy is automatically enabled when SOCKS proxy is configured to use MITM mode.
@@ -67,11 +70,11 @@ The SOCKS proxy can be configured to use different HTTP upstream proxies:
 ### Flags
 
 - `--socks-custom-proxy`: Custom upstream HTTP proxy used within the SOCKS proxy
-- `--socks-proxy`: Configure the upstream HTTP proxy to use (none|system|http|mitm|custom)
+- `--socks-upstream-proxy`: Configure the upstream HTTP proxy to use (none|system|http|mitm|custom)
 - `--socks-proxy-username`: Username for the SOCKS upstream proxy
 - `--socks-proxy-password`: Password for the SOCKS upstream proxy
 - `--socks-proxy-domain`: Domain for the SOCKS upstream proxy
-- `--socks`/`--no-socks`: Enable/Disable the SOCKS proxy
+- `--socks-enabled`/`--no-socks-enabled`: Enable/Disable the SOCKS proxy
 - `--socks-port`: the remote port the SOCKS proxy binds to on the server side (default: `0`, meaning a random port is chosen).
 
 ## Remote port forwarding
@@ -80,6 +83,6 @@ Independent of the three proxies above, the agent can forward specific ports on 
 
 ### Flags
 
-- `-R`/`--rpf`: `REMOTE_PORT[:LOCAL_IP]:LOCAL_PORT`: forwards `LOCAL_IP:LOCAL_PORT` (on the agent's host) to `REMOTE_PORT` on the server. `LOCAL_IP` defaults to `127.0.0.1` if omitted. Use `0` for `REMOTE_PORT` to let the server choose a random port. Can be repeated (or comma-separated) to forward multiple ports.
+- `-R`/`--remote-port-forwarding`: `REMOTE_PORT[:LOCAL_IP]:LOCAL_PORT`: forwards `LOCAL_IP:LOCAL_PORT` (on the agent's host) to `REMOTE_PORT` on the server. `LOCAL_IP` defaults to `127.0.0.1` if omitted. Use `0` for `REMOTE_PORT` to let the server choose a random port. Can be repeated (or comma-separated) to forward multiple ports.
 
-Example: `--rpf 8080::3000` forwards `127.0.0.1:3000` on the agent to port `8080` on the server.
+Example: `--remote-port-forwarding 8080::3000` forwards `127.0.0.1:3000` on the agent to port `8080` on the server.

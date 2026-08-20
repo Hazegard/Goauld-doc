@@ -33,13 +33,22 @@ services:
 ```
 
 > [!NOTE]
-> The SSH port mapping above must match your `ssh-listen-addr` value (`:2222` by default).
+> The SSH port mapping above must match your `sshd-listen-addr` value (`:2222` by default).
+
+## Server identity
+
+The server needs an Age private key; it is the only strictly required setting.
+
+- `--age-private-key`: the Age private key used by the server. The agents are compiled with the matching public key (`--age-public-key`), and a mismatch means agents cannot register.
+
+> [!WARNING]
+> Treat this key as a secret. Anything holding it can impersonate the server to every agent built against its public key.
 
 ## Configuration file example
 
 ```yaml
 # Age private key used by the server.
-age-privkey: ""
+age-private-key: ""
 
 # Domains used to serve HTTP and WebSocket traffic.
 http-domain:
@@ -59,7 +68,7 @@ http-listen-addr: :80
 https-listen-addr: :443
 
 # Address and port to bind for SSH connections (port 0 = random).
-ssh-listen-addr: :2222
+sshd-listen-addr: :2222
 
 # Address and port to bind for DNS connections (port 0 = random).
 dns-listen-addr: :53
@@ -77,7 +86,7 @@ tls-key: ""
 tls-cert: ""
 
 # Email used when generating Let's Encrypt certificates.
-letsencrypt-mail: mail@example.com
+letsencrypt-email: mail@example.com
 
 # Enable QUIC protocol support. Requires tls to also be enabled.
 quic: true
@@ -110,7 +119,7 @@ admin-token:
 binaries-basic-auth: username:password
 
 # Filesystem path where agent binaries are stored.
-binaries-path-location: ./binaries
+binaries-path: ./binaries
 ```
 
 ## Reloading TLS certificates and domains

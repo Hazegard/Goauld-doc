@@ -71,7 +71,7 @@ CLIENT__COMPILE_SEED=
 COMMON__ACCESS_TOKEN=
 
 # Public age key corresponding to the server's private key
-AGENT__AGE_PUBKEY=age1e4txlmjtmc4sx5f8s7fhpka64d4d05rj3qn3jy4tgrta4p22euvq00ac5p
+AGENT__AGE_PUBLIC_KEY=age1e4txlmjtmc4sx5f8s7fhpka64d4d05rj3qn3jy4tgrta4p22euvq00ac5p
 
 # HTTP domain
 HTTP_DOMAIN=www.example.com

@@ -13,12 +13,17 @@ By default (`binaries-basic-auth` unset), `/binaries/` is served with no authent
 ```yaml
 # HTTP Basic Auth credentials required to access the binaries endpoint.
 binaries-basic-auth: user:password
+# Filesystem path the server serves agent binaries from.
+binaries-path: ./binaries
 ```
+
+- `--binaries-basic-auth`: Basic Auth credentials (`user:password`) required to reach `/binaries/`.
+- `--binaries-path`: filesystem path the binaries are served from. Unset means nothing is served.
 
 Once set, requests without valid Basic Auth credentials for that user/password are rejected with a 401.
 
 > [!NOTE]
-> `binaries-path-location` must be configured for `/binaries/` to serve files. When `binaries-path-location` is unset, responses depend on authentication:
+> `binaries-path` must be configured for `/binaries/` to serve files. When `binaries-path` is unset, responses depend on authentication:
 > 
 > | Scenario | Response |
 > |----------|----------|
