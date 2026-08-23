@@ -1,1 +1,91 @@
 User-agent: *
+
+Allow: /Goauld-doc/04-client/01-authentication/
+
+Allow: /Goauld-doc/01-general/
+
+Allow: /Goauld-doc/03-server/01-services/
+
+Allow: /Goauld-doc/01-general/01-quick_start/
+
+Allow: /Goauld-doc/02-agent/01-tunnels/
+
+Allow: /Goauld-doc/02-agent/
+
+Allow: /Goauld-doc/01-general/02-compilation/
+
+Allow: /Goauld-doc/03-server/02-deployment/
+
+Allow: /Goauld-doc/02-agent/02-proxies/
+
+Allow: /Goauld-doc/04-client/02-tui/
+
+Allow: /Goauld-doc/03-server/03-access_control/
+
+Allow: /Goauld-doc/02-agent/03-relay/
+
+Allow: /Goauld-doc/03-server/
+
+Allow: /Goauld-doc/04-client/03-ssh/
+
+Allow: /Goauld-doc/01-general/03-variables/
+
+Allow: /Goauld-doc/04-client/
+
+Allow: /Goauld-doc/01-general/04-configuration_file/
+
+Allow: /Goauld-doc/03-server/04-healthcheck/
+
+Allow: /Goauld-doc/04-client/04-proxies/
+
+Allow: /Goauld-doc/02-agent/04-wireguard/
+
+Allow: /Goauld-doc/03-server/05-agent_downloading/
+
+Allow: /Goauld-doc/01-general/05-architecture/
+
+Allow: /Goauld-doc/02-agent/05-password_management/
+
+Allow: /Goauld-doc/04-client/05-scp/
+
+Allow: /Goauld-doc/03-server/06-database/
+
+Allow: /Goauld-doc/04-client/06-jump/
+
+Allow: /Goauld-doc/02-agent/06-killswitch/
+
+Allow: /Goauld-doc/04-client/07-clipboard/
+
+Allow: /Goauld-doc/02-agent/07-connection_flow/
+
+Allow: /Goauld-doc/04-client/08-shell-logging/
+
+Allow: /Goauld-doc/02-agent/08-working_days/
+
+Allow: /Goauld-doc/04-client/09-audit-mode/
+
+Allow: /Goauld-doc/04-client/10-controlmaster/
+
+Allow: /Goauld-doc/04-client/11-wireguard/
+
+Allow: /Goauld-doc/04-client/12-compilation/
+
+Allow: /Goauld-doc/04-client/13-admin/
+
+Allow: /Goauld-doc/04-client/14-password/
+
+Allow: /Goauld-doc/04-client/15-embed_server/
+
+Allow: /Goauld-doc/04-client/16-agent_binding/
+
+Allow: /Goauld-doc/04-client/17-socks/
+
+Allow: /Goauld-doc/04-client/18-vscode/
+
+Allow: /Goauld-doc/
+
+Allow: /Goauld-doc/categories/
+
+Allow: /Goauld-doc/search/
+
+Allow: /Goauld-doc/tags/

@@ -1,24 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Client features (tealc) on Goauld</title><link>https://Hazegard.github.io/Goauld-doc/04-client/</link><description>Recent content in Client features (tealc) on Goauld</description><generator>Hugo</generator><language>en</language><atom:link href="https://Hazegard.github.io/Goauld-doc/04-client/index.xml" rel="self" type="application/rss+xml"/><item><title>Client authentication</title><link>https://Hazegard.github.io/Goauld-doc/04-client/01-authentication/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/01-authentication/</guid><description>&lt;h2 id="user-authentication"&gt;User authentication&lt;a class="td-heading-self-link" href="#user-authentication" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Client features on Goauld</title><link>https://Hazegard.github.io/Goauld-doc/04-client/</link><description>Recent content in Client features on Goauld</description><generator>Hugo</generator><language>en</language><atom:link href="https://Hazegard.github.io/Goauld-doc/04-client/index.xml" rel="self" type="application/rss+xml"/><item><title>Client authentication</title><link>https://Hazegard.github.io/Goauld-doc/04-client/01-authentication/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/01-authentication/</guid><description>&lt;h2 id="user-authentication"&gt;User authentication&lt;a class="td-heading-self-link" href="#user-authentication" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;To interact with the server, users need an access token.&lt;/p&gt;
-&lt;p&gt;The access token can be provided through all means discussed here: &lt;a href="https://Hazegard.github.io/Goauld-doc/01-general/03-variables/"&gt;general/variables&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Provide it via:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CLI flag: &lt;code&gt;--access-token&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Configuration file&lt;/li&gt;
+&lt;li&gt;Environment variable&lt;/li&gt;
+&lt;li&gt;Compile-time value&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/01-general/03-variables/"&gt;general/variables&lt;/a&gt; for detailed precedence and configuration options.&lt;/p&gt;
 &lt;h3 id="flag"&gt;Flag&lt;a class="td-heading-self-link" href="#flag" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;--access-token&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;access-token&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;XXXXX&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="agent-authentication"&gt;Agent authentication&lt;a class="td-heading-self-link" href="#agent-authentication" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;All interaction with the agents (including SSH, SCP/Rsync, Kill/Reset/Delete commands , Clipboard operations, etc.) requires the agent password. (see &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/05-password_management/"&gt;agent/password management&lt;/a&gt;)&lt;/p&gt;
-&lt;h2 id="admin-authentication"&gt;Admin authentication&lt;a class="td-heading-self-link" href="#admin-authentication" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/03-server/03-access_control/"&gt;server/access control&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;--admin-token&lt;/code&gt; restricts access to administrative endpoints (&lt;code&gt;/admin/&lt;/code&gt;).&lt;/p&gt;
-&lt;h3 id="flag-1"&gt;Flag&lt;a class="td-heading-self-link" href="#flag-1" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;--admin-token&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;admin-token&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;XXXXX&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="agent-binaries-authentication"&gt;Agent binaries authentication&lt;a class="td-heading-self-link" href="#agent-binaries-authentication" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/03-server/05-agent_downloading/"&gt;server/agent downloading&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Tui</title><link>https://Hazegard.github.io/Goauld-doc/04-client/02-tui/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/02-tui/</guid><description>&lt;p&gt;The client provides a text-based user interface (TUI) to monitor and manage connected agents.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://Hazegard.github.io/Goauld-doc/04-client/02-tui/TUI.png" alt="test"&gt;&lt;/p&gt;
+&lt;p&gt;All interaction with the agents (including SSH, SCP/Rsync, Kill/Reset/Delete commands, Clipboard operations, etc.) requires the agent&amp;rsquo;s static password if the agent has one configured, set via the &lt;code&gt;-P&lt;/code&gt;/&lt;code&gt;--password&lt;/code&gt; flag. See &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/05-password_management/"&gt;agent/password management&lt;/a&gt; for details.&lt;/p&gt;</description></item><item><title>TUI</title><link>https://Hazegard.github.io/Goauld-doc/04-client/02-tui/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/02-tui/</guid><description>&lt;p&gt;The client provides a text-based user interface (TUI) to monitor and manage connected agents.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://Hazegard.github.io/Goauld-doc/04-client/02-tui/TUI.png" alt="Goauld TUI"&gt;&lt;/p&gt;
 &lt;h2 id="tui-keybinds"&gt;TUI keybinds&lt;a class="td-heading-self-link" href="#tui-keybinds" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
  &lt;thead&gt;
@@ -30,15 +27,15 @@
  &lt;tbody&gt;
  &lt;tr&gt;
  &lt;td style="text-align: center"&gt;&lt;code&gt;[ctrl+r]&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Reset the agent&lt;/td&gt;
+ &lt;td&gt;Reset the agent (press twice to confirm)&lt;/td&gt;
  &lt;/tr&gt;
  &lt;tr&gt;
  &lt;td style="text-align: center"&gt;&lt;code&gt;[ctrl+k]&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Stop the agent&lt;/td&gt;
+ &lt;td&gt;Stop the agent (press twice to confirm)&lt;/td&gt;
  &lt;/tr&gt;
  &lt;tr&gt;
  &lt;td style="text-align: center"&gt;&lt;code&gt;[ctrl+d]&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Stop the agent and attempt to delete the binary&lt;/td&gt;
+ &lt;td&gt;Stop the agent and attempt to delete the binary (press twice to confirm)&lt;/td&gt;
  &lt;/tr&gt;
  &lt;tr&gt;
  &lt;td style="text-align: center"&gt;&lt;code&gt;[Enter]&lt;/code&gt;&lt;/td&gt;
@@ -46,60 +43,86 @@
  &lt;/tr&gt;
  &lt;tr&gt;
  &lt;td style="text-align: center"&gt;&lt;code&gt;[ctrl+e]&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Launch VSCode&lt;/td&gt;
+ &lt;td&gt;Launch VS Code (press twice to confirm)&lt;/td&gt;
  &lt;/tr&gt;
  &lt;tr&gt;
  &lt;td style="text-align: center"&gt;&lt;code&gt;[+]&lt;/code&gt;&lt;/td&gt;
  &lt;td&gt;Toggle agent details&lt;/td&gt;
  &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;code&gt;[r]&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Refresh the agent list&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;code&gt;[↑]&lt;/code&gt;/&lt;code&gt;[↓]&lt;/code&gt;/&lt;code&gt;[←]&lt;/code&gt;/&lt;code&gt;[→]&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Navigate the agent list&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;code&gt;[q]&lt;/code&gt;/&lt;code&gt;[ctrl+c]&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Quit the TUI&lt;/td&gt;
+ &lt;/tr&gt;
  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;The kill, reset and delete actions are also available as standalone commands:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc &lt;span class="o"&gt;(&lt;/span&gt;kill&lt;span class="p"&gt;|&lt;/span&gt;reset&lt;span class="p"&gt;|&lt;/span&gt;delete&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="extended-tui"&gt;Extended TUI&lt;a class="td-heading-self-link" href="#extended-tui" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Some information is hidden by default. Press &lt;code&gt;+&lt;/code&gt; to toggle the details.&lt;/p&gt;</description></item><item><title>ssh</title><link>https://Hazegard.github.io/Goauld-doc/04-client/03-ssh/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/03-ssh/</guid><description>&lt;h2 id="connect-to-an-agent"&gt;Connect to an agent&lt;a class="td-heading-self-link" href="#connect-to-an-agent" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;This command is a wrapper around SSH that automatically connects to an agent through the server.&lt;/p&gt;
-&lt;h3 id="example-of-the-underlying-ssh-command"&gt;Example of the underlying SSH command&lt;a class="td-heading-self-link" href="#example-of-the-underlying-ssh-command" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;env &lt;span class="nv"&gt;SSH_ASKPASS_REQUIRE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;force &lt;span class="se"&gt;\
+&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;&lt;code&gt;ctrl+r&lt;/code&gt;, &lt;code&gt;ctrl+k&lt;/code&gt;, &lt;code&gt;ctrl+d&lt;/code&gt;, and &lt;code&gt;ctrl+e&lt;/code&gt; require the same key to be pressed twice in a row to confirm the action. The first press shows a confirmation prompt; any other key in between cancels it.&lt;/p&gt;</description></item><item><title>SSH</title><link>https://Hazegard.github.io/Goauld-doc/04-client/03-ssh/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/03-ssh/</guid><description>&lt;h2 id="connect-to-an-agent"&gt;Connect to an agent&lt;a class="td-heading-self-link" href="#connect-to-an-agent" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;tealc ssh [AGENT_NAME]&lt;/code&gt; is a wrapper around SSH that automatically handles authentication and proxy setup to connect you to an agent through the server.&lt;/p&gt;
+&lt;h3 id="how-tealc-ssh-works"&gt;How tealc ssh Works&lt;a class="td-heading-self-link" href="#how-tealc-ssh-works" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Example underlying SSH command:&lt;/strong&gt; this is the full command &lt;code&gt;tealc ssh&lt;/code&gt; builds and executes on your behalf, shown here for reference; you don&amp;rsquo;t need to type this yourself, see &amp;ldquo;Simple usage&amp;rdquo; below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Environment setup and authentication&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;env &lt;span class="nv"&gt;SSH_ASKPASS_REQUIRE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;force &lt;span class="se"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;SSH_ASKPASS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/bin/tealc &lt;span class="se"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_TYPE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;agent &lt;span class="se"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_SERVER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;http://localhost &lt;span class="se"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_SSH_SERVER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;localhost:2222 &lt;span class="se"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_ACCESS_TOKEN&lt;/span&gt;&lt;span class="o"&gt;=[&lt;/span&gt;ACCESS_TOKEN&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_ADMIN_TOKEN&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="se"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_AGENT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;user@hostname1 &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_PROMPT_STATIC_PASSWORD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt; &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh -oStrictHostKeyChecking&lt;span class="o"&gt;=&lt;/span&gt;no -oUserKnownHostsFile&lt;span class="o"&gt;=&lt;/span&gt;/dev/null &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-oPubkeyAuthentication&lt;span class="o"&gt;=&lt;/span&gt;no -oPreferredAuthentications&lt;span class="o"&gt;=&lt;/span&gt;password 
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-oLogLevel&lt;span class="o"&gt;=&lt;/span&gt;ERROR -oExitOnForwardFailure&lt;span class="o"&gt;=&lt;/span&gt;no &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_VERBOSE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_QUIET&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_CONFIG_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;TEALC_PROMPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Main SSH invocation with security options and proxy forwarding&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh -oStrictHostKeyChecking&lt;span class="o"&gt;=&lt;/span&gt;no -oUserKnownHostsFile&lt;span class="o"&gt;=&lt;/span&gt;/dev/null &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-oPubkeyAuthentication&lt;span class="o"&gt;=&lt;/span&gt;no -oPreferredAuthentications&lt;span class="o"&gt;=&lt;/span&gt;password &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-oLogLevel&lt;span class="o"&gt;=&lt;/span&gt;ERROR -oExitOnForwardFailure&lt;span class="o"&gt;=&lt;/span&gt;no &lt;span class="se"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-oNumberOfPasswordPrompts&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-oProxyCommand&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;env SSH_ASKPASS_REQUIRE=force \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# ProxyCommand for agent connection through server&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-oProxyCommand&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;env SSH_ASKPASS_REQUIRE=force \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;SSH_ASKPASS=/usr/local/bin/tealc \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_TYPE=otp \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_SERVER=http://localhost \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_SSH_SERVER=localhost:2222 \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_ACCESS_TOKEN=[ACCESS_TOKEN] \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_ADMIN_TOKEN= \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_AGENT=user@hostname1 \
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_PROMPT_STATIC_PASSWORD=true \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_VERBOSE=0 \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_QUIET=false \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_CONFIG_FILE= \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;TEALC_PROMPT=true \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;ssh -oClearAllForwardings=no -oStrictHostKeyChecking=no \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;-oUserKnownHostsFile=/dev/null -oPubkeyAuthentication=no \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;-oPreferredAuthentications=password -oLogLevel=ERROR \
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;-oExitOnForwardFailure=no -oNumberOfPasswordPrompts=1 \
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;-p2222 -W127.0.0.1:49521 -L3128:127.0.0.1:54079 \
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;-L1080:127.0.0.1:49524 user@hostname1@localhost&amp;#39;&lt;/span&gt; &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;user@hostname1@39fce32832f3375a409d99a13a4f0c77
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc ssh &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also pass flags to the underlying SSH command:&lt;/p&gt;</description></item><item><title>Proxies</title><link>https://Hazegard.github.io/Goauld-doc/04-client/04-proxies/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/04-proxies/</guid><description>&lt;p&gt;The client exposes the agent’s proxies locally on the host machine.&lt;/p&gt;
-&lt;h2 id="proxy-socks"&gt;Proxy SOCKS&lt;a class="td-heading-self-link" href="#proxy-socks" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;-p2222 -W127.0.0.1:49521 -L1080:127.0.0.1:49524 \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;-L3128:127.0.0.1:54079 user@hostname1@localhost&amp;#39;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Target agent connection&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;user@hostname1@39fce32832f3375a409d99a13a4f0c77
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Simple usage:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Proxies</title><link>https://Hazegard.github.io/Goauld-doc/04-client/04-proxies/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/04-proxies/</guid><description>&lt;p&gt;The client exposes the agent&amp;rsquo;s proxies on the loopback interface (localhost).&lt;/p&gt;
+&lt;h2 id="socks-proxy"&gt;SOCKS proxy&lt;a class="td-heading-self-link" href="#socks-proxy" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Exposed by default on the port &lt;code&gt;1080&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/02-proxies/#socks-proxy"&gt;agent/proxies#socks-proxy&lt;/a&gt; for details about the SOCKS proxy.&lt;/p&gt;
-&lt;h2 id="proxy-http"&gt;Proxy HTTP&lt;a class="td-heading-self-link" href="#proxy-http" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="http-proxy"&gt;HTTP proxy&lt;a class="td-heading-self-link" href="#http-proxy" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Exposed by default on the port &lt;code&gt;3128&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/02-proxies/#http-proxy"&gt;agent/proxies#socks-proxy&lt;/a&gt; for details about the HTTP proxy.&lt;/p&gt;
-&lt;h2 id="proxy-http-with-ntlmkerberos-application-level-authentication"&gt;Proxy HTTP with NTLM/Kerberos application-level authentication&lt;a class="td-heading-self-link" href="#proxy-http-with-ntlmkerberos-application-level-authentication" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/02-proxies/#http-proxy"&gt;agent/proxies#http-proxy&lt;/a&gt; for details about the HTTP proxy.&lt;/p&gt;
+&lt;h2 id="http-proxy-with-ntlmkerberos-application-level-authentication"&gt;HTTP proxy with NTLM/Kerberos application-level authentication&lt;a class="td-heading-self-link" href="#http-proxy-with-ntlmkerberos-application-level-authentication" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Exposed by default on the port &lt;code&gt;3129&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/02-proxies/#http-proxy-with-ntlmkerberos-authentication"&gt;agent/proxies#http-proxy-with-ntlmkerberos-authentication&lt;/a&gt; for details about the HTTP MITM proxy.&lt;/p&gt;</description></item><item><title>SCP</title><link>https://Hazegard.github.io/Goauld-doc/04-client/05-scp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/05-scp/</guid><description>&lt;div class="td-alert td-alert--md alert alert-important" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Important&lt;/div&gt;
+&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/02-proxies/#http-proxy-with-ntlmkerberos-authentication"&gt;agent/proxies#http-proxy-with-ntlmkerberos-authentication&lt;/a&gt; for details about the MITM HTTP proxy.&lt;/p&gt;</description></item><item><title>SCP</title><link>https://Hazegard.github.io/Goauld-doc/04-client/05-scp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/05-scp/</guid><description>&lt;div class="td-alert td-alert--md alert alert-important" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Important&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;For windows paths, &lt;code&gt;/&lt;/code&gt; must be used instead of &lt;code&gt;\&lt;/code&gt;:&lt;/p&gt;
+ &lt;p&gt;For Windows paths, &lt;code&gt;/&lt;/code&gt; must be used instead of &lt;code&gt;\&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc scp &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt;:C:/PATH/TO/FOLDER .
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
  &lt;/div&gt;
@@ -114,56 +137,55 @@
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc scp /PATH/TO/SOURCE/FILE &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt;:/PATH/TO/TARGET/FILE
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="transfer-files-from-the-agent-to-the-client"&gt;Transfer files from the agent to the client&lt;a class="td-heading-self-link" href="#transfer-files-from-the-agent-to-the-client" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc scp &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt;:/PATH/TO/TARGET/FILE /PATH/TO/SOURCE/FILE
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="rsync"&gt;RSYNC&lt;a class="td-heading-self-link" href="#rsync" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc rsync -arvP &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt;:C:/Path1 &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt;:C:/Windows/PATH2 .
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="td-alert td-alert--md alert alert-warning" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Warning&lt;/div&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="rsync"&gt;Rsync&lt;a class="td-heading-self-link" href="#rsync" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;On Windows agents, you can only copy from or to one drive per command.
-you can copy multiple directories from the same drive, but cannot copy from C: and D: in the same command.&lt;/p&gt;</description></item><item><title>Jump</title><link>https://Hazegard.github.io/Goauld-doc/04-client/06-jump/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/06-jump/</guid><description>&lt;p&gt;In some assessments, the agent is deployed on a bounce (jump) machine, from which we can access another machine, from which the assessment is performed.&lt;/p&gt;
-&lt;p&gt;In order to simplify the access to the assessment machine, a wrapper has been implemented in the client:&lt;/p&gt;
+ &lt;p&gt;Requires the &lt;code&gt;rsync&lt;/code&gt; binary to be installed locally.&lt;/p&gt;</description></item><item><title>Jump</title><link>https://Hazegard.github.io/Goauld-doc/04-client/06-jump/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/06-jump/</guid><description>&lt;p&gt;When the agent is deployed on an intermediate (jump) machine, use this wrapper to simplify access to the assessment target:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc jump --print &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;REMOTE_SERVER&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;-i ./id_ed25519&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;Although this command is simply :&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh -oProxyCommand&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;tealc ssh [AGENT_NAME] -W %h:%p [REMOTE_SERVER]&amp;#34;&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;-i ./id_ed25519&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+ &lt;p&gt;This command is roughly equivalent to:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh -oProxyCommand&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;tealc ssh [AGENT_NAME] -W %h:%p&amp;#34;&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;REMOTE_SERVER&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;-i ./id_ed25519&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When SSH ControlMaster is enabled (see &lt;a href="https://Hazegard.github.io/Goauld-doc/04-client/10-controlmaster/"&gt;client/controlmaster&lt;/a&gt;), &lt;code&gt;-M&lt;/code&gt; is also added to the inner &lt;code&gt;tealc ssh&lt;/code&gt; call.&lt;/p&gt;
  &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Although it simply wraps the underlying SSH ProxyCommand, it provides convenience for repeated jump connections.&lt;/p&gt;</description></item><item><title>Clipboard</title><link>https://Hazegard.github.io/Goauld-doc/04-client/07-clipboard/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/07-clipboard/</guid><description>&lt;p&gt;Access to the agent clipboard has been implemented to quickly share small text between the client and the agent.&lt;/p&gt;
+&lt;p&gt;It wraps the underlying SSH ProxyCommand, providing convenience for repeated jump connections.&lt;/p&gt;</description></item><item><title>Clipboard</title><link>https://Hazegard.github.io/Goauld-doc/04-client/07-clipboard/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/07-clipboard/</guid><description>&lt;p&gt;The agent clipboard can be accessed remotely to quickly share small text between the client and the agent.&lt;/p&gt;
 &lt;h2 id="retrieve-the-agent-clipboard"&gt;Retrieve the agent clipboard&lt;a class="td-heading-self-link" href="#retrieve-the-agent-clipboard" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The content will be printed to STDOUT&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc clip get &lt;span class="o"&gt;[&lt;/span&gt;AGENT&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="set-the-agent-clipboard"&gt;Set the agent clipboard&lt;a class="td-heading-self-link" href="#set-the-agent-clipboard" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc clip &lt;span class="nb"&gt;set&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;AGENT&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;CONTENT&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="td-alert td-alert--md alert alert-warning" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Warning&lt;/div&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;This feature is recommended for small content only. For larger content, use SCP or Rsync instead. (see &lt;a href="https://Hazegard.github.io/Goauld-doc/04-client/05-scp/"&gt;client/scp&lt;/a&gt;)&lt;/p&gt;
- &lt;/div&gt;
-&lt;/div&gt;</description></item><item><title>Shell logging</title><link>https://Hazegard.github.io/Goauld-doc/04-client/08-shell-logging/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/08-shell-logging/</guid><description>&lt;p&gt;The client allows logging of SSH sessions to keep a record of commands executed and their outputs.&lt;/p&gt;
-&lt;p&gt;Log files are saved in the current directory with the following format: &lt;code&gt;[AGENT_NAME]-[CURRENT_DATE]&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;[TODO]: exemple du log&lt;/p&gt;
-&lt;h2 id="flag"&gt;Flag&lt;a class="td-heading-self-link" href="#flag" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;--log&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Audit Mode</title><link>https://Hazegard.github.io/Goauld-doc/04-client/09-audit-mode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/09-audit-mode/</guid><description>&lt;h2 id="audit-mode"&gt;Audit Mode&lt;a class="td-heading-self-link" href="#audit-mode" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;This option enable redaction of sensitive information displayed on the TUI, providing privacy during demonstrations or shared sessions.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://Hazegard.github.io/Goauld-doc/04-client/09-audit-mode/audit-mode.png" alt="alt text"&gt;&lt;/p&gt;
+ &lt;p&gt;When SSH ControlMaster is enabled (see &lt;a href="https://Hazegard.github.io/Goauld-doc/04-client/10-controlmaster/"&gt;client/controlmaster&lt;/a&gt;), these commands reuse an existing master connection if available, avoiding the password prompt. If no master connection is open for the agent, a new connection is automatically created, which will also establish the ControlMaster socket for future use.&lt;/p&gt;</description></item><item><title>Shell logging</title><link>https://Hazegard.github.io/Goauld-doc/04-client/08-shell-logging/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/08-shell-logging/</guid><description>&lt;p&gt;The client allows logging of SSH sessions to keep a record of commands executed and their outputs.&lt;/p&gt;
+&lt;p&gt;Log files are saved in the current directory with the following format: &lt;code&gt;[AGENT_NAME]-[CURRENT_DATE]_[CURRENT_TIME].log&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Sessions are recorded in binary &lt;a href="https://en.wikipedia.org/wiki/Ttyrec"&gt;ttyrec&lt;/a&gt; format (via &lt;a href="https://github.com/hazegard/togettyc"&gt;togettyc&lt;/a&gt;), which is not human-readable. Open recorded sessions with &lt;code&gt;togettyc&lt;/code&gt; or any ttyrec-compatible player to view the commands and output. The same logging mechanism is used by &lt;code&gt;scp&lt;/code&gt;, &lt;code&gt;rsync&lt;/code&gt;, &lt;code&gt;rclone&lt;/code&gt;, and &lt;code&gt;jump --log&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;user@hostname1-2026-08-09_14-30-05.log&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Audit mode</title><link>https://Hazegard.github.io/Goauld-doc/04-client/09-audit-mode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/09-audit-mode/</guid><description>&lt;h2 id="audit-mode"&gt;Audit mode&lt;a class="td-heading-self-link" href="#audit-mode" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This option enables redaction of sensitive information displayed on the TUI, providing privacy during demonstrations or shared sessions.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://Hazegard.github.io/Goauld-doc/04-client/09-audit-mode/audit-mode.png" alt="Audit mode redacting sensitive information in the TUI"&gt;&lt;/p&gt;
 &lt;h3 id="flag"&gt;Flag&lt;a class="td-heading-self-link" href="#flag" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;--audit-mode&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Control Master</title><link>https://Hazegard.github.io/Goauld-doc/04-client/10-controlmaster/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/10-controlmaster/</guid><description>&lt;h2 id="ssh-controlmaster"&gt;SSH ControlMaster&lt;a class="td-heading-self-link" href="#ssh-controlmaster" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;li&gt;&lt;code&gt;--audit-mode&lt;/code&gt;: only available on the &lt;code&gt;tui&lt;/code&gt; subcommand, i.e. &lt;code&gt;tealc tui --audit-mode&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>ControlMaster</title><link>https://Hazegard.github.io/Goauld-doc/04-client/10-controlmaster/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/10-controlmaster/</guid><description>&lt;h2 id="ssh-controlmaster"&gt;SSH ControlMaster&lt;a class="td-heading-self-link" href="#ssh-controlmaster" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;This feature is not supported on Windows.&lt;/p&gt;
+ &lt;p&gt;This feature is not supported on Windows, this is an OpenSSH-for-Windows limitation, not something &lt;code&gt;tealc&lt;/code&gt; itself restricts.&lt;/p&gt;
  &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;The client can leverage SSH ControlMaster mode to share multiple SSH sessions over a single network connection.&lt;/p&gt;
-&lt;p&gt;This improves connection speed and avoids repeating the authentication process for each session.&lt;/p&gt;</description></item><item><title>Wireguard</title><link>https://Hazegard.github.io/Goauld-doc/04-client/11-wireguard/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/11-wireguard/</guid><description>&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/04-wireguard/"&gt;agent/wireguard&lt;/a&gt;
-A TUN interface is available to the client.&lt;/p&gt;
+&lt;p&gt;This improves connection speed and avoids repeating the authentication process for each session.&lt;/p&gt;
+&lt;h3 id="flag"&gt;Flag&lt;a class="td-heading-self-link" href="#flag" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-M&lt;/code&gt;/&lt;code&gt;--control-master&lt;/code&gt;: enable SSH ControlMaster to reuse the SSH connection.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;&lt;code&gt;-M&lt;/code&gt;/&lt;code&gt;--control-master&lt;/code&gt; applies to:&lt;/p&gt;</description></item><item><title>WireGuard</title><link>https://Hazegard.github.io/Goauld-doc/04-client/11-wireguard/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/11-wireguard/</guid><description>&lt;p&gt;See &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/04-wireguard/"&gt;agent/wireguard&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A TUN interface is available to the client.&lt;/p&gt;
 &lt;p&gt;The TUN interface is a WireGuard VPN that allows TCP, UDP, and ICMP (ping only) traffic from the agent without relying on a SOCKS proxy.&lt;/p&gt;
 &lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;The special range &lt;code&gt;240.0.0.0/8&lt;/code&gt; is translated into &lt;code&gt;127.0.0.0/8&lt;/code&gt; on the agent, enabling access to the loopback range.&lt;/p&gt;
+ &lt;p&gt;The &lt;code&gt;--loopback&lt;/code&gt; flag uses the special address range &lt;code&gt;240.0.0.0/8&lt;/code&gt;, which is translated into &lt;code&gt;127.0.0.0/8&lt;/code&gt; on the agent. This enables WireGuard clients to access the agent&amp;rsquo;s loopback network (localhost services).&lt;/p&gt;
  &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 id="how-to-use"&gt;How to use&lt;a class="td-heading-self-link" href="#how-to-use" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
@@ -172,31 +194,29 @@ A TUN interface is available to the client.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc wireguard generate
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The content looks like:&lt;/p&gt;</description></item><item><title>Compile agent</title><link>https://Hazegard.github.io/Goauld-doc/04-client/12-compilation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/12-compilation/</guid><description>&lt;p&gt;The client can recompile agents for different platforms and architectures.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc compile &lt;span class="o"&gt;(&lt;/span&gt;--id &lt;span class="o"&gt;[&lt;/span&gt;ID&lt;span class="o"&gt;])&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;-O &lt;span class="o"&gt;[&lt;/span&gt;OS&lt;span class="o"&gt;])&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;-A &lt;span class="o"&gt;[&lt;/span&gt;ARCH&lt;span class="o"&gt;])&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;ARCH&lt;/code&gt; flag can be:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc compile &lt;span class="o"&gt;(&lt;/span&gt;--id &lt;span class="o"&gt;[&lt;/span&gt;ID&lt;span class="o"&gt;])&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;-O&lt;span class="p"&gt;|&lt;/span&gt;--goos &lt;span class="o"&gt;[&lt;/span&gt;OS&lt;span class="o"&gt;])&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;-A&lt;span class="p"&gt;|&lt;/span&gt;--goarch &lt;span class="o"&gt;[&lt;/span&gt;ARCH&lt;span class="o"&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;&lt;code&gt;OS&lt;/code&gt; and &lt;code&gt;ARCH&lt;/code&gt; can also be set via the &lt;code&gt;GOOS&lt;/code&gt;/&lt;code&gt;GOARCH&lt;/code&gt; (or &lt;code&gt;TEALC_GOOS&lt;/code&gt;/&lt;code&gt;TEALC_GOARCH&lt;/code&gt;) environment variables instead of &lt;code&gt;-O&lt;/code&gt;/&lt;code&gt;-A&lt;/code&gt;.&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The &lt;code&gt;ID&lt;/code&gt; flag can be:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;amd64&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;arm64&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;arm&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;386&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;client&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;server&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;agent&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;agent-mini&lt;/code&gt;: a small stager. It does not carry the full agent&amp;rsquo;s functionality itself. At runtime, it fetches the full agent from the server over the encrypted control channel and runs it (see &lt;a href="https://Hazegard.github.io/Goauld-doc/01-general/02-compilation/"&gt;general/compilation&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;agent.dll&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The &lt;code&gt;OS&lt;/code&gt; flag can be:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;darwin&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;linux&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;windows&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="compile-the-agent-with-custom-default-values"&gt;Compile the agent with custom default values&lt;a class="td-heading-self-link" href="#compile-the-agent-with-custom-default-values" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;Generate the configuration file:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc compile --drop-env &amp;gt; ./env.txt
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This configuration file can then be modified to set custom defaults before recompilation.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc compile --env &lt;span class="o"&gt;[&lt;/span&gt;/PATH/TO/ENV&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Admin features</title><link>https://Hazegard.github.io/Goauld-doc/04-client/13-admin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/13-admin/</guid><description>&lt;h2 id="dump-the-current-configuration"&gt;Dump the current configuration&lt;a class="td-heading-self-link" href="#dump-the-current-configuration" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ tealc admin config
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;#Age private key used by the server.&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;age-privkey&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;[REDACTED]&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;p&gt;The &lt;code&gt;ARCH&lt;/code&gt; flag can be:&lt;/p&gt;</description></item><item><title>Admin features</title><link>https://Hazegard.github.io/Goauld-doc/04-client/13-admin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/13-admin/</guid><description>&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;&lt;code&gt;tealc admin&lt;/code&gt; is for internal/administrative use only, rarely needed in normal operation.&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="dump-the-current-configuration"&gt;Dump the current configuration&lt;a class="td-heading-self-link" href="#dump-the-current-configuration" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc admin config
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Age private key used by the server.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;age-private-key&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;[REDACTED]&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Domains used to serve HTTP and WebSocket traffic.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;http-domain&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
@@ -209,9 +229,6 @@ A TUN interface is available to the client.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Domain used to serve DNS-based traffic (SSH over DNS).&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;dns-domain&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;t.example.com&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Domain used to serve DNS-based traffic (SSH over DNS-ALT).&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;dns-domain-alt&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;s.example.com&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Address and port to bind for HTTP connections (port 0 = random).&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;http-listen-addr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0.0.0.0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="m"&gt;80&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
@@ -219,7 +236,7 @@ A TUN interface is available to the client.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;https-listen-addr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0.0.0.0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="m"&gt;443&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Address and port to bind for SSH connections (port 0 = random).&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;ssh-listen-addr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0.0.0.0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="m"&gt;2222&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;sshd-listen-addr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0.0.0.0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="m"&gt;2222&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Address and port to bind for DNS connections (port 0 = random).&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;dns-listen-addr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0.0.0.0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="m"&gt;53&lt;/span&gt;&lt;span class="w"&gt;
@@ -237,21 +254,21 @@ A TUN interface is available to the client.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;tls-cert&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;./local_config/cert/local.pem&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Email used when generating Let&amp;#39;s Encrypt certificates.&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;letsencrypt-mail&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;mail@example.com&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;letsencrypt-email&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;mail@example.com&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Enable QUIC protocol support.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Enable QUIC protocol support. Requires tls to also be enabled.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;quic&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Enable DNS server for SSH-over-DNS connections.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;dns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Disable database usage.&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;db&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;no-db&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Path or filename of the database to use.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;db-file-name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;Goauld.db&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# List of IP addresses allowed to access the /manage/ endpoint.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# List of IP addresses allowed to access the /admin/ and /manage/ endpoints, SSH password authentication, and SSH local port forwarding.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;allowed-ips&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Access token required for the /manage/ API endpoint.&lt;/span&gt;&lt;span class="w"&gt;
@@ -266,7 +283,7 @@ A TUN interface is available to the client.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;binaries-basic-auth&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;[REDACTED]&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Filesystem path where agent binaries are stored.&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;binaries-path-location&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;./binaries&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;binaries-path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;./binaries&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Increase log verbosity. Repeat for more detail.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;verbose&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="w"&gt;
@@ -283,7 +300,7 @@ A TUN interface is available to the client.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# Path to the configuration file to use.&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;config-file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;./local_config/server.yaml&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="dump-the-connected-agent-information"&gt;Dump the connected agent information&lt;a class="td-heading-self-link" href="#dump-the-connected-agent-information" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ tealc admin dump
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc admin dump
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;- &lt;span class="nt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;1ec1bd83de498e7da8852efe6d8c16c5&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;user@Archamd2&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;SSHMode&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;WS&lt;/span&gt;&lt;span class="w"&gt;
@@ -345,17 +362,32 @@ A TUN interface is available to the client.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="m"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="m"&gt;56752&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;dns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;agentId&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;1ec1bd83de498e7da8852efe6d8c16c5&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;cdn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;{}&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Password</title><link>https://Hazegard.github.io/Goauld-doc/04-client/14-password/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/14-password/</guid><description>&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="update-the-server-log-level"&gt;Update the server log level&lt;a class="td-heading-self-link" href="#update-the-server-log-level" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc admin log-level debug
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The level is a required argument (e.g. &lt;code&gt;debug&lt;/code&gt;, &lt;code&gt;info&lt;/code&gt;, &lt;code&gt;warn&lt;/code&gt;, &lt;code&gt;error&lt;/code&gt;).&lt;/p&gt;</description></item><item><title>Password</title><link>https://Hazegard.github.io/Goauld-doc/04-client/14-password/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/14-password/</guid><description>&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;This command is mostly an internal one.
-But it is still documented in case on manual connection to the agents through the server&lt;/p&gt;
+ &lt;p&gt;This command is mostly internal. It is documented in case you need to manually connect to an agent via SSH without using &lt;code&gt;tealc&lt;/code&gt;.&lt;/p&gt;
  &lt;/div&gt;
-&lt;/div&gt;</description></item><item><title>Embed server</title><link>https://Hazegard.github.io/Goauld-doc/04-client/15-embed_server/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/15-embed_server/</guid><description>&lt;p&gt;The client can enter in server mode allowing to reproduce the &lt;code&gt;nc -lvp&lt;/code&gt; command.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Manual usage:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc pass --agent &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt; --type &lt;span class="o"&gt;[&lt;/span&gt;otp&lt;span class="p"&gt;|&lt;/span&gt;agent&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;ARGS&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="flags"&gt;Flags&lt;a class="td-heading-self-link" href="#flags" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--agent&lt;/code&gt;: the agent to retrieve the password for. If omitted, the first positional argument in &lt;code&gt;ARGS&lt;/code&gt; is used instead.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--type&lt;/code&gt;: password type to retrieve:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;otp&lt;/code&gt;: one-time proxy password for &lt;code&gt;ProxyCommand&lt;/code&gt; setup&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;agent&lt;/code&gt;: the agent&amp;rsquo;s static password (described in &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/05-password_management/"&gt;agent/password management&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Omitted: prints both, labeled &lt;code&gt;OTP:&lt;/code&gt; and &lt;code&gt;Agent:&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="how-its-actually-invoked-as-ssh_askpass"&gt;How it&amp;rsquo;s actually invoked as &lt;code&gt;SSH_ASKPASS&lt;/code&gt;&lt;a class="td-heading-self-link" href="#how-its-actually-invoked-as-ssh_askpass" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This is the command &lt;code&gt;tealc ssh&lt;/code&gt; and &lt;code&gt;tealc jump&lt;/code&gt; set as &lt;code&gt;SSH_ASKPASS&lt;/code&gt; (see the example SSH command in &lt;a href="https://Hazegard.github.io/Goauld-doc/04-client/03-ssh/"&gt;client/ssh&lt;/a&gt;). In that context, ssh does not call it with &lt;code&gt;--agent&lt;/code&gt;/&lt;code&gt;--type&lt;/code&gt; flags: it sets &lt;code&gt;TEALC_AGENT&lt;/code&gt; and &lt;code&gt;TEALC_TYPE&lt;/code&gt; as environment variables (along with &lt;code&gt;TEALC_SERVER&lt;/code&gt;, &lt;code&gt;TEALC_SSH_SERVER&lt;/code&gt;, &lt;code&gt;TEALC_ACCESS_TOKEN&lt;/code&gt;, etc.), and invokes the binary with a single positional argument: the literal prompt text ssh itself would normally show (e.g. &lt;code&gt;user@host's password: &lt;/code&gt;).&lt;/p&gt;</description></item><item><title>Embed server</title><link>https://Hazegard.github.io/Goauld-doc/04-client/15-embed_server/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/15-embed_server/</guid><description>&lt;p&gt;The client can enter server mode, allowing it to emulate a listening server (similar to &lt;code&gt;nc -lvp&lt;/code&gt;).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc embed-server
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
  &lt;div class="td-alert-body"&gt;
- &lt;p&gt;The deployed agent must embed or be passed an appropriate Age public key&lt;/p&gt;
+ &lt;p&gt;The deployed agent must have an appropriate age public key (embedded at compile-time or provided at runtime).&lt;/p&gt;
  &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
@@ -363,13 +395,32 @@ But it is still documented in case on manual connection to the agents through th
  &lt;p&gt;The agent automatically kills itself after the shell session ends&lt;/p&gt;
  &lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 id="demo"&gt;Demo&lt;a class="td-heading-self-link" href="#demo" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;video width=90% controls autoplay&gt;
- &lt;source src="embed-server.webm" type="video/webm"&gt;
- Your browser does not support the video tag.
-&lt;/video&gt;</description></item><item><title>Agent binding</title><link>https://Hazegard.github.io/Goauld-doc/04-client/16-agent_binding/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/16-agent_binding/</guid><description>&lt;p&gt;When the agent is in bind mode, it exposes a port on which the client connects to. (see &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/01-tunnels/#agent-binding"&gt;agent/tunnels&lt;/a&gt;)&lt;/p&gt;
 &lt;h2 id="flags"&gt;Flags&lt;a class="td-heading-self-link" href="#flags" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;--kill&lt;/code&gt; whether to kill the agent on disconnection&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[AGENT_ADDR]&lt;/code&gt;: the agent to bind to, format: &lt;code&gt;[IP]:[PORT]&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</description></item></channel></rss>
+&lt;li&gt;&lt;code&gt;--age-privkey&lt;/code&gt;: age private key for the embedded server. &lt;code&gt;tealc&lt;/code&gt; requires this key to be provided via one of these methods:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--age-privkey&lt;/code&gt; flag&lt;/li&gt;
+&lt;li&gt;Configuration file entry&lt;/li&gt;
+&lt;li&gt;Environment variable&lt;/li&gt;
+&lt;li&gt;Compile-time embedding via &lt;code&gt;CLIENT__AGE_PRIVKEY&lt;/code&gt; (see &lt;a href="https://Hazegard.github.io/Goauld-doc/04-client/12-compilation/"&gt;client/compilation&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--http-listen-addr&lt;/code&gt;, &lt;code&gt;--https-listen-addr&lt;/code&gt;, &lt;code&gt;--ssh-listen-addr&lt;/code&gt;, &lt;code&gt;--dns-listen-addr&lt;/code&gt;, &lt;code&gt;--quic-listen-addr&lt;/code&gt;: override the listen addresses for the embedded server&amp;rsquo;s respective services, matching their &lt;a href="https://Hazegard.github.io/Goauld-doc/03-server/01-services/"&gt;server/services&lt;/a&gt; counterparts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="demo"&gt;Demo&lt;a class="td-heading-self-link" href="#demo" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;video width="90%" controls autoplay muted&gt;
+ &lt;source src="embed-server.webm" type="video/webm"&gt;
+ Your browser does not support the video tag.
+&lt;/video&gt;</description></item><item><title>Agent binding</title><link>https://Hazegard.github.io/Goauld-doc/04-client/16-agent_binding/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/16-agent_binding/</guid><description>&lt;p&gt;When the agent is in bind mode, the client connects directly to the port exposed by the agent (see &lt;a href="https://Hazegard.github.io/Goauld-doc/02-agent/01-tunnels/#agent-binding"&gt;agent/tunnels&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;To do this, &lt;code&gt;tealc bind&lt;/code&gt; starts a full local server instance (the same embedded server used by &lt;code&gt;tealc embed-server&lt;/code&gt;, see &lt;a href="https://Hazegard.github.io/Goauld-doc/04-client/15-embed_server/"&gt;client/embed server&lt;/a&gt;) to accept the agent&amp;rsquo;s connection.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc &lt;span class="nb"&gt;bind&lt;/span&gt; &amp;lt;AGENT_ADDR&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;Only the first agent to connect is used to open an SSH session. Any agent that connects afterward is terminated immediately; this happens regardless of the &lt;code&gt;--kill&lt;/code&gt; flag. &lt;code&gt;--kill&lt;/code&gt; only controls whether the agent actually used for the session is terminated once that session ends.&lt;/p&gt;</description></item><item><title>SOCKS</title><link>https://Hazegard.github.io/Goauld-doc/04-client/17-socks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/17-socks/</guid><description>&lt;p&gt;&lt;code&gt;tealc socks&lt;/code&gt; is a shortcut around &lt;code&gt;tealc ssh&lt;/code&gt; that forwards only the SOCKS and HTTP proxies (no MITM HTTP, no WireGuard), without opening an interactive shell by default.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc socks &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Like &lt;code&gt;tealc ssh&lt;/code&gt;, &lt;code&gt;tealc socks&lt;/code&gt; also accepts additional arguments, but they only reach the underlying SSH command when &lt;code&gt;--ssh&lt;/code&gt; is active. By default &lt;code&gt;--ssh&lt;/code&gt; is disabled: only the connection to the Goauld server is made, to forward the proxy ports, so there is no SSH connection for the additional arguments to reach.&lt;/p&gt;</description></item><item><title>VS Code</title><link>https://Hazegard.github.io/Goauld-doc/04-client/18-vscode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Hazegard.github.io/Goauld-doc/04-client/18-vscode/</guid><description>&lt;p&gt;&lt;code&gt;tealc vscode&lt;/code&gt; launches &lt;a href="https://code.visualstudio.com/"&gt;VS Code&lt;/a&gt; in remote mode against an agent, using the same SSH tunneling as &lt;code&gt;tealc ssh&lt;/code&gt; under the hood. It requires the &lt;code&gt;code&lt;/code&gt; CLI to be installed and available in &lt;code&gt;$PATH&lt;/code&gt; locally.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tealc vscode &lt;span class="o"&gt;[&lt;/span&gt;AGENT_NAME&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;REMOTE_PATH&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;REMOTE_PATH&lt;/code&gt; is the directory to open on the agent (defaults to the current directory).&lt;/p&gt;
+&lt;div class="td-alert td-alert--md alert alert-note" role="alert"&gt;&lt;div class="td-alert-heading alert-heading" role="heading"&gt;Note&lt;/div&gt;
+ &lt;div class="td-alert-body"&gt;
+ &lt;p&gt;The local &lt;code&gt;ssh_config&lt;/code&gt;/&lt;code&gt;settings.json&lt;/code&gt; generated for the remote session are stored per agent (under the OS cache directory, in a subfolder named after the target agent), so running &lt;code&gt;tealc vscode&lt;/code&gt; against different agents at the same time doesn&amp;rsquo;t overwrite one session&amp;rsquo;s config with another&amp;rsquo;s.&lt;/p&gt;</description></item></channel></rss>
