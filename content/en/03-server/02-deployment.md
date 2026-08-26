@@ -4,8 +4,8 @@ description: Goauld server deployment
 weight: 2
 ---
 
-> [!WARNING]
-> Goauld is not designed to run behind a reverse proxy. The IP allowlisting feature (`--allowed-ips`) will not work correctly when the server is behind a reverse proxy, as the client IP will appear as the proxy's IP rather than the actual client.
+> [!NOTE]
+> IP allowlisting (`--allowed-ips`) can work correctly behind a reverse proxy via `--trusted-proxies` — see [Reverse proxy support]({{< ref "03-server/03-access_control" >}}#reverse-proxy-support) in Access control. This only covers the `/admin/` and `/manage/` HTTP endpoints; SSH password authentication and SSH local port forwarding always see the raw TCP peer address, so a proxied SSH listener is still not supported.
 
 ## Docker compose example
 
@@ -106,6 +106,13 @@ db-file-name: Goauld.db
 allowed-ips:
 - 127.0.0.1
 - 192.168.1.0/24
+
+# List of reverse-proxy/load-balancer IP addresses or CIDR ranges trusted to set X-Forwarded-For.
+# Only set this when Goauld is deployed behind a reverse proxy - must include the proxy's own IP/CIDR.
+# Leave empty (default) for direct internet-facing deployments; X-Forwarded-For is otherwise ignored.
+# Only affects the allowed-ips check above for the /admin/ and /manage/ HTTP endpoints - SSH password
+# authentication and SSH local port forwarding are not covered (see 03-server/03-access_control#reverse-proxy-support).
+trusted-proxies: []
 
 # Access token required for the /manage/ API endpoint.
 access-token:
