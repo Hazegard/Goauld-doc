@@ -5,7 +5,7 @@ weight: 2
 ---
 
 > [!NOTE]
-> IP allowlisting (`--allowed-ips`) can work correctly behind a reverse proxy via `--trusted-proxies` — see [Reverse proxy support]({{< ref "03-server/03-access_control" >}}#reverse-proxy-support) in Access control. This only covers the `/admin/` and `/manage/` HTTP endpoints; SSH password authentication and SSH local port forwarding always see the raw TCP peer address, so a proxied SSH listener is still not supported.
+> IP allowlisting (`--allowed-ips`) can work correctly behind a reverse proxy via `--trusted-proxies` (see [Reverse proxy support]({{< ref "03-server/03-access_control" >}}#reverse-proxy-support) in Access control). This only covers the `/admin/` and `/manage/` HTTP endpoints; SSH password authentication and SSH local port forwarding always see the raw TCP peer address, so a proxied SSH listener is still not supported.
 
 ## Docker compose example
 
@@ -108,9 +108,9 @@ allowed-ips:
 - 192.168.1.0/24
 
 # List of reverse-proxy/load-balancer IP addresses or CIDR ranges trusted to set X-Forwarded-For.
-# Only set this when Goauld is deployed behind a reverse proxy - must include the proxy's own IP/CIDR.
+# Only set this when Goauld is deployed behind a reverse proxy: must include the proxy's own IP/CIDR.
 # Leave empty (default) for direct internet-facing deployments; X-Forwarded-For is otherwise ignored.
-# Only affects the allowed-ips check above for the /admin/ and /manage/ HTTP endpoints - SSH password
+# Only affects the allowed-ips check above for the /admin/ and /manage/ HTTP endpoints, SSH password
 # authentication and SSH local port forwarding are not covered (see 03-server/03-access_control#reverse-proxy-support).
 trusted-proxies: []
 

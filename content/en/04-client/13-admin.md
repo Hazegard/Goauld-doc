@@ -70,7 +70,7 @@ db-file-name: Goauld.db
 # List of IP addresses allowed to access the /admin/ and /manage/ endpoints, SSH password authentication, and SSH local port forwarding.
 allowed-ips: []
 
-# List of reverse-proxy/load-balancer IP addresses or CIDR ranges trusted to set X-Forwarded-For. Only set this when Goauld is deployed behind a reverse proxy — must include the proxy's own IP/CIDR. Leave empty (default) for direct internet-facing deployments; X-Forwarded-For is otherwise ignored. Only affects the allowed-ips check for the /admin/ and /manage/ HTTP endpoints — SSH password authentication and SSH local port forwarding always use the raw TCP peer address and are not covered by this setting.
+# List of reverse-proxy/load-balancer IP addresses or CIDR ranges trusted to set X-Forwarded-For. Only set this when Goauld is deployed behind a reverse proxy. Must include the proxy's own IP/CIDR. Leave empty (default) for direct internet-facing deployments; X-Forwarded-For is otherwise ignored. Only affects the allowed-ips check for the /admin/ and /manage/ HTTP endpoints. SSH password authentication and SSH local port forwarding always use the raw TCP peer address and are not covered by this setting.
 trusted-proxies: []
 
 # Access token required for the /manage/ API endpoint.

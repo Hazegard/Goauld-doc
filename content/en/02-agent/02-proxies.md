@@ -26,7 +26,10 @@ By default, it uses the same proxy selection priority as the agent (see [agent/t
 - `--http-proxy-password`: Password to authenticate on the proxy
 - `--http-proxy-domain`: Domain to authenticate on the proxy
 - `--http-proxy-enabled`/`--no-http-proxy-enabled`: Enable/Disable the HTTP proxy
-- `--http-port`: the remote port the HTTP proxy binds to on the server side (default: `0`, meaning a random port is chosen).
+- `--http-port`: the virtual port identifying the HTTP proxy forward on the server (default: `0`, meaning the server assigns one automatically).
+
+> [!NOTE]
+> Despite the name, `--http-port` (like `--http-mitm-port`, `--socks-port`, and `-R`/`--remote-port-forwarding`'s `REMOTE_PORT` below) does not cause the server to open a real listening socket on its host. It is a virtual identifier, scoped to this agent, that the server resolves entirely in-process against the agent's own SSH connection when a client (via `tealc socks`/`tealc ssh`'s proxy forwarding, see [client/proxies]({{< ref "04-client/04-proxies" >}})) asks to reach it. No port is ever exposed on the server's network interfaces for this traffic.
 
 > [!NOTE]
 > This proxy is automatically enabled in these cases:
@@ -49,7 +52,7 @@ It uses the previously described HTTP proxy as its upstream proxy to handle syst
 ### Flags
 
 - `--mitm-http-proxy-enabled`/`--no-mitm-http-proxy-enabled`: Enable/Disable the MITM HTTP proxy
-- `--mitm-http-port`: the remote port the MITM HTTP proxy binds to on the server side (default: `0`, meaning a random port is chosen).
+- `--mitm-http-port`: the virtual port identifying the MITM HTTP proxy forward on the server (default: `0`, meaning the server assigns one automatically, see the note under [HTTP proxy](#http-proxy) above).
 - `--mitm-http-proxy-username`: Username for the MITM HTTP upstream proxy
 - `--mitm-http-proxy-password`: Password for the MITM HTTP upstream proxy
 - `--mitm-http-proxy-domain`: Domain for the MITM HTTP upstream proxy
@@ -75,7 +78,7 @@ The SOCKS proxy can be configured to use different HTTP upstream proxies:
 - `--socks-proxy-password`: Password for the SOCKS upstream proxy
 - `--socks-proxy-domain`: Domain for the SOCKS upstream proxy
 - `--socks-enabled`/`--no-socks-enabled`: Enable/Disable the SOCKS proxy
-- `--socks-port`: the remote port the SOCKS proxy binds to on the server side (default: `0`, meaning a random port is chosen).
+- `--socks-port`: the virtual port identifying the SOCKS proxy forward on the server (default: `0`, meaning the server assigns one automatically, see the note under [HTTP proxy](#http-proxy) above).
 
 ## Remote port forwarding
 
@@ -83,6 +86,6 @@ Independent of the three proxies above, the agent can forward specific ports on 
 
 ### Flags
 
-- `-R`/`--remote-port-forwarding`: `REMOTE_PORT[:LOCAL_IP]:LOCAL_PORT`: forwards `LOCAL_IP:LOCAL_PORT` (on the agent's host) to `REMOTE_PORT` on the server. `LOCAL_IP` defaults to `127.0.0.1` if omitted. Use `0` for `REMOTE_PORT` to let the server choose a random port. Can be repeated (or comma-separated) to forward multiple ports.
+- `-R`/`--remote-port-forwarding`: `REMOTE_PORT[:LOCAL_IP]:LOCAL_PORT`: forwards `LOCAL_IP:LOCAL_PORT` (on the agent's host) to `REMOTE_PORT` on the server. `LOCAL_IP` defaults to `127.0.0.1` if omitted. Use `0` for `REMOTE_PORT` to let the server assign one automatically. Can be repeated (or comma-separated) to forward multiple ports. `REMOTE_PORT` is a virtual identifier resolved in-process, the same as the proxy ports above; it is never a real listening socket on the server.
 
 Example: `--remote-port-forwarding 8080::3000` forwards `127.0.0.1:3000` on the agent to port `8080` on the server.

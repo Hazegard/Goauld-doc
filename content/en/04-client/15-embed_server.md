@@ -24,7 +24,10 @@ tealc embed-server
   - Configuration file entry
   - Environment variable
   - Compile-time embedding via `CLIENT__AGE_PRIVKEY` (see [client/compilation]({{< ref "04-client/12-compilation" >}}))
-- `--http-listen-addr`, `--https-listen-addr`, `--ssh-listen-addr`, `--dns-listen-addr`, `--quic-listen-addr`: override the listen addresses for the embedded server's respective services, matching their [server/services]({{< ref "03-server/01-services" >}}) counterparts.
+- `--http-listen-addr`, `--https-listen-addr`, `--dns-listen-addr`, `--quic-listen-addr`: override the listen addresses for the embedded server's respective services, matching their [server/services]({{< ref "03-server/01-services" >}}) counterparts.
+
+> [!NOTE]
+> `--ssh-listen-addr` exists as a flag but has no effect here: `tealc embed-server` never binds a raw SSH TCP listener. The connecting agent reaches sshd in-process regardless of transport, and the operator's own SSH connection is always routed through the embedded server's `/ssh-ws/` WebSocket endpoint instead of a `-p<port>` TCP dial (see [Connecting over WebSocket]({{< ref "04-client/03-ssh" >}}#connecting-over-websocket) in client/SSH).
 
 ## Demo
 

@@ -22,4 +22,8 @@ The server acts as a broker: it terminates the agent's tunnel on one side and ex
 
 The default SSH listener exposed by the server is `:2222` (see [general/quick_start]({{< ref "01-general/01-quick_start" >}})).
 
+## In-process routing
+
+Beyond its core transport listeners (SSH, TLS, HTTP, DNS, QUIC, see [server/services]({{< ref "03-server/01-services" >}})), the server never opens a real listening socket per forwarded proxy or port. An agent's SOCKS/HTTP/MITM proxies and remote port forwards (see [agent/proxies]({{< ref "02-agent/02-proxies" >}})) are each identified by a virtual port scoped to that agent's own SSH connection, resolved entirely in-process when an operator's client asks to reach one. The same applies on the client side for `tealc bind` and `tealc embed-server` (see [client/agent binding]({{< ref "04-client/16-agent_binding" >}}) and [client/embed server]({{< ref "04-client/15-embed_server" >}})): the embedded server they run never binds a raw SSH TCP listener either, and reaches the connecting agent's sshd in-process instead. This keeps the number of sockets actually exposed on any host to the minimum needed for the outbound tunnel and the operator-facing API, regardless of how many proxies or forwards are active behind it.
+
 ![Goauld architecture](Goauld.png)

@@ -27,7 +27,7 @@ The control socket is a Socket.IO client/server.
 It works on:
 1. WebSocket (via HTTP Upgrade)
 2. HTTP long polling
-3. Encapsulated over DNS – in this mode, the WebSocket transport is tunneled through DNS queries and responses, allowing the control channel to operate in environments where only DNS egress is allowed.
+3. Encapsulated over DNS: in this mode, the WebSocket transport is tunneled through DNS queries and responses, allowing the control channel to operate in environments where only DNS egress is allowed.
 
 
 All control messages are encrypted. The agent identifier is an exception: it is transmitted in cleartext so the server can associate the connection with the correct agent instance.

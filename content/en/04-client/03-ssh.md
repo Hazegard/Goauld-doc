@@ -80,7 +80,14 @@ tealc ssh [AGENT_NAME] -L "127.0.0.1:8080:127.0.0.1:8080"
 >
 > With `--no-ssh`, only the first connection (to the server) is made, purely to forward the proxy ports. The agent's SSHD is never contacted directly. Since there is no second connection, additional arguments are dropped.
 
+## Connecting over WebSocket
 
+If the server is behind a reverse proxy or firewall that only allows HTTP(S) egress, pass `--ws` to tunnel SSH traffic over a WebSocket instead of a raw TCP connection to `--ssh-server`. The WebSocket is dialed against `--server`'s address (the same one `/manage/` and `/admin/` use), with its scheme swapped to `ws`/`wss`; `--ssh-server` is not used at all in this mode. All SSH traffic (both the outer/inner `ssh` subprocess connections `tealc ssh` builds, and `tealc`'s own internal SSH client used by `kill`/`reset`/`delete`/clipboard/`wireguard`) then tunnels through the server's `/ssh-ws/` endpoint instead of dialing the sshd port directly.
+
+This requires the server to be started with `--ssh-websocket`, see [Reverse proxy support]({{< ref "03-server/03-access_control" >}}#reverse-proxy-support) in Access control.
+
+> [!NOTE]
+> `tealc bind` and `tealc embed-server` always route their own SSH access through an equivalent in-process WebSocket bridge, whether or not `--ws` is passed: see [client/agent binding]({{< ref "04-client/16-agent_binding" >}}) and [client/embed server]({{< ref "04-client/15-embed_server" >}}). `--ws` here is specifically the opt-in for `tealc ssh` (and the other commands sharing its SSH connection path) to reach a separately deployed server the same way.
 
 
 ### Flags
@@ -89,6 +96,7 @@ tealc ssh [AGENT_NAME] -L "127.0.0.1:8080:127.0.0.1:8080"
   -h, --help                                 Show context-sensitive help.
   -s, --server=""                            HTTP server address to connect to ($TEALC_SERVER).
   -S, --ssh-server=""                        SSH server address to connect to ($TEALC_SSH_SERVER).
+      --[no-]ws                              Tunnel SSH traffic over a WebSocket to --server instead of a raw TCP connection to --ssh-server ($TEALC_WS).
       --access-token=""                      Access token for the /manage/ API endpoint ($TEALC_ACCESS_TOKEN).
       --admin-token=""                       Admin token for the /admin/ API endpoint ($TEALC_ADMIN_TOKEN).
   -q, --quiet                                Suppress all log output ($TEALC_QUIET).

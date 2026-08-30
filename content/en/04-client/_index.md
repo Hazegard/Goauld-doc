@@ -29,4 +29,6 @@ This section covers the client's features:
 - [Agent binding]({{< ref "04-client/16-agent_binding" >}}): binding an agent to specific hosts.
 - [Socks]({{< ref "04-client/17-socks" >}}): SOCKS proxy usage from the client.
 - [VS Code]({{< ref "04-client/18-vscode" >}}): launching VS Code sessions against an agent.
+- [Logs]({{< ref "04-client/19-logs" >}}): retrieving recorded logs from an agent.
+- [Forward]({{< ref "04-client/20-forward" >}}): forwarding TCP ports, Unix sockets, or named pipes.
 </content>
