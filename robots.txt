@@ -82,7 +82,13 @@ Allow: /Goauld-doc/04-client/17-socks/
 
 Allow: /Goauld-doc/04-client/18-vscode/
 
+Allow: /Goauld-doc/04-client/19-logs/
+
 Allow: /Goauld-doc/
+
+Allow: /Goauld-doc/04-client/20-forward/
+
+Allow: /Goauld-doc/04-client/21-completion/
 
 Allow: /Goauld-doc/categories/
 
