@@ -123,6 +123,7 @@ This requires the server to be started with `--ssh-websocket`, see [Reverse prox
       --[no-]print                           Print the generated SSH command instead of executing it ($TEALC_PRINT).
       --proxy                                Use direct STDIN/STDOUT mode for ProxyCommand compatibility ($TEALC_PROXY).
       --log                                  Record the SSH session to a log file ($TEALC_LOG).
+      --session                              Select and attach to a persistent shell session ($TEALC_SESSION).
   -o, --ssh-opts=SSH-OPTS,...                Additional SSH options (equivalent to '-o')
   -F, --ssh-config-file=STRING               Path to an SSH configuration file to use ($TEALC_SSH_CONFIG_FILE).
 ```

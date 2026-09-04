@@ -73,6 +73,11 @@ access-token:
 admin-token:
 - XXXXXXXXXX
 
+# Operator IP addresses allowed to use the management API and SSH.
+# Replace with the public IP/CIDR of each operator workstation.
+allowed-ips:
+- 203.0.113.10/32
+
 # Disable TLS (minimal example, do not use in production)
 tls: false
 

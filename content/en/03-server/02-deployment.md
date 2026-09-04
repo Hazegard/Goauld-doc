@@ -5,7 +5,7 @@ weight: 2
 ---
 
 > [!NOTE]
-> IP allowlisting (`--allowed-ips`) can work correctly behind a reverse proxy via `--trusted-proxies` (see [Reverse proxy support]({{< ref "03-server/03-access_control" >}}#reverse-proxy-support) in Access control). This only covers the `/admin/` and `/manage/` HTTP endpoints; SSH password authentication and SSH local port forwarding always see the raw TCP peer address, so a proxied SSH listener is still not supported.
+> IP allowlisting (`--allowed-ips`) can work correctly behind a reverse proxy via `--trusted-proxies` (see [Reverse proxy support]({{< ref "03-server/03-access_control" >}}#reverse-proxy-support) in Access control). This covers the `/admin/`, `/manage/`, and `/ssh-ws/` HTTP endpoints. Raw-SSH password authentication and SSH local port forwarding always see the TCP peer address, so a proxied raw SSH listener is not supported.
 
 ## Docker compose example
 
@@ -110,11 +110,17 @@ allowed-ips:
 # List of reverse-proxy/load-balancer IP addresses or CIDR ranges trusted to set X-Forwarded-For.
 # Only set this when Goauld is deployed behind a reverse proxy: must include the proxy's own IP/CIDR.
 # Leave empty (default) for direct internet-facing deployments; X-Forwarded-For is otherwise ignored.
-# Only affects the allowed-ips check above for the /admin/ and /manage/ HTTP endpoints, SSH password
-# authentication and SSH local port forwarding are not covered (see 03-server/03-access_control#reverse-proxy-support).
+# Only affects the allowed-ips check above for the /admin/, /manage/, and /ssh-ws/ HTTP endpoints.
+# Direct raw-SSH password authentication and local port forwarding are still
+# restricted by allowed-ips, but use the TCP peer address; trusted-proxies does
+# not apply to them (see 03-server/03-access_control#reverse-proxy-support).
 trusted-proxies: []
 
-# Access token required for the /manage/ API endpoint.
+# Enable the operator SSH-over-WebSocket bridge at /ssh-ws/ when HTTP(S)-only
+# access is required. It is also protected by allowed-ips and access-token.
+ssh-websocket: false
+
+# Access token required for the /manage/ API endpoint and /ssh-ws/ when enabled.
 access-token:
 - EXAMPLE_TOKEN
 

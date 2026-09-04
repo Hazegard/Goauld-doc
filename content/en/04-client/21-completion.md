@@ -84,8 +84,11 @@ tealc completion fish > ~/.config/fish/completions/tealc.fish
 You can load the completion into the current shell to try it out.
 
 ```bash
-# zsh / bash
+# zsh
 eval "$(tealc completion zsh)"
+
+# bash
+source <(tealc completion bash)
 
 # fish
 tealc completion fish | source

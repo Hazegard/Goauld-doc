@@ -51,7 +51,7 @@ tealc forward myagent \
 - A bind or target address starting with `/` is treated as a Unix socket path, and a socket/pipe address never carries a port.
 - A bind or target address starting with `\\.` is treated as a Windows named pipe path.
 
-Two forwards in the same command cannot bind the same local address, whether TCP, Unix socket, or named pipe: the command is rejected up front with a clear error instead of letting the second one silently take over the first's listener.
+Two `-L` forwards in the same command cannot bind the same local address, whether TCP, Unix socket, or named pipe. The command rejects that conflict before opening the SSH connection.
 
 ## Platform support
 

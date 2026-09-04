@@ -11,11 +11,12 @@ Certain components should be accessible only by authorized users: the admin endp
 The server accepts a list of authorized IPs to restrict access to:
 - The `/admin/` endpoints
 - The `/manage/` endpoints
+- The `/ssh-ws/` endpoint, when `--ssh-websocket` is enabled
 - SSH access from the client (using password authentication)
 - SSH local port forwarding
 
 > [!WARNING]
-> If the server runs in a Docker environment, the deployment should ensure that the remote IP address is correctly forwarded to the server. For the `/admin/` and `/manage/` HTTP endpoints specifically, this can be done with `--trusted-proxies` if a reverse proxy sits in front of them (see [Reverse proxy support](#reverse-proxy-support) below). There is no equivalent for SSH access: see the note in that section.
+> If the server runs in Docker, preserve the remote IP address. Behind a reverse proxy, `--trusted-proxies` supports the `/admin/`, `/manage/`, and `/ssh-ws/` HTTP endpoints; raw SSH has no equivalent (see [Reverse proxy support](#reverse-proxy-support)).
 
 ### Flags
 
@@ -30,7 +31,7 @@ Both individual IP addresses and CIDR ranges are matched. To allow all IPv4 addr
 
 By default, `--allowed-ips` is matched against the direct TCP peer address of each request. If the server sits behind a reverse proxy or load balancer, every request's peer address is the proxy's own IP. The allowlist then either blocks every real client, or (if the proxy's IP is added to the allowlist to make things work) effectively allows anyone reachable through that proxy, defeating the allowlist either way.
 
-`--trusted-proxies` fixes this for the `/admin/` and `/manage/` HTTP endpoints: `X-Forwarded-For` is only trusted when the immediate peer is itself one of the configured trusted proxies, and the real client IP is then taken from the rightmost entry in that header which isn't itself a trusted proxy. This correctly handles a chain of several trusted hops (e.g. CDN → load balancer → Goauld) and is resistant to a client prepending spoofed entries ahead of the real trusted hops.
+`--trusted-proxies` fixes this for the `/admin/`, `/manage/`, and `/ssh-ws/` HTTP endpoints: `X-Forwarded-For` is only trusted when the immediate peer is itself one of the configured trusted proxies, and the real client IP is then taken from the rightmost entry in that header which isn't itself a trusted proxy. This correctly handles a chain of several trusted hops (e.g. CDN → load balancer → Goauld) and is resistant to a client prepending spoofed entries ahead of the real trusted hops.
 
 #### Flags
 
@@ -42,7 +43,7 @@ Same format as `--allowed-ips`: individual IPs or CIDR ranges. Must include the 
 > Leave `--trusted-proxies` unset (the default) for a server directly exposed to the internet. Behavior is then unchanged from before: `X-Forwarded-For` is never consulted, and `--allowed-ips` is matched against the direct TCP peer address.
 
 > [!WARNING]
-> `--trusted-proxies` only applies to the `/admin/` and `/manage/` HTTP endpoints. SSH password authentication and SSH local port forwarding always use the raw TCP connection's peer address; there is no `X-Forwarded-For` equivalent for a raw SSH connection. If the SSH listener itself is reachable through a reverse proxy or load balancer, `--allowed-ips` will see that proxy's IP for those two access paths regardless of `--trusted-proxies`. **`--ssh-websocket` (below) is the actual fix for reaching SSH through such a proxy**: it doesn't make `--trusted-proxies` apply to raw SSH, it gives SSH traffic its own HTTP(S)-tunneled path that `--trusted-proxies` *does* cover.
+> `--trusted-proxies` applies only to the HTTP endpoints above. Direct raw-SSH password authentication and SSH local port forwarding are still restricted by `--allowed-ips`, but always use the TCP peer address; there is no `X-Forwarded-For` equivalent. If the raw SSH listener is behind a proxy or load balancer, `--allowed-ips` sees that proxy's IP. **`--ssh-websocket` is the solution for SSH through such a proxy**: its HTTP(S)-tunneled path is covered by `--trusted-proxies`.
 
 ### SSH over WebSocket
 
