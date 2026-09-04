@@ -50,7 +50,7 @@ Without these bounds the agent could stay blocked indefinitely against a server 
 ## Configuration
 
 Transport order and retry behavior can be customized:
-- `--rssh-order`: Customize the order in which the agent tries transports. The agent attempts each transport sequentially until one succeeds. Example: `--rssh-order=ssh,tls,ws,http,dns` tries SSH first, then TLS, then WebSocket, and so on.
+- `--rssh-order` (short `-O`): Customize the order in which the agent tries transports. The agent attempts each transport sequentially until one succeeds. Example: `--rssh-order=ssh,tls,ws,http,dns` tries SSH first, then TLS, then WebSocket, and so on. For an HTTP(S)-only deployment, use `-O WS` or `--rssh-order WS`; add `DNS` as a fallback when DNS egress is also available.
 - `--max-retries`: Limit retry attempts (example: `--max-retries 5` stops after 5 failed cycles; default is unlimited). Independently of this flag, the retry loop is also bounded by the kill-switch duration (see [agent/killswitch]({{< ref "02-agent/06-killswitch" >}})); use `--kill-switch 0` to disable that time bound for a truly indefinite retry loop.
 
 > [!NOTE]

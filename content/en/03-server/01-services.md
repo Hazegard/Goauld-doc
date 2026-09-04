@@ -75,7 +75,11 @@ SSH over HTTP is available at: `http://[HTTP_DOMAIN]/sshttp/` and `https://[HTTP
 
 The Websocket listener is served by the same HTTP server as the [HTTP](#http) listener above, and shares its `--http-listen-addr` configuration. There is no separate flag dedicated to the Websocket listener.
 
-SSH over WebSocket is available at: `ws://[HTTP_DOMAIN]/wssh/` and `wss://[HTTP_DOMAIN]/wssh/`
+Agent SSH over WebSocket is available at: `ws://[HTTP_DOMAIN]/wssh/{agent-id}` and `wss://[HTTP_DOMAIN]/wssh/{agent-id}`.
+
+The operator-facing SSH-over-WebSocket bridge is a separate endpoint,
+`/ssh-ws/`, and is enabled with `--ssh-websocket`. It is protected by the
+access token and IP allowlist; see [Access control]({{< ref "03-server/03-access_control" >}}#ssh-over-websocket).
 
 > [!NOTE]
 > As with HTTP, the secure `wss://` variant depends on the TLS listener (`--https-listen-addr`, `--tls`, `--http-domain`), not `--http-listen-addr`.
@@ -94,6 +98,29 @@ The DNS server acts as an authoritative server and responds to DNS queries that 
 ## Internal control channel
 
 The server uses the HTTP listener for agent management traffic (kill commands, connection-state tracking). This internal channel depends on `--http-listen-addr` being reachable.
+
+## SSH authentication roles
+
+The shared SSHD accepts two distinct authentication roles:
+
+- Agents authenticate with their registered public key and agent ID. Their
+  connection may request only reverse port forwarding (`tcpip-forward` and
+  cancellation) plus keepalive messages. Agent-authenticated connections
+  cannot open operator sessions, direct-tcpip channels, or other client
+  features.
+- Operators authenticate with the agent's password and agent name. This is the
+  role used by `tealc` for SSH sessions, port access, file transfer, proxies,
+  and management operations. The `/ssh-ws/` endpoint is only a transport
+  bridge; after it reaches SSHD, the password-authenticated connection is
+  identified as an operator connection in exactly the same way as direct SSH.
+
+The server records the public source IP of agent connections in the agent
+database. For HTTP/WebSocket transports it uses the HTTP peer address, or a
+validated `X-Forwarded-For` value when the peer is listed in
+`--trusted-proxies`; raw SSH, TLS, QUIC, and DNS transports use their actual
+transport peer address. The same address is carried into the SSH connection so
+registration and connection state report the transport's real source rather
+than an internal tunnel or client-ID address.
 
 > [!WARNING]
 > If `--http-listen-addr` is not reachable (combined with `--no-tls`), agents cannot register or be managed, regardless of their tunneling transport.

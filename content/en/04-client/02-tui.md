@@ -17,6 +17,7 @@ The client provides a text-based user interface (TUI) to monitor and manage conn
 | `[ctrl+d]`  | Stop the agent and attempt to delete the binary (press twice to confirm) |
 |  `[Enter]`  | Start an SSH session                            |
 | `[ctrl+e]`  | Launch VS Code (press twice to confirm)         |
+| `[ctrl+f]`  | Manage port forwards (edit, add, or remove)     |
 |    `[+]`    | Toggle agent details                            |
 |    `[r]`    | Refresh the agent list                          |
 | `[↑]`/`[↓]`/`[←]`/`[→]` | Navigate the agent list             |
@@ -57,3 +58,18 @@ tealc list
 ### Extended TUI
 
 Some information is hidden by default. Press `+` to toggle the details.
+
+## Port Forwarding Menu
+
+Press `[ctrl+f]` to open an interactive forward editor for the agent. The menu displays forwards in a table and allows you to:
+
+- **Navigate** using `[↑]`/`[↓]` to move between rows, `[←]`/`[→]` or `[Tab]` to move between columns
+- **Toggle or cycle** with `[Space]`: enable/disable a forward in the checkbox column, or cycle `-L`/`-R` direction on custom forwards
+- **Edit addresses** by typing directly in a cell; press `[Backspace]` to delete characters
+- **Add a forward** by pressing `[+]` from anywhere in the table
+- **Delete a forward** by pressing `[ctrl+r]` or `[ctrl+d]` when focused on a custom forward row
+- **Launch SSH** by pressing `[Enter]` to save changes and open an SSH session with the configured forwards
+- **Save without launching** by pressing `[ctrl+s]`
+- **Cancel** by pressing `[Esc]` or `[ctrl+c]` without saving
+
+The forward menu supports the same address types as the `tealc forward` command: TCP ports (default for numeric addresses), Unix socket paths (starting with `/` or `~`), and (on Windows) named pipes (starting with `\\`). See [client/forward]({{< ref "04-client/20-forward" >}}) for details and examples.

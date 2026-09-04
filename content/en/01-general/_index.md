@@ -21,3 +21,4 @@ This section covers the fundamentals shared across all three components:
 - [Variables]({{< ref "01-general/03-variables" >}}): how configuration values are sourced and prioritized.
 - [Configuration file]({{< ref "01-general/04-configuration_file" >}}): where each component looks for its config file.
 - [Architecture]({{< ref "01-general/05-architecture" >}}): a diagram of how the pieces fit together.
+- [Minimal HTTP(S)-only setup]({{< ref "01-general/06-minimal-http-setup" >}}): run the deployment with only HTTP/HTTPS exposed.

@@ -110,7 +110,6 @@ Protected by the user access token (see [Access token](#access-token)).
 | ------ | ------------------------------- | ---------------------------------------------------- |
 | POST   | `/manage/agent/{id}/kill`       | Kill an agent (accepts the embedded admin token, see above) |
 | GET    | `/manage/agent/{id}`            | Get information about an agent by ID                |
-| DELETE | `/manage/agent/{id}`            | Delete an agent and close its remaining connections |
 | GET    | `/manage/agent/by_name/{name}`  | Get information about an agent by name              |
 | GET    | `/manage/agent/`                | List all agents                                     |
 | POST   | `/manage/clearport/`            | Clear remaining connections for a port or an agent  |
@@ -130,4 +129,3 @@ Protected by the admin token (see [Admin access token](#admin-access-token)).
 | GET    | `/admin/state/`       | Get the full server state (config and agents)       |
 | GET    | `/admin/dump/{id}`    | Dump information for a single agent                 |
 | POST   | `/admin/loglevel/{level}` | Change the server's log level                    |
-

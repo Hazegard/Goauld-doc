@@ -6,7 +6,7 @@ weight: 20
 
 ## Forward TCP ports, Unix sockets, or named pipes
 
-`tealc forward [AGENT_NAME]` forwards traffic between the client and an agent, using the same `-L`/`-R` syntax as OpenSSH.
+`tealc forward [AGENT_NAME]` forwards traffic between the client and an agent, using the same `-L`/`-R` syntax as OpenSSH. You can also manage forwards interactively in the TUI using `[ctrl+f]` — see [client/tui]({{< ref "04-client/02-tui" >}}#port-forwarding-menu) for details.
 
 ```bash
 tealc forward [AGENT_NAME] -L [bind_addr:]port:host:hostport

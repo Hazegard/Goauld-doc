@@ -32,4 +32,7 @@ This section covers the client's features:
 - [Logs]({{< ref "04-client/19-logs" >}}): retrieving recorded logs from an agent.
 - [Forward]({{< ref "04-client/20-forward" >}}): forwarding TCP ports, Unix sockets, or named pipes.
 - [Shell completion]({{< ref "04-client/21-completion" >}}): generating and installing tealc completion for zsh, bash, and fish.
+- [Wait]({{< ref "04-client/22-wait" >}}): waiting for an agent to come online.
+- [Update]({{< ref "04-client/23-update" >}}): remotely upgrading an agent's binary.
+- [Persistent shell sessions]({{< ref "04-client/24-sessions" >}}): restoring shell sessions after an SSH disconnect.
 </content>

@@ -109,6 +109,7 @@ This requires the server to be started with `--ssh-websocket`, see [Reverse prox
   -Q, --prompt                               Prompt for the agent's static password ($TEALC_PROMPT).
       --[no-]save-password                   Save the prompted password in the configuration file ($TEALC_SAVE_PASSWORD).
   -M, --control-master                       Enable SSH control master to reuse the SSH connection ($TEALC_CONTROL_MASTER).
+      --wait-timeout=SECONDS                 Seconds to wait for agent to come online (negative or 0 = indefinite, positive = wait N seconds) ($TEALC_WAIT_TIMEOUT).
 
       --[no-]socks                           Forward the agent's SOCKS proxy to the local host ($TEALC_SOCKS).
       --[no-]http                            Forward the agent's HTTP proxy to the local host ($TEALC_HTTP).

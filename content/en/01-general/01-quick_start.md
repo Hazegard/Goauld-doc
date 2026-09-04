@@ -48,7 +48,8 @@ At this point, you should have:
 
 ## Server
 
-A minimal configuration file that exposes only HTTP and SSH services is:
+A traditional minimal configuration file that exposes HTTP and a direct SSH
+listener is:
 
 ```yaml
 # The server's age private key.
@@ -86,6 +87,9 @@ Start the server:
 ```
 
 See [server/deployment]({{< ref "03-server/02-deployment" >}}) to install and deploy the server with all options (TLS, DNS server, etc...).
+
+For deployments where only HTTP/HTTPS can be exposed, use the
+[minimal HTTP(S)-only setup]({{< ref "01-general/06-minimal-http-setup" >}}).
 
 
 
