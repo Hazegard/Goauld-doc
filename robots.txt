@@ -54,6 +54,8 @@ Allow: /Goauld-doc/04-client/06-jump/
 
 Allow: /Goauld-doc/02-agent/06-killswitch/
 
+Allow: /Goauld-doc/01-general/06-minimal-http-setup/
+
 Allow: /Goauld-doc/04-client/07-clipboard/
 
 Allow: /Goauld-doc/02-agent/07-connection_flow/
@@ -89,6 +91,12 @@ Allow: /Goauld-doc/
 Allow: /Goauld-doc/04-client/20-forward/
 
 Allow: /Goauld-doc/04-client/21-completion/
+
+Allow: /Goauld-doc/04-client/22-wait/
+
+Allow: /Goauld-doc/04-client/23-update/
+
+Allow: /Goauld-doc/04-client/24-sessions/
 
 Allow: /Goauld-doc/categories/
 
