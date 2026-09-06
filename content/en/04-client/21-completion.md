@@ -28,7 +28,7 @@ The supported shells are `zsh`, `bash`, and `fish`.
   `tealc logs <TAB>`, `tealc kill <TAB>`) is completed by running `tealc list`, so the
   suggestions are your live agents.
 - **Enum values**: flags with a fixed set of values complete them, for example
-  `tealc compile --id <TAB>` (`all client server agent agent-mini agent.dll`),
+  `tealc compile --id <TAB>` (`all client server agent agent-mini agent.dll shim`),
   `tealc compile --goos <TAB>` (`windows linux darwin`), and
   `tealc compile --goarch <TAB>` (`amd64 arm64 arm 386`).
 - **Files and directories**: path-taking flags complete filesystem entries, for example

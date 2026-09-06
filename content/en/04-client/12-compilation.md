@@ -20,6 +20,7 @@ The `ID` flag can be:
 - `agent`
 - `agent-mini`: a small stager. It does not carry the full agent's functionality itself. At runtime, it fetches the full agent from the server over the encrypted control channel and runs it (see [general/compilation]({{< ref "01-general/02-compilation" >}})).
 - `agent.dll`
+- `shim`: a Windows-only VS Code SSH parent-process compatibility shim.
 
 The `ARCH` flag can be:
 - `amd64`
@@ -28,7 +29,7 @@ The `ARCH` flag can be:
 - `386`
 
 > [!NOTE]
-> Architecture and OS support varies by `--id` (per the project's GoReleaser build matrix): `agent` supports all four architectures; `agent-mini` supports `amd64`/`386`/`arm64` (no `arm`); `agent.dll` is Windows-only and supports only `amd64`/`386` (no `arm`/`arm64`); `server` and `client` support only `amd64`/`arm64` (no `386`/`arm`).
+> Architecture and OS support varies by `--id` (per the project's GoReleaser build matrix): `agent` supports all four architectures; `agent-mini` supports `amd64`/`386`/`arm64` (no `arm`); `agent.dll` is Windows-only and supports only `amd64`/`386` (no `arm`/`arm64`); `shim` is Windows-only and supports `amd64`/`arm64`/`386`; `server` and `client` support only `amd64`/`arm64` (no `386`/`arm`).
 
 The `OS` flag can be:
 - `darwin`
